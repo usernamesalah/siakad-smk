@@ -17,16 +17,36 @@
                         <span class="title">Dashboard</span>
                     </a>
                 </li>
+                <li class="heading">
+                    <h3 class="uppercase">Data Master</h3>
+                </li>
                 <li>
-                    <a href="<?= base_url('admin/daftar-kost') ?>">
+                    <a href="<?= base_url('admin/data-jadwal') ?>">
                         <i class="icon-list"></i>
-                        <span class="title">Daftar Kost</span>
+                        <span class="title">Daftar Jadwal Mengajar</span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="<?= base_url('admin/data-visi') ?>">
+                        <i class="icon-list"></i>
+                        <span class="title">Visi Misi Sekolah</span>
+                    </a>
+                </li>
+
+                <li class="heading">
+                    <h3 class="uppercase">Laporan Data</h3>
+                </li>
+                <li>
+                    <a href="<?= base_url('admin/data-penilaian') ?>">
+                        <i class="icon-list"></i>
+                        <span class="title">Penilaian Siswa</span>
                     </a>
                 </li>
                 <li>
-                    <a href="<?= base_url('admin/kriteria') ?>">
+                    <a href="<?= base_url('admin/data-absensi') ?>">
                         <i class="icon-list"></i>
-                        <span class="title">Daftar Kriteria</span>
+                        <span class="title">Absensi Siswa</span>
                     </a>
                 </li>
             </ul>

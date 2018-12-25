@@ -73,13 +73,6 @@ class Admin extends MY_Controller
         $this->template($this->data, $this->module);
     }
 
-    public function data_semester()
-    {
-        $this->data['title']    = 'Dashboard';
-        $this->data['content']  = 'semester';
-        $this->template($this->data, $this->module);
-    }
-
     public function data_kelas()
     {
         $this->data['title']    = 'Dashboard';
@@ -95,6 +88,20 @@ class Admin extends MY_Controller
     }
 
     public function data_nilai()
+    {
+        $this->data['title']    = 'Dashboard';
+        $this->data['content']  = 'nilai';
+        $this->template($this->data, $this->module);
+    }
+
+    public function data_jurusan()
+    {
+        $this->data['title']    = 'Dashboard';
+        $this->data['content']  = 'jurusan';
+        $this->template($this->data, $this->module);
+    }
+
+    public function laporan_nilai()
     {
         $this->data['title']    = 'Dashboard';
         $this->data['content']  = 'nilai';
