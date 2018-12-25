@@ -3,7 +3,7 @@
 	<div class="page-head">
 		<!-- BEGIN PAGE TITLE -->
 		<div class="page-title">
-			<h1>Data Kelas</h1>
+			<h1>Data Jurusan</h1>
 		</div>
 		<!-- END PAGE TITLE -->
 	</div>
@@ -15,7 +15,7 @@
 			<div class="portlet box green">
 				<div class="portlet-title">
 					<div class="caption">
-						<i class="fa fa-gift"></i>Data Kelas
+						<i class="fa fa-gift"></i>Data Jurusan
 					</div>
 				</div>
 				<div class="portlet-body">
@@ -51,13 +51,13 @@
                                         <thead>
                                             <tr>
                                                 <th> # </th>
-                                                <th> Kelas </th>
+                                                <th> Jurusan </th>
                                                 <th> Actions </th>
                                             </tr>
                                             <tr>
                                                 <?= form_open('url',) ?>
                                                 <th>-</th>
-                                                <th> <input type="text" name="tahun_ajaran" class="form-control"></th>
+                                                <th> <input type="text" name="jurusan" class="form-control"></th>
                                                 <th> <input type="submit" name="simpan" value="Simpan" class="btn btn-success"></th>
                                             </tr>
                                         </thead>
@@ -65,7 +65,7 @@
                                             <tr class="odd gradeX">
                                                 <td> 1 </td>
                                                 <td>
-                                                    XI IPA 2
+                                                    IPA
                                                 </td>
                                                 <td>
                                                     <div class="btn-group">

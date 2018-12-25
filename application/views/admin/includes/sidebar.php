@@ -17,34 +17,66 @@
                         <span class="title">Dashboard</span>
                     </a>
                 </li>
+                <li class="heading">
+                    <h3 class="uppercase">Data Master</h3>
+                </li>
                 <li>
-                    <a href="<?= base_url('admin/daftar-kost') ?>">
-                        <i class="icon-list"></i>
-                        <span class="title">Daftar Guru</span>
+                    <a href="<?= base_url('admin/data-guru') ?>">
+                        <i class="icon-user"></i>
+                        <span class="title">Guru</span>
                     </a>
                 </li>
                 <li>
-                    <a href="<?= base_url('admin/kriteria') ?>">
-                        <i class="icon-list"></i>
-                        <span class="title">Daftar Siswa</span>
+                    <a href="<?= base_url('admin/data-siswa') ?>">
+                        <i class="icon-user"></i>
+                        <span class="title">Siswa</span>
                     </a>
                 </li>
                 <li>
-                    <a href="<?= base_url('admin/kriteria') ?>">
+                    <a href="<?= base_url('admin/data-mata-pelajaran') ?>">
                         <i class="icon-list"></i>
-                        <span class="title">Daftar Mata Pelajaran</span>
+                        <span class="title">Mata Pelajaran</span>
                     </a>
                 </li>
                 <li>
-                    <a href="<?= base_url('admin/kriteria') ?>">
+                    <a href="<?= base_url('admin/data-tahun-ajaran') ?>">
                         <i class="icon-list"></i>
-                        <span class="title">Daftar Tahun Ajaran</span>
+                        <span class="title">Tahun Ajaran</span>
                     </a>
                 </li>
                 <li>
-                    <a href="<?= base_url('admin/kriteria') ?>">
+                    <a href="<?= base_url('admin/data-kelas') ?>">
                         <i class="icon-list"></i>
-                        <span class="title">Daftar Siswa</span>
+                        <span class="title">Kelas</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?= base_url('admin/data-nilai') ?>">
+                        <i class="icon-list"></i>
+                        <span class="title">Penilaian</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?= base_url('admin/data-jadwal') ?>">
+                        <i class="icon-list"></i>
+                        <span class="title">Jadwal Pelajaran</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?= base_url('admin/data-jurusan') ?>">
+                        <i class="icon-list"></i>
+                        <span class="title">Jurusan</span>
+                    </a>
+                </li>
+
+
+                <li class="heading">
+                    <h3 class="uppercase">Laporan Data</h3>
+                </li>
+                <li>
+                    <a href="<?= base_url('admin/laporan-nilai') ?>">
+                        <i class="icon-list"></i>
+                        <span class="title">Nilai Siswa</span>
                     </a>
                 </li>
             </ul>

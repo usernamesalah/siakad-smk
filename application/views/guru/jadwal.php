@@ -3,7 +3,7 @@
 	<div class="page-head">
 		<!-- BEGIN PAGE TITLE -->
 		<div class="page-title">
-			<h1>Data Kelas</h1>
+			<h1>Data Jadwal Pelajaran</h1>
 		</div>
 		<!-- END PAGE TITLE -->
 	</div>
@@ -15,7 +15,7 @@
 			<div class="portlet box green">
 				<div class="portlet-title">
 					<div class="caption">
-						<i class="fa fa-gift"></i>Data Kelas
+						<i class="fa fa-gift"></i>Data Jadwal Pelajaran
 					</div>
 				</div>
 				<div class="portlet-body">
@@ -52,43 +52,33 @@
                                             <tr>
                                                 <th> # </th>
                                                 <th> Kelas </th>
+                                                <th> Mata Pelajaran </th>
+                                                <th> Semester </th>
+                                                <th> Tahun Ajaran </th>
+                                                <th> Jam Pelajaran </th>
                                                 <th> Actions </th>
-                                            </tr>
-                                            <tr>
-                                                <?= form_open('url',) ?>
-                                                <th>-</th>
-                                                <th> <input type="text" name="tahun_ajaran" class="form-control"></th>
-                                                <th> <input type="submit" name="simpan" value="Simpan" class="btn btn-success"></th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr class="odd gradeX">
                                                 <td> 1 </td>
                                                 <td>
-                                                    XI IPA 2
+                                                    XII IPA 2
+                                                </td>
+                                                <td>
+                                                    MATEMATIKA
+                                                </td>
+                                                <td class="center"> Ganjil </td>
+                                                <td>
+                                                    Tahun Ajaran 2018/2019
+                                                </td>
+                                                <td>
+                                                    09:00 - 10:00 WIB
                                                 </td>
                                                 <td>
                                                     <div class="btn-group">
-                                                        <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> Actions
-                                                            <i class="fa fa-angle-down"></i>
+                                                        <button class="btn btn-xs green " type="button" data-toggle="dropdown" aria-expanded="false"> Lihat Siswa
                                                         </button>
-                                                        <ul class="dropdown-menu pull-left" role="menu">
-                                                            <li>
-                                                                <a href="javascript:;">
-                                                                    <i class="icon-docs"></i> New Post </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="javascript:;">
-                                                                    <i class="icon-user"></i> New User </a>
-                                                            </li>
-                                                            <li class="divider"> </li>
-                                                            <li>
-                                                                <a href="javascript:;">
-                                                                    <i class="icon-flag"></i> Comments
-                                                                    <span class="badge badge-success">4</span>
-                                                                </a>
-                                                            </li>
-                                                        </ul>
                                                     </div>
                                                 </td>
                                             </tr>

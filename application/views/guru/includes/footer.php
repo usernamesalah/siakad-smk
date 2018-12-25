@@ -59,6 +59,10 @@ jQuery(document).ready(function() {
     // Index.init(); // init index page
  Tasks.initDashboardWidget(); // init tash dashboard widget  
 });
+
+$(document).ready(function() {
+    $('#sample_1').dataTable();
+  });
 </script>
 <!-- END JAVASCRIPTS -->
 </body>

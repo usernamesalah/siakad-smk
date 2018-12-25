@@ -3,7 +3,7 @@
 	<div class="page-head">
 		<!-- BEGIN PAGE TITLE -->
 		<div class="page-title">
-			<h1>Nilai Siswa</h1>
+			<h1>Input Nilai Siswa</h1>
 		</div>
 		<!-- END PAGE TITLE -->
 	</div>
@@ -38,7 +38,7 @@
 									Nilai UAS
 								</th>
 								<th width="200" style="text-align: center;">
-									Total
+									Aksi
 								</th>
 							</tr>
 						</thead>
@@ -48,22 +48,29 @@
 									-
 									</th>
 									<th width="300" style="text-align: center;">
-										Rezi Apriliansyah
+										<input type="text" name="nama[]" value="Rezi Apriliansyah" class="form-control" readonly>
 									</th>
 									<th style="text-align: center;">
-										80
+										<input type="number" name="harian" class="form-control">
 									</th>
 									<th style="text-align: center;">
-										90
+										<input type="number" name="uts" class="form-control">
 									</th>
 									<th style="text-align: center;">
-										90
+										<input type="number" name="uas" class="form-control">
 									</th>
 									<th width="200" style="text-align: center;">
-										260
+										<input type="submit" name="simpan" value="Simpan" class="btn btn-primary">
 									</th>
 								</tr>
 						</tbody>
+						<tfoot>
+							<tr>
+								<td colspan="6" style="text-align: right;">
+									<button type="submit" class="btn btn-success">Simpan Semua</button>
+								</td>
+							</tr>
+						</tfoot>
 					</table>
 				</div>
 			</div>
