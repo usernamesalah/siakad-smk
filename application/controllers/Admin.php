@@ -6,36 +6,6 @@ class Admin extends MY_Controller
 	{
 		parent::__construct();
 		$this->module = 'admin';
-
-        // $this->load->library('gz');
-        // $this->load->library('ci_jwt');
-
-        // $this->data['token'] = $this->session->userdata('token');
-        // if (!isset($this->data['token']))
-        // {
-        //     $this->session->sess_destroy();
-        //     $this->flashmsg('Anda harus login untuk mengakses halaman tersebut', 'warning');
-        //     redirect('login');
-        //     exit;
-        // }
-
-        // $this->data['payload']  = $this->ci_jwt->decode($this->data['token']);
-
-        // $response = json_decode($this->gz->POST('token', $this->data));
-        // if (!isset($response))
-        // {
-        //     $this->session->sess_destroy();
-        //     $this->flashmsg('Anda harus login untuk mengakses halaman tersebut', 'warning');
-        //     redirect('login');
-        //     exit;
-        // }
-        // if ($response->status === 'failed')
-        // {
-        //     $this->session->sess_destroy();
-        //     $this->flashmsg($response->message, 'warning');
-        //     redirect('login');
-        //     exit;
-        // }
 	}
 
 	public function index()
