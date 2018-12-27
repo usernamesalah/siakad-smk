@@ -43,30 +43,49 @@ class Guru extends MY_Controller
 		$this->template($this->data, $this->module);
 	}
 
+	public function tahun_ajaran()
+	{
+		$this->load->model('School_years');
+		$this->data['years']	= School_years::orderBy('year_id', 'DESC')->get();
+		$this->data['title']	= 'Tahun Ajaran';
+		$this->data['content']	= 'tahun_ajaran';
+		$this->template($this->data, $this->module);
+	}
+
 	public function data_jadwal()
 	{
-		$this->data['title']	= 'Dashboard';
+		$this->data['year_id'] 	= $this->GET('year_id');
+		$this->data['semester']	= $this->GET('semester');
+
+		$this->load->model('School_years');
+		$this->data['year']		= School_years::find($this->data['year_id']);
+		$this->load->model('Schedules');
+		$this->data['jadwal']	= Schedules::with('class', 'lesson')->where([
+			'semester' 	=> $this->data['semester'],
+			'year_id'	=> $this->data['year_id']
+		])->get();
+		$this->data['title']	= 'Data Jadwal';
 		$this->data['content']	= 'jadwal';
 		$this->template($this->data, $this->module);
 	}
 
-	public function tahun_ajaran()
-	{
-		// klik detail semester genap/ganjil -> muncul daftar mapel yang diajarkan
-		// klik kelas semester genap/ganjil -> muncul daftar kelas beserta tombol utk ke absensi
-	}
-
 	public function mapel_diajarkan()
 	{
+		// schedule group by lesson, class, year
 		// klik detail -> muncul daftar siswa beserta input nilainya
 	}
 
 	public function siswa_kelas_mapel()
 	{
-		$lesson_id = 1;
+		$lesson_id 	= $this->GET('lesson_id');
+		$year_id 	= $this->GET('year_id');
+		$semester 	= $this->GET('semester');
+
 		$this->load->model('Students');
-		$this->data['siswa']	= Students::with('user', 'scores')->whereHas('scores', function($query) use ($lesson_id) {
+		$this->data['siswa']	= Students::with('user', 'scores')->whereHas('scores', function($query) use ($lesson_id, $year_id, $semester) {
 			$query->where('scores.lesson_id', $lesson_id);
+			$query->where('scores.year_id', $year_id);
+			$query->where('scores.semester', $semester);
 		})->get();
 		$this->data['title']	= 'Dashboard';
 		$this->data['content']	= 'kelas_mapel';

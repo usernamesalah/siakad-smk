@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 27 Des 2018 pada 16.06
+-- Generation Time: 27 Des 2018 pada 19.21
 -- Versi Server: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -152,6 +152,7 @@ CREATE TABLE `schedules` (
   `teacher_id` int(11) NOT NULL,
   `year_id` int(11) NOT NULL,
   `semester` enum('Odd','Even') NOT NULL,
+  `day` enum('Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday') NOT NULL,
   `started_at` time NOT NULL,
   `ended_at` time NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -162,8 +163,8 @@ CREATE TABLE `schedules` (
 -- Dumping data untuk tabel `schedules`
 --
 
-INSERT INTO `schedules` (`schedule_id`, `class_id`, `lesson_id`, `teacher_id`, `year_id`, `semester`, `started_at`, `ended_at`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 1, 1, 'Even', '01:00:00', '03:00:00', '2018-12-27 12:15:46', '2018-12-27 12:15:46');
+INSERT INTO `schedules` (`schedule_id`, `class_id`, `lesson_id`, `teacher_id`, `year_id`, `semester`, `day`, `started_at`, `ended_at`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, 1, 1, 'Even', 'Sunday', '01:00:00', '03:00:00', '2018-12-27 12:15:46', '2018-12-27 12:15:46');
 
 -- --------------------------------------------------------
 
@@ -196,6 +197,8 @@ CREATE TABLE `scores` (
   `student_id` int(11) NOT NULL,
   `lesson_id` int(11) NOT NULL,
   `type_id` int(11) NOT NULL,
+  `year_id` int(11) NOT NULL,
+  `semester` enum('Odd','Even') NOT NULL,
   `score` tinyint(4) NOT NULL,
   `additional_info` text NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -206,10 +209,8 @@ CREATE TABLE `scores` (
 -- Dumping data untuk tabel `scores`
 --
 
-INSERT INTO `scores` (`score_id`, `student_id`, `lesson_id`, `type_id`, `score`, `additional_info`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 1, 98, 'Catatan', '2018-12-27 15:02:41', '2018-12-27 15:02:41'),
-(2, 1, 1, 1, 46, '', '2018-12-27 15:04:51', '2018-12-27 15:04:51'),
-(3, 1, 1, 1, 69, 'Belajar lagi yaaa <3', '2018-12-27 15:05:33', '2018-12-27 15:05:33');
+INSERT INTO `scores` (`score_id`, `student_id`, `lesson_id`, `type_id`, `year_id`, `semester`, `score`, `additional_info`, `created_at`, `updated_at`) VALUES
+(3, 1, 1, 1, 1, 'Even', 69, 'Belajar lagi yaaa <3', '2018-12-27 15:05:33', '2018-12-27 18:13:12');
 
 -- --------------------------------------------------------
 
@@ -381,7 +382,8 @@ ALTER TABLE `scores`
   ADD PRIMARY KEY (`score_id`),
   ADD KEY `type_id` (`type_id`),
   ADD KEY `student_id` (`student_id`),
-  ADD KEY `lesson_id` (`lesson_id`);
+  ADD KEY `lesson_id` (`lesson_id`),
+  ADD KEY `year_id` (`year_id`);
 
 --
 -- Indexes for table `score_types`
@@ -533,7 +535,8 @@ ALTER TABLE `schedules`
 ALTER TABLE `scores`
   ADD CONSTRAINT `scores_ibfk_1` FOREIGN KEY (`type_id`) REFERENCES `score_types` (`type_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `scores_ibfk_2` FOREIGN KEY (`student_id`) REFERENCES `students` (`student_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `scores_ibfk_3` FOREIGN KEY (`lesson_id`) REFERENCES `lessons` (`lesson_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `scores_ibfk_3` FOREIGN KEY (`lesson_id`) REFERENCES `lessons` (`lesson_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `scores_ibfk_4` FOREIGN KEY (`year_id`) REFERENCES `school_years` (`year_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `students`
