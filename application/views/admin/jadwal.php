@@ -20,127 +20,152 @@
 				</div>
 				<div class="portlet-body">
 					<div class="table-toolbar">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="btn-group pull-right">
-                                                    <button class="btn green  btn-outline dropdown-toggle" data-toggle="dropdown">Tools
-                                                        <i class="fa fa-angle-down"></i>
-                                                    </button>
-                                                    <ul class="dropdown-menu pull-right">
-                                                        <li>
-                                                            <a href="javascript:;">
-                                                                <i class="fa fa-print"></i> Print </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="javascript:;">
-                                                                <i class="fa fa-file-pdf-o"></i> Save as PDF </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="javascript:;">
-                                                                <i class="fa fa-file-excel-o"></i> Export to Excel </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
-                                        <thead>
-                                            <tr>
-                                                <th> # </th>
-                                                <th> Kelas </th>
-                                                <th> Mata Pelajaran </th>
-                                                <th> Guru </th>
-                                                <th> Tahun Ajaran </th>
-                                                <th> Jam Pelajaran </th>
-                                                <th> Actions </th>
-                                            </tr>
+                        <div class="row">
+                            <div class="col-md-6">
+                                
+                            </div>
+                            <div class="col-md-6">
+                                <div class="btn-group pull-right">
+                                    <button class="btn green  btn-outline dropdown-toggle" data-toggle="dropdown">Tools
+                                        <i class="fa fa-angle-down"></i>
+                                    </button>
+                                    <ul class="dropdown-menu pull-right">
+                                        <li>
+                                            <a href="javascript:;">
+                                                <i class="fa fa-print"></i> Print </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:;">
+                                                <i class="fa fa-file-pdf-o"></i> Save as PDF </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:;">
+                                                <i class="fa fa-file-excel-o"></i> Export to Excel </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
+                        <thead>
+                            <tr>
+                                <th> # </th>
+                                <th> Kelas </th>
+                                <th> Mata Pelajaran </th>
+                                <th> Guru </th>
+                                <th> Semester </th>
+                                <th> Tahun Ajaran </th>
+                                <th> Jam Pelajaran </th>
+                                <th> Actions </th>
+                            </tr>
 
-                                            <tr>
-                                                <th> # </th>
-                                                <th> 
-                                                    <select name="kelas" class="form-control">
-                                                        <option value=""></option>
-                                                    </select> 
-                                                </th>
-                                                <th> 
-                                                    <select name="mapel" class="form-control">
-                                                        <option value=""></option>
-                                                    </select> 
-                                                </th>
-                                                <th> 
-                                                    <select name="guru" class="form-control">
-                                                        <option value=""></option>
-                                                    </select> 
-                                                </th>
-                                                <th> 
-                                                    <select name="tahun" class="form-control">
-                                                        <option value=""></option>
-                                                    </select> 
-                                                </th>
-                                                <th> 
-                                                    <div class="col-md-6">
-                                                        <input type="time" name="time_start" class="form-control">
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <input type="time" name="time_end" class="form-control">
-                                                    </div>
-                                                </th>
-                                                <th> 
-                                                    <input type="submit" name="simpan" value="Simpan" class="btn btn-success">
-                                                </th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr class="odd gradeX">
-                                                <td> 1 </td>
-                                                <td>
-                                                    XII IPA 2
-                                                </td>
-                                                <td>
-                                                    MATEMATIKA
-                                                </td>
-                                                <td class="center"> Hriyanti </td>
-                                                <td>
-                                                    Tahun Ajaran 2018/2019
-                                                </td>
-                                                <td>
-                                                    09:00 - 10:00 WIB
-                                                </td>
-                                                <td>
-                                                    <div class="btn-group">
-                                                        <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> Actions
-                                                            <i class="fa fa-angle-down"></i>
-                                                        </button>
-                                                        <ul class="dropdown-menu pull-left" role="menu">
-                                                            <li>
-                                                                <a href="javascript:;">
-                                                                    <i class="icon-docs"></i> New Post </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="javascript:;">
-                                                                    <i class="icon-tag"></i> New Comment </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="javascript:;">
-                                                                    <i class="icon-user"></i> New User </a>
-                                                            </li>
-                                                            <li class="divider"> </li>
-                                                            <li>
-                                                                <a href="javascript:;">
-                                                                    <i class="icon-flag"></i> Comments
-                                                                    <span class="badge badge-success">4</span>
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                            <tr>
+                                <?= form_open('admin/data-jadwal') ?>
+                                <th></th>
+                                <th> 
+                                    <select name="class_id" required class="form-control">
+                                        <option value="">Pilih Kelas</option>
+                                        <?php foreach ($kelas as $row): ?>
+                                            <option value="<?= $row->class_id ?>"><?= $row->class_name ?></option>
+                                        <?php endforeach; ?>
+                                    </select> 
+                                </th>
+                                <th> 
+                                    <select name="lesson_id" required class="form-control">
+                                        <option value="">Pilih Mata Pelajaran</option>
+                                        <?php foreach ($mapel as $row): ?>
+                                            <option value="<?= $row->lesson_id ?>"><?= $row->title ?></option>
+                                        <?php endforeach; ?>
+                                    </select> 
+                                </th>
+                                <th> 
+                                    <select name="teacher_id" required class="form-control">
+                                        <option value="">Pilih Guru</option>
+                                        <?php foreach ($guru as $row): ?>
+                                            <option value="<?= $row->teacher_id ?>"><?= $row->user->name ?></option>
+                                        <?php endforeach; ?>
+                                    </select> 
+                                </th>
+                                <th>
+                                    <select name="semester" required class="form-control">
+                                        <option value="">Pilih Semester</option>
+                                        <option value="Odd">Ganjil</option>
+                                        <option value="Even">Genap</option>
+                                    </select>
+                                </th>
+                                <th> 
+                                    <select name="year_id" required class="form-control">
+                                        <option value="">Pilih Tahun Ajaran</option>
+                                        <?php foreach ($tahun_ajaran as $row): ?>
+                                            <option value="<?= $row->year_id ?>"><?= $row->school_year ?></option>
+                                        <?php endforeach; ?>
+                                    </select> 
+                                </th>
+                                <th> 
+                                    <div class="col-md-6">
+                                        <input type="time" name="started_at" class="form-control">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="time" name="ended_at" class="form-control">
+                                    </div>
+                                </th>
+                                <th> 
+                                    <input type="submit" name="submit" value="Simpan" class="btn btn-success">
+                                </th>
+                                <?= form_close() ?>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php $i = 0; foreach ($jadwal as $row): ?>
+                            <tr class="odd gradeX">
+                                <td><?= ++$i ?></td>
+                                <td>
+                                    <?= $row->class->class_name ?>
+                                </td>
+                                <td>
+                                    <?= $row->lesson->title ?>
+                                </td>
+                                <td class="center"> <?= $row->teacher->user->name ?> </td>
+                                <td><?= $row->semester == 'Odd' ? 'Ganjil' : 'Genap' ?></td>
+                                <td>
+                                    <?= $row->year->school_year ?>
+                                </td>
+                                <td>
+                                    <?= $row->started_at . ' s.d. ' . $row->ended_at ?>
+                                </td>
+                                <td>
+                                    <div class="btn-group">
+                                        <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> Actions
+                                            <i class="fa fa-angle-down"></i>
+                                        </button>
+                                        <ul class="dropdown-menu pull-left" role="menu">
+                                            <li>
+                                                <a href="javascript:;">
+                                                    <i class="icon-docs"></i> New Post </a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:;">
+                                                    <i class="icon-tag"></i> New Comment </a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:;">
+                                                    <i class="icon-user"></i> New User </a>
+                                            </li>
+                                            <li class="divider"> </li>
+                                            <li>
+                                                <a href="javascript:;">
+                                                    <i class="icon-flag"></i> Comments
+                                                    <span class="badge badge-success">4</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
 				</div>
 			</div>
 		</div>

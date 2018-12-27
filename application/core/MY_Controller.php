@@ -2,7 +2,7 @@
 
 class MY_Controller extends CI_Controller
 {
-  	public $title 		= 'Ekasa';
+  	public $title 		= 'Sistem Informasi Akademik';
 	
 	public function __construct()
 	{

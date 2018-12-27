@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 25 Des 2018 pada 20.26
+-- Generation Time: 27 Des 2018 pada 16.06
 -- Versi Server: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -47,8 +47,17 @@ CREATE TABLE `attendances` (
 
 CREATE TABLE `classes` (
   `class_id` int(11) NOT NULL,
-  `class_name` varchar(100) NOT NULL
+  `class_name` varchar(100) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `classes`
+--
+
+INSERT INTO `classes` (`class_id`, `class_name`, `created_at`, `updated_at`) VALUES
+(1, 'X1 IPA I', '2018-12-27 10:18:08', '2018-12-27 10:18:08');
 
 -- --------------------------------------------------------
 
@@ -59,8 +68,19 @@ CREATE TABLE `classes` (
 CREATE TABLE `departments` (
   `department_id` int(11) NOT NULL,
   `department_name` varchar(100) NOT NULL,
-  `description` text NOT NULL
+  `description` text NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `departments`
+--
+
+INSERT INTO `departments` (`department_id`, `department_name`, `description`, `created_at`, `updated_at`) VALUES
+(1, 'IPA', 'Jurusan Ilmu Pengetahuan Alam', '2018-12-27 09:40:00', '2018-12-27 09:40:00'),
+(2, 'IPS', 'Jurusan Ilmu Pengetahuan Sosial', '2018-12-27 09:40:29', '2018-12-27 09:40:29'),
+(3, 'Teknik Mesin', 'Jurusan Teknik Mesin', '2018-12-27 09:40:48', '2018-12-27 09:40:48');
 
 -- --------------------------------------------------------
 
@@ -87,8 +107,17 @@ CREATE TABLE `lessons` (
   `department_id` int(11) NOT NULL,
   `title` varchar(100) NOT NULL,
   `description` text NOT NULL,
-  `semester` enum('Odd','Even') NOT NULL
+  `semester` enum('Odd','Even') NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `lessons`
+--
+
+INSERT INTO `lessons` (`lesson_id`, `department_id`, `title`, `description`, `semester`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Biologi', 'Pelajaran Biologi SMA', 'Odd', '2018-12-27 09:52:59', '2018-12-27 09:52:59');
 
 -- --------------------------------------------------------
 
@@ -124,8 +153,17 @@ CREATE TABLE `schedules` (
   `year_id` int(11) NOT NULL,
   `semester` enum('Odd','Even') NOT NULL,
   `started_at` time NOT NULL,
-  `ended_at` time NOT NULL
+  `ended_at` time NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `schedules`
+--
+
+INSERT INTO `schedules` (`schedule_id`, `class_id`, `lesson_id`, `teacher_id`, `year_id`, `semester`, `started_at`, `ended_at`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, 1, 1, 'Even', '01:00:00', '03:00:00', '2018-12-27 12:15:46', '2018-12-27 12:15:46');
 
 -- --------------------------------------------------------
 
@@ -135,8 +173,17 @@ CREATE TABLE `schedules` (
 
 CREATE TABLE `school_years` (
   `year_id` int(11) NOT NULL,
-  `school_year` varchar(20) NOT NULL
+  `school_year` varchar(20) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `school_years`
+--
+
+INSERT INTO `school_years` (`year_id`, `school_year`, `created_at`, `updated_at`) VALUES
+(1, '2018/2019', '2018-12-27 10:03:32', '2018-12-27 10:03:32');
 
 -- --------------------------------------------------------
 
@@ -149,8 +196,20 @@ CREATE TABLE `scores` (
   `student_id` int(11) NOT NULL,
   `lesson_id` int(11) NOT NULL,
   `type_id` int(11) NOT NULL,
-  `additional_info` text NOT NULL
+  `score` tinyint(4) NOT NULL,
+  `additional_info` text NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `scores`
+--
+
+INSERT INTO `scores` (`score_id`, `student_id`, `lesson_id`, `type_id`, `score`, `additional_info`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, 1, 98, 'Catatan', '2018-12-27 15:02:41', '2018-12-27 15:02:41'),
+(2, 1, 1, 1, 46, '', '2018-12-27 15:04:51', '2018-12-27 15:04:51'),
+(3, 1, 1, 1, 69, 'Belajar lagi yaaa <3', '2018-12-27 15:05:33', '2018-12-27 15:05:33');
 
 -- --------------------------------------------------------
 
@@ -162,8 +221,17 @@ CREATE TABLE `score_types` (
   `type_id` int(11) NOT NULL,
   `type_name` varchar(100) NOT NULL,
   `description` text NOT NULL,
-  `percentage` tinyint(4) NOT NULL
+  `percentage` tinyint(4) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `score_types`
+--
+
+INSERT INTO `score_types` (`type_id`, `type_name`, `description`, `percentage`, `created_at`, `updated_at`) VALUES
+(1, 'Tugas Harian', 'Persentase tugas harian 10%', 10, '2018-12-27 12:25:16', '2018-12-27 12:25:16');
 
 -- --------------------------------------------------------
 
@@ -204,8 +272,17 @@ CREATE TABLE `teachers` (
   `teacher_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `nip` varchar(20) NOT NULL,
-  `last_education` enum('SD','SMP','SMA','SMK','D3','D4','S1','S2','S3') NOT NULL
+  `last_education` enum('SD','SMP','SMA','SMK','D3','D4','S1','S2','S3') NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `teachers`
+--
+
+INSERT INTO `teachers` (`teacher_id`, `user_id`, `nip`, `last_education`, `created_at`, `updated_at`) VALUES
+(1, 4, '12345', 'S1', '2018-12-27 09:16:10', '2018-12-27 09:16:10');
 
 -- --------------------------------------------------------
 
@@ -222,15 +299,18 @@ CREATE TABLE `users` (
   `gender` enum('Male','Female') NOT NULL,
   `birthplace` varchar(100) NOT NULL,
   `birthdate` date NOT NULL,
-  `address` text NOT NULL
+  `address` text NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `users`
 --
 
-INSERT INTO `users` (`user_id`, `username`, `password`, `role_id`, `name`, `gender`, `birthplace`, `birthdate`, `address`) VALUES
-(1, 'azhry', '985fabf8f96dc1c4c306341031569937', 1, 'Azhary Arliansyah', 'Male', 'Palembang', '1996-08-05', '');
+INSERT INTO `users` (`user_id`, `username`, `password`, `role_id`, `name`, `gender`, `birthplace`, `birthdate`, `address`, `created_at`, `updated_at`) VALUES
+(1, 'azhary', '985fabf8f96dc1c4c306341031569937', 1, 'Azhary Arliansyah', 'Male', 'Palembang', '1996-08-05', '', '2018-12-27 09:12:54', '2018-12-27 09:13:13'),
+(4, 'azhry', '985fabf8f96dc1c4c306341031569937', 2, 'Azhary', 'Male', 'Palembang', '1996-08-05', 'Alamatkuu', '2018-12-27 09:16:10', '2018-12-27 09:16:10');
 
 --
 -- Indexes for dumped tables
@@ -345,13 +425,13 @@ ALTER TABLE `attendances`
 -- AUTO_INCREMENT for table `classes`
 --
 ALTER TABLE `classes`
-  MODIFY `class_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `class_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `departments`
 --
 ALTER TABLE `departments`
-  MODIFY `department_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `department_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `homerooms`
@@ -363,7 +443,7 @@ ALTER TABLE `homerooms`
 -- AUTO_INCREMENT for table `lessons`
 --
 ALTER TABLE `lessons`
-  MODIFY `lesson_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `lesson_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -375,25 +455,25 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `schedules`
 --
 ALTER TABLE `schedules`
-  MODIFY `schedule_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `schedule_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `school_years`
 --
 ALTER TABLE `school_years`
-  MODIFY `year_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `year_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `scores`
 --
 ALTER TABLE `scores`
-  MODIFY `score_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `score_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `score_types`
 --
 ALTER TABLE `score_types`
-  MODIFY `type_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `type_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `students`
@@ -405,13 +485,13 @@ ALTER TABLE `students`
 -- AUTO_INCREMENT for table `teachers`
 --
 ALTER TABLE `teachers`
-  MODIFY `teacher_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `teacher_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)

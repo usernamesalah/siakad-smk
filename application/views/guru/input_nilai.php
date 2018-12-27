@@ -11,70 +11,88 @@
 	<!-- BEGIN PAGE CONTENT INNER -->
 	<div class="row margin-top-10">
 		<div class="col-md-12">
+			<?= $this->session->flashdata('msg') ?>
 			<!-- BEGIN EXAMPLE TABLE PORTLET-->
-			<div class="portlet box grey-cascade">
+			<div class="portlet box red">
 				<div class="portlet-title">
 					<div class="caption">
-						Nilai Mata Pelajaran Matematika Kelas XI IPA 2
+						Profil Siswa
 					</div>
 				</div>
 				<div class="portlet-body">
-					<table class="table table-striped table-bordered table-hover">
-						<thead>
-							<tr>
-								<th style="text-align: center;">
-									#
-								</th>
-								<th style="text-align: center;">
-									Nama Siswa
-								</th>
-								<th style="text-align: center;">
-									Nilai Harian
-								</th>
-								<th style="text-align: center;">
-									Nilai UTS
-								</th>
-								<th style="text-align: center;">
-									Nilai UAS
-								</th>
-								<th width="200" style="text-align: center;">
-									Aksi
-								</th>
-							</tr>
-						</thead>
-						<tbody>
-								<tr class="odd gradeX">
-									<th style="text-align: center;">
-									-
-									</th>
-									<th width="300" style="text-align: center;">
-										<input type="text" name="nama[]" value="Rezi Apriliansyah" class="form-control" readonly>
-									</th>
-									<th style="text-align: center;">
-										<input type="number" name="harian" class="form-control">
-									</th>
-									<th style="text-align: center;">
-										<input type="number" name="uts" class="form-control">
-									</th>
-									<th style="text-align: center;">
-										<input type="number" name="uas" class="form-control">
-									</th>
-									<th width="200" style="text-align: center;">
-										<input type="submit" name="simpan" value="Simpan" class="btn btn-primary">
-									</th>
+					<div class="row">
+						<div class="col-md-4" style="text-align: center;">
+							<img src="http://placehold.it/150">
+						</div>
+						<div class="col-md-8">
+							<table class="table table-striped table-hover table-bordered">
+								<tr>
+									<td width="25%"><b>Nama</b></td>
+									<td><?= $siswa->user->name ?></td>
 								</tr>
-						</tbody>
-						<tfoot>
-							<tr>
-								<td colspan="6" style="text-align: right;">
-									<button type="submit" class="btn btn-success">Simpan Semua</button>
-								</td>
-							</tr>
-						</tfoot>
-					</table>
+								<tr>
+									<td><b>NIS</b></td>
+									<td><?= $siswa->nis ?></td>
+								</tr>
+								<tr>
+									<td><b>Jenis Kelamin</b></td>
+									<td><?= $siswa->user->gender == 'Male' ? 'Laki-laki' : 'Perempuan' ?></td>
+								</tr>
+							</table>
+						</div>
+					</div>
 				</div>
 			</div>
 			<!-- END EXAMPLE TABLE PORTLET-->
+
+			<div class="portlet box green">
+				<div class="portlet-title">
+					<div class="caption">
+						Daftar Nilai <?= $mapel->title ?>
+					</div>
+				</div>
+				<div class="portlet-body">
+					<table class="table table-striped table-hover table-bordered">
+						<thead>
+							<tr>
+								<th>Nilai</th>
+								<th>Jenis</th>
+								<th>Keterangan</th>
+								<th>Aksi</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<?= form_open('guru/input-nilai?student_id=' . $student_id . '&lesson_id=' . $lesson_id) ?>
+									<td>
+										<input type="number" required name="score" class="form-control">
+									</td>
+									<td>
+										<select class="form-control" required name="type_id">
+											<option value="">Pilih Jenis</option>
+											<?php foreach ($types as $type): ?>
+												<option value="<?= $type->type_id ?>"><?= $type->type_name ?></option>
+											<?php endforeach; ?>
+										</select>
+									</td>
+									<td>
+										<textarea class="form-control" name="additional_info"></textarea>
+									</td>
+									<td><input type="submit" name="submit" class="btn green" value="Simpan"></td>
+								<?= form_close() ?>
+							</tr>
+							<?php foreach ($siswa->scores as $score): ?>
+								<tr>
+									<td><?= $score->score ?></td>
+									<td><?= $score->type->type_name ?></td>
+									<td><?= $score->additional_info ?></td>
+									<td></td>
+								</tr>
+							<?php endforeach; ?>
+						</tbody>
+					</table>
+				</div>
+			</div>
 		</div>
 	</div>
 	<!-- END PAGE CONTENT INNER -->

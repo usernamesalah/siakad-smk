@@ -7,6 +7,7 @@ class Teachers extends Eloquent
 {
 	protected $table		= 'teachers';
 	protected $primaryKey	= 'teacher_id';
+	protected $fillable		= ['nip', 'last_education'];
 
 	public function user()
 	{

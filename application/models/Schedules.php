@@ -25,4 +25,10 @@ class Schedules extends Eloquent
 		require_once(__DIR__ . '/School_years.php');
 		return $this->hasOne('school_years', 'year_id', 'year_id');
 	}
+
+	public function teacher()
+	{
+		require_once(__DIR__ . '/Teachers.php');
+		return $this->hasOne('Teachers', 'teacher_id', 'teacher_id');
+	}
 }

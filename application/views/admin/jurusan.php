@@ -47,26 +47,32 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <?= $this->session->flashdata('msg') ?>
                                     <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
                                         <thead>
                                             <tr>
                                                 <th> # </th>
                                                 <th> Jurusan </th>
-                                                <th> Actions </th>
+                                                <th> Deskripsi </th>
+                                                <th> Aksi </th>
                                             </tr>
                                             <tr>
-                                                <?= form_open('url',) ?>
+                                                <?= form_open('admin/data-jurusan') ?>
                                                 <th>-</th>
-                                                <th> <input type="text" name="jurusan" class="form-control"></th>
-                                                <th> <input type="submit" name="simpan" value="Simpan" class="btn btn-success"></th>
+                                                <th> <input type="text" name="department_name" class="form-control"></th>
+                                                <th><textarea class="form-control" name="description"></textarea></th>
+                                                <th> <input type="submit" name="submit" value="Simpan" class="btn btn-success"></th>
+                                                <?= form_close() ?>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            <?php $i = 0; foreach ($jurusan as $row): ?>
                                             <tr class="odd gradeX">
-                                                <td> 1 </td>
+                                                <td><?= ++$i ?></td>
                                                 <td>
-                                                    IPA
+                                                    <?= $row->department_name ?>
                                                 </td>
+                                                <td><?= $row->description ?></td>
                                                 <td>
                                                     <div class="btn-group">
                                                         <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> Actions
@@ -92,6 +98,7 @@
                                                     </div>
                                                 </td>
                                             </tr>
+                                            <?php endforeach; ?>
                                         </tbody>
                                     </table>
 				</div>

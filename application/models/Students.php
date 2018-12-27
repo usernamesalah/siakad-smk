@@ -20,7 +20,7 @@ class Students extends Eloquent
 		return $this->hasMany('scores', 'student_id', 'student_id');
 	}
 
-	public function scores()
+	public function attendances()
 	{
 		require_once(__DIR__ . '/Attendances.php');
 		return $this->hasMany('attendances', 'student_id', 'student_id');
