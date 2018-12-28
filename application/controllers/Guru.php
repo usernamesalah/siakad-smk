@@ -73,6 +73,10 @@ class Guru extends MY_Controller
 	{
 		// schedule group by lesson, class, year
 		// klik detail -> muncul daftar siswa beserta input nilainya
+		// 
+		$this->data['title']	= 'Dashboard';
+		$this->data['content']	= 'mapel';
+		$this->template($this->data, $this->module);
 	}
 
 	public function siswa_kelas_mapel()

@@ -15,56 +15,56 @@
 			<div class="portlet box green">
 				<div class="portlet-title">
 					<div class="caption">
-						<i class="fa fa-gift"></i>Data Kelas
+						<i class="fa fa-gift"></i>Data Kelas XI MESIN 2
 					</div>
 				</div>
 				<div class="portlet-body">
-					<div class="table-toolbar">
-                        <div class="row">
-                            <div class="col-md-6">
-                                
-                            </div>
-                            <div class="col-md-6">
-                                <div class="btn-group pull-right">
-                                    <button class="btn green  btn-outline dropdown-toggle" data-toggle="dropdown">Tools
-                                        <i class="fa fa-angle-down"></i>
-                                    </button>
-                                    <ul class="dropdown-menu pull-right">
-                                        <li>
-                                            <a href="javascript:;">
-                                                <i class="fa fa-print"></i> Print </a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:;">
-                                                <i class="fa fa-file-pdf-o"></i> Save as PDF </a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:;">
-                                                <i class="fa fa-file-excel-o"></i> Export to Excel </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
                         <thead>
                             <tr>
                                 <th> # </th>
+                                <th> Tahun Ajaran</th>
+                                <th> Semester</th>
+                                <th> Wali Kelas </th>
                                 <th> Kelas </th>
                                 <th> Actions </th>
                             </tr>
                             <tr>
                                 <?= form_open('admin/data-kelas') ?>
                                 <th>-</th>
-                                <th> <input type="text" name="class_name" class="form-control"></th>
+                                <th> 
+                                    <select name="year_id" class="form-control">
+                                        <option value="">2012/2013</option>
+                                    </select>
+                                </th>
+                                <th> 
+                                    <select name="semester" class="form-control">
+                                        <option value="">Genap</option>
+                                    </select>
+                                </th>
+                                <th> 
+                                    <select name="year_id" class="form-control">
+                                        <option value="">Azhary,S.Pd.</option>
+                                    </select>
+                                </th>
+                                <th> <input type="text" name="class_name" class="form-control" value="XI MESIN 2" readonly=""></th>
                                 <th> <input type="submit" name="submit" value="Simpan" class="btn btn-success"></th>
+                                <?= form_close(); ?>
                             </tr>
                         </thead>
                         <tbody>
                             <?php $i = 0; foreach ($kelas as $row): ?>
                             <tr class="odd gradeX">
                                 <td> <?= ++$i ?> </td>
+                                <td>
+                                    <?= $row->class_name ?>
+                                </td>
+                                <td>
+                                    <?= $row->class_name ?>
+                                </td>
+                                <td>
+                                    <?= $row->class_name ?>
+                                </td>
                                 <td>
                                     <?= $row->class_name ?>
                                 </td>
