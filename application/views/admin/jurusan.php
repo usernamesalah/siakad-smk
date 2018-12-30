@@ -80,19 +80,12 @@
                                                         </button>
                                                         <ul class="dropdown-menu pull-left" role="menu">
                                                             <li>
-                                                                <a href="javascript:;">
-                                                                    <i class="icon-docs"></i> New Post </a>
+                                                                <a href="#edit" data-toggle="modal">
+                                                                    <i class="icon-pencil"></i> Edit </a>
                                                             </li>
                                                             <li>
                                                                 <a href="javascript:;">
-                                                                    <i class="icon-user"></i> New User </a>
-                                                            </li>
-                                                            <li class="divider"> </li>
-                                                            <li>
-                                                                <a href="javascript:;">
-                                                                    <i class="icon-flag"></i> Comments
-                                                                    <span class="badge badge-success">4</span>
-                                                                </a>
+                                                                    <i class="icon-trash"></i> Hapus </a>
                                                             </li>
                                                         </ul>
                                                     </div>
@@ -107,3 +100,34 @@
 	</div>
 	<!-- END PAGE CONTENT INNER -->
 </div>
+
+<div class="modal fade" id="edit" tabindex="-1" role="basic" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                                    <h4 class="modal-title">Edit Jurusan</h4>
+                                                </div>
+                                                <div class="modal-body"> 
+                                                    <div class="form-group">
+                                                        <label class="col-md-6 control-label">Nama</label>
+                                                        <div class="col-md-6">
+                                                            <input type="text" name="name" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-md-6 control-label">Deskripsi</label>
+                                                        <div class="col-md-6">
+                                                            <textarea name="deskripsi" class="form-control" rows="4"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Close</button>
+                                                    <button type="button" class="btn green">Simpan</button>
+                                                </div>
+                                            </div>
+                                            <!-- /.modal-content -->
+                                        </div>
+                                        <!-- /.modal-dialog -->
+                                    </div>
