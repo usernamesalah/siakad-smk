@@ -79,6 +79,12 @@
                         <span class="title">Nilai Siswa</span>
                     </a>
                 </li>
+                <li>
+                    <a href="<?= base_url('admin/absensi-guru') ?>">
+                        <i class="icon-users"></i>
+                        <span class="title">Absensi Guru</span>
+                    </a>
+                </li>
             </ul>
             <!-- END SIDEBAR MENU -->
         </div>

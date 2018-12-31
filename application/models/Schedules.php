@@ -31,4 +31,10 @@ class Schedules extends Eloquent
 		require_once(__DIR__ . '/Teachers.php');
 		return $this->hasOne('Teachers', 'teacher_id', 'teacher_id');
 	}
+
+	public function student_attendances()
+	{
+		require_once(__DIR__ . '/Student_attendances.php');
+		return $this->hasMany('Student_attendances', 'schedule_id', 'schedule_id');
+	}
 }

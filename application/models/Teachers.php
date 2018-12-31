@@ -20,4 +20,16 @@ class Teachers extends Eloquent
 		require_once(__DIR__ . '/Schedules.php');
 		return $this->hasMany('schedules', $this->primaryKey, $this->primaryKey);
 	}
+
+	public function attendances()
+	{
+		require_once(__DIR__ . '/Teacher_attendances.php');
+		return $this->hasMany('teacher_attendances', $this->primaryKey, $this->primaryKey);
+	}
+
+	public function attendance()
+	{
+		require_once(__DIR__ . '/Teacher_attendances.php');
+		return $this->hasOne('teacher_attendances', $this->primaryKey, $this->primaryKey);
+	}
 }

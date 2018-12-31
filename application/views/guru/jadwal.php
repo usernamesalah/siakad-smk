@@ -84,7 +84,7 @@
                                 </td>
                                 <td>
                                     <div class="btn-group">
-                                        <a class="btn btn-xs green " href="<?= base_url('guru/siswa-kelas-mapel?year_id=' . $row->year_id . '&semester=' . $row->semester . '&lesson_id=' . $row->lesson_id) ?>"> Lihat Daftar Siswa
+                                        <a class="btn btn-xs green " href="<?= base_url('guru/siswa-kelas-mapel?year_id=' . $row->year_id . '&semester=' . $row->semester . '&lesson_id=' . $row->lesson_id . '&class_id=' . $row->class->class_id) ?>"> Lihat Daftar Siswa
                                         </a>
                                     </div>
                                 </td>
