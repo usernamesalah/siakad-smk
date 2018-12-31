@@ -69,25 +69,24 @@
                                     <?= $row->class_name ?>
                                 </td>
                                 <td>
-                                    <div class="btn-group">
-                                        <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> Actions
-                                            <i class="fa fa-angle-down"></i>
-                                        </button>
-                                        <ul class="dropdown-menu pull-left" role="menu">
-                                            <li>
-                                                <a href="<?= base_url('admin/detail-kelas/' . $row->class_id) ?>">
-                                                    <i class="fa fa-eye"></i> Details </a>
-                                            </li>
-                                            <li>
-                                                <a href="#edit" data-toggle="modal">
-                                                    <i class="fa fa-edit"></i> Edit </a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:;">
-                                                    <i class="fa fa-trash"></i> Hapus </a>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                    <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> Actions
+                                        <i class="fa fa-angle-down"></i>
+                                    </button>
+                                    <ul class="dropdown-menu pull-left" role="menu">
+                                        <li>
+                                            <a href="<?= base_url('admin/detail-kelas/' . $row->class_id) ?>">
+                                                <i class="fa fa-eye"></i> Details </a>
+                                        </li>
+                                        <li>
+                                            <a href="#edit" data-toggle="modal">
+                                                <i class="fa fa-edit"></i> Edit </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:;">
+                                                <i class="fa fa-trash"></i> Hapus </a>
+                                        </li>
+                                    </ul>
+                                    <a href="<?= base_url('admin/tahun-anggota-kelas/' . $row->class_id) ?>" class="btn btn-xs red">Anggota Kelas</a>
                                 </td>
                             </tr>
                             <?php endforeach; ?>

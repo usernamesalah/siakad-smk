@@ -49,6 +49,78 @@ class Admin extends MY_Controller
         $this->template($this->data, $this->module);
     }
 
+    public function absensi_guru()
+    {
+        $this->data['beginning']    = new DateTime('2018-11-31');
+        $this->data['ending']       = new DateTime(date('Y-m-d'));
+        $this->data['ending']->setTime(0, 0, 1);
+
+        $this->data['interval']     = DateInterval::createFromDateString('1 day');
+        $this->data['period']       = array_reverse(iterator_to_array(new DatePeriod($this->data['beginning'], $this->data['interval'], $this->data['ending'])));
+        $this->data['locale']   = [
+            'Saturday'  => 'Sabtu',
+            'Friday'    => 'Jumat',
+            'Thursday'  => 'Kamis',
+            'Wednesday' => 'Rabu',
+            'Tuesday'   => 'Selasa',
+            'Monday'    => 'Senin'
+        ];
+
+        $this->data['title']    = 'Absensi Guru';
+        $this->data['content']  = 'absensi_guru';
+        $this->template($this->data, $this->module);
+    }
+
+    public function absensi()
+    {
+        $this->data['date'] = $this->GET('date');
+        $this->data['locale']   = [
+            'Saturday'  => 'Sabtu',
+            'Friday'    => 'Jumat',
+            'Thursday'  => 'Kamis',
+            'Wednesday' => 'Rabu',
+            'Tuesday'   => 'Selasa',
+            'Monday'    => 'Senin'
+        ];
+        $this->data['day']      = $this->data['locale'][$this->GET('day')];
+        $this->data['day_en']   = $this->GET('day');
+
+        $this->load->model('Teachers');
+        $this->data['guru']     = Teachers::with(['user', 'attendance' => function($query) {
+            $query->where('date', $this->data['date']);
+        }])->get();
+
+        if ($this->POST('submit'))
+        {
+            foreach ($this->data['guru'] as $guru)
+            {
+                $status = $this->POST('attendance-' . $guru->nip);
+                if (!isset($status))
+                {
+                    continue;
+                }
+
+                $attendance = Teacher_attendances::where('teacher_id', $guru->teacher_id)
+                                ->where('date', $this->data['date'])->first();
+                if (!isset($attendance))
+                {
+                    $attendance = new Teacher_attendances();
+                }
+                $attendance->teacher_id         = $guru->teacher_id;
+                $attendance->status             = $status;
+                $attendance->date               = $this->data['date'];
+                $attendance->additional_info    = $this->POST('info-' . $guru->nip);
+                $attendance->save();
+            }
+            $this->flashmsg('Data absensi berhasil disimpan');
+            redirect('admin/absensi?date=' . $this->data['date'] . '&day=' . $this->data['day_en']);
+        }
+
+        $this->data['title']    = 'Absensi ' . $this->data['day'] . ' - ' . $this->data['date'];
+        $this->data['content']  = 'absensi';
+        $this->template($this->data, $this->module);
+    }
+
     public function detail_guru()
     {
         $this->data['teacher_id'] = $this->uri->segment(3);
@@ -230,6 +302,78 @@ class Admin extends MY_Controller
 
         $this->data['title']    = 'Detail Kelas';
         $this->data['content']  = 'detail_kelas';
+        $this->template($this->data, $this->module);
+    }
+
+    public function tahun_anggota_kelas()
+    {
+        $this->data['class_id'] = $this->uri->segment(3);
+        $this->check_allowance(!isset($this->data['class_id']));
+
+        $this->load->model('Classes');
+        $this->data['kelas']    = Classes::find($this->data['class_id']);
+        $this->check_allowance(!isset($this->data['kelas']), ['Data kelas tidak ditemukan', 'danger']);        
+
+        $this->load->model('School_years');
+        $this->data['tahun_ajaran'] = School_years::get();
+        $this->data['title']    = 'Tahun Anggota Kelas';
+        $this->data['content']  = 'tahun_anggota_kelas';
+        $this->template($this->data, $this->module);
+    }
+
+    public function anggota_kelas()
+    {
+        $this->data['class_id'] = $this->GET('class_id');
+        $this->data['year_id']  = $this->GET('year_id');
+
+        $this->check_allowance(!isset($this->data['class_id']));
+
+        $this->load->model('Classes');
+        $this->data['kelas']    = Classes::find($this->data['class_id']);
+        $this->check_allowance(!isset($this->data['kelas']), ['Data kelas tidak ditemukan', 'danger']);        
+
+        $this->load->model('School_years');
+        $this->data['tahun_ajaran'] = School_years::find($this->data['year_id']);
+        $this->check_allowance(!isset($this->data['tahun_ajaran']), ['Data tahun ajaran tidak ditemukan', 'danger']);
+
+        $this->load->model('Class_members');
+        $this->data['member_id'] = $this->GET('member_id');
+        if (isset($this->data['member_id']))
+        {
+            $member = Class_members::find($this->data['member_id']);
+            $member->delete();
+            $this->flashmsg('Data anggota kelas berhasil dihapuskan');
+            redirect('admin/anggota-kelas?class_id=' . $this->data['class_id'] . '&year_id=' . $this->data['year_id']);
+        }
+
+        if ($this->POST('submit'))
+        {
+            $member = Class_members::where('class_id', $this->data['class_id'])
+                        ->where('year_id', $this->data['year_id'])
+                        ->where('student_id', $this->POST('student_id'))
+                        ->first();
+            if (!isset($member))
+            {
+                $member = new Class_members();
+            }
+            $member->student_id = $this->POST('student_id');
+            $member->class_id   = $this->data['class_id'];
+            $member->year_id    = $this->data['year_id'];
+            $member->save();
+
+            $this->flashmsg('Data anggota kelas berhasil ditambahkan');
+            redirect('admin/anggota-kelas?class_id=' . $this->data['class_id'] . '&year_id=' . $this->data['year_id']);
+        }
+
+        $this->data['anggota_kelas'] = Classes::with(['members' => function($query) {
+            $query->where('year_id', $this->data['year_id']);
+        }])->find($this->data['class_id']);
+
+        $this->load->model('Students');
+        $this->data['siswa']    = Students::with('user')->get();
+
+        $this->data['title']    = 'Anggota Kelas ' . $this->data['kelas']->class_name . ' Tahun Ajaran ' . $this->data['tahun_ajaran']->school_year;
+        $this->data['content']  = 'anggota_kelas';
         $this->template($this->data, $this->module);
     }
 
