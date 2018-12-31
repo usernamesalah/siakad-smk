@@ -11,6 +11,7 @@
 	<!-- BEGIN PAGE CONTENT INNER -->
 	<div class="row margin-top-10">
 		<div class="col-md-12">
+			<?= $this->session->flashdata('msg') ?>
 			<div class="portlet box green">
 				<div class="portlet-title">
 					<div class="caption">
@@ -18,43 +19,45 @@
 					</div>
 				</div>
 				<div class="portlet-body form">
-					<?= $this->session->flashdata('msg') ?>
-					<?= form_open_multipart('admin/data-guru', ['class' => 'form-horizontal']) ?>
+					<?= form_open_multipart('admin/edit-guru/' . $teacher_id, ['class' => 'form-horizontal']) ?>
 					<div class="form-body">
-						<?= $this->session->flashdata('msg') ?>
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="col-md-6 control-label">NIP</label>
 									<div class="col-md-6">
-										<input type="text" name="nip" class="form-control">
+										<input type="text" name="nip" value="<?= $guru->nip ?>" class="form-control">
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-md-6 control-label">Nama</label>
 									<div class="col-md-6">
-										<input type="text" name="name" class="form-control">
+										<input type="text" name="name" value="<?= $guru->user->name ?>" class="form-control">
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-md-6 control-label">Jenis Kelamin</label>
 									<div class="col-md-6">
-										<select name="gender" class="form-control">
-											<option value="Male">Laki Laki</option>
-											<option value="Female">Perempuan</option>
-										</select>
+										<?php  
+											$opt = [
+												'Male'		=> 'Laki-laki',
+												'Female'	=> 'Perempuan'
+											];
+
+											echo form_dropdown('gender', $opt, $guru->user->gender, ['class' => 'form-control']);
+										?>
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-md-6 control-label">Tempat Lahir</label>
 									<div class="col-md-6">
-										<input type="text" name="birthplace" class="form-control">
+										<input type="text" name="birthplace" value="<?= $guru->user->birthplace ?>" class="form-control">
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-md-6 control-label">Tanggal Lahir</label>
 									<div class="col-md-6">
-										<input type="date" name="birthdate" class="form-control">
+										<input type="date" name="birthdate" value="<?= $guru->user->birthdate ?>" class="form-control">
 									</div>
 								</div>
 							</div>
@@ -62,13 +65,13 @@
 								<div class="form-group">
 									<label class="col-md-4 control-label">Pendidikan Terakhir</label>
 									<div class="col-md-6">
-										<input type="text" name="last_education" class="form-control">
+										<input type="text" value="<?= $guru->last_education ?>" name="last_education" class="form-control">
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-md-4 control-label">Alamat</label>
 									<div class="col-md-6">
-										<textarea name="address" rows="4" class="form-control"></textarea>
+										<textarea name="address" rows="4" class="form-control"><?= $guru->user->address ?></textarea>
 									</div>
 								</div>
 							<div id="type-container"></div>

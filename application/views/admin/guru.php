@@ -163,11 +163,11 @@
                                         </button>
                                         <ul class="dropdown-menu pull-left" role="menu">
                                             <li>
-                                                <a href="javascript:;">
+                                                <a href="<?= base_url('admin/detail-guru/' . $row->teacher->teacher_id) ?>">
                                                     <i class="fa fa-eye"></i> Detail </a>
                                             </li>
                                             <li>
-                                                <a href="javascript:;">
+                                                <a href="<?= base_url('admin/edit-guru/' . $row->teacher->teacher_id) ?>">
                                                     <i class="fa fa-edit"></i> Edit </a>
                                             </li>
                                             <li>

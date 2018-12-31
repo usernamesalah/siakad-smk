@@ -19,38 +19,36 @@
 					</div>
 				</div>
 				<div class="portlet-body">
-                    <table class="table table-bordered table-responsive">
-                        <tbody>
-                            <tr>
-                                <td>Nip</td>
-                                <td>:</td>
-                                <td>data</td>
-                            </tr>
-                            <tr>
-                                <td>Nama</td>
-                                <td>:</td>
-                                <td>data</td>
-                            </tr>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <center>
+                                <img src="http://placehold.it/150">
+                            </center>
+                        </div>
+                        <div class="col-md-8">
+                            <table class="table table-bordered table-responsive">
+                                <tbody>
+                                    <tr>
+                                        <td>Nip</td>
+                                        <td><?= $guru->nip ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Nama</td>
+                                        <td><?= $guru->user->name ?></td>
+                                    </tr>
 
-                            <tr>
-                                <td>Tempat , Tanggal Lahir</td>
-                                <td>:</td>
-                                <td>data</td>
-                            </tr>
-
-                            <tr>
-                                <td>Telepon</td>
-                                <td>:</td>
-                                <td>data</td>
-                            </tr>
-
-                            <tr>
-                                <td>Pendidikan Terakhir</td>
-                                <td>:</td>
-                                <td>data</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                                    <tr>
+                                        <td>Tempat , Tanggal Lahir</td>
+                                        <td><?= $guru->user->birthplace . ', ' . $guru->user->birthdate ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Pendidikan Terakhir</td>
+                                        <td><?= $guru->last_education ?></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                     <hr>
                     <h4>Log Mengajar</h4>
                     <table class="table table-responsive table-striped">

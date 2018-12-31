@@ -11,6 +11,7 @@
 	<!-- BEGIN PAGE CONTENT INNER -->
 	<div class="row margin-top-10">
 		<div class="col-md-12">
+			<?= $this->session->flashdata('msg') ?>
 			<div class="portlet box green">
 				<div class="portlet-title">
 					<div class="caption">
@@ -19,41 +20,43 @@
 				</div>
 				<div class="portlet-body form">
 					<!-- BEGIN FORM-->
-					<?= form_open('admin/data-mata-pelajaran', ['class' => 'form-horizontal']) ?>
+					<?= form_open('admin/edit-mata-pelajaran/' . $lesson_id, ['class' => 'form-horizontal']) ?>
 						<div class="form-body">
-							<?= $this->session->flashdata('msg') ?>
-                            <input type="hidden" name="id_mapel" value="">
 							<div class="form-group">
 								<label class="col-md-3 control-label">Nama Mata Pelajaran</label>
 								<div class="col-md-4">
-									<input type="text" name="title" class="form-control">
+									<input type="text" value="<?= $mapel->title ?>" name="title" class="form-control">
 								</div>
 							</div>
                             <div class="form-group">
                                 <label class="col-md-3 control-label">Jurusan</label>
                                 <div class="col-md-4">
-                                    <select class="form-control" required name="department_id">
-                                        <option value="">Pilih Jurusan</option>
-                                        <?php foreach ($jurusan as $row): ?>
-                                            <option value="<?= $row->department_id ?>"><?= $row->department_name ?></option>
-                                        <?php endforeach; ?>
-                                    </select>
+                                	<?php
+                                		$opt = [];
+                                		foreach ($jurusan as $row)
+                                		{
+                                			$opt[$row->department_id] = $row->department_name;
+                                		}
+
+                                		echo form_dropdown('department_id', $opt, $mapel->department_id, ['class' => 'form-control', 'required' => 'required']);
+                                	?>
                                 </div>
                             </div>
 							<div class="form-group">
 								<label class="col-md-3 control-label">Deskripsi</label>
 								<div class="col-md-4">
-									<textarea name="description" class="form-control"></textarea>
+									<textarea name="description" class="form-control"><?= $mapel->description ?></textarea>
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="col-md-3 control-label">Semester</label>
 								<div class="col-md-4">
-									<select class="form-control" required name="semester">
-                                        <option value="">Pilih Semester</option>
-										<option value="Odd">Ganjil</option>
-										<option value="Even">Genap</option>
-									</select>
+									<?php  
+										echo form_dropdown('semester', [
+											'Odd'	=> 'Ganjil',
+											'Even'	=> 'Genap'
+										], $mapel->semester, ['class' => 'form-control', 'required' => 'required']);
+									?>
 								</div>
 							</div>
 						</div>

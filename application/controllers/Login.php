@@ -5,27 +5,16 @@ class Login extends MY_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->library('gz');
-        $this->load->library('ci_jwt');
-
-        $this->data['token'] = $this->session->userdata('token');
-        if (isset($this->data['token']))
+        $this->data['user_id']  = $this->session->userdata('user_id');
+        if (isset($this->data['user_id']))
         {
-        	$this->data['payload'] = $this->ci_jwt->decode($this->data['token']);
-        	switch ($this->data['payload']->role_id)
-	        {
-	        	case 1:
-	        		redirect('admin');
-	        		break;
-
-	        	case 2:
-	        		redirect('manager');
-	        		break;
-
-	        	case 3:
-	        		redirect('employee');
-	        		break;
-	        }
+            $this->data['role_id'] = $this->session->userdata('role_id');
+            switch ($this->data['role_id'])
+            {
+                case 1: redirect('siswa');
+                case 2: redirect('guru');
+                case 3: redirect('admin');
+            }
         }
 	}
 
@@ -33,20 +22,21 @@ class Login extends MY_Controller
 	{
 		if ($this->POST('login'))
         {
-            $this->data = [
-                'username'  => $this->POST('username'),
-                'password'  => $this->POST('password')
-            ];
-
-            $response = json_decode($this->gz->POST('auth', $this->data));
-            if ($response->status === 'success')
+            $this->load->model('Users');
+            $user = Users::where('username', $this->POST('username'))
+                ->where('password', md5($this->POST('password')))
+                ->first();
+            if (isset($user))
             {
-                $this->session->set_userdata(['token' => $response->data->token]);
-                $this->flashmsg($response->message);
-                redirect('login');
+                $this->session->set_userdata([
+                    'user_id'   => $user->user_id,
+                    'username'  => $user->username,
+                    'role_id'   => $user->role_id
+                ]);
             }
 
-            $this->flashmsg($response->message, 'danger');
+            $this->flashmsg('Username atau password salah', 'danger');
+            redirect('login');
         }
 
         $this->data['title']			= 'Login';

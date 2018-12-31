@@ -49,6 +49,52 @@ class Admin extends MY_Controller
         $this->template($this->data, $this->module);
     }
 
+    public function detail_guru()
+    {
+        $this->data['teacher_id'] = $this->uri->segment(3);
+        $this->check_allowance(!isset($this->data['teacher_id']));
+
+        $this->load->model('Teachers');
+        $this->data['guru']     = Teachers::with('user')->find($this->data['teacher_id']);
+        $this->check_allowance(!isset($this->data['guru']), ['Data guru tidak ditemukan', 'danger']);
+
+        $this->data['title']    = 'Detail Guru';
+        $this->data['content']  = 'detail_guru';
+        $this->template($this->data, $this->module);
+    }
+
+    public function edit_guru()
+    {
+        $this->data['teacher_id'] = $this->uri->segment(3);
+        $this->check_allowance(!isset($this->data['teacher_id']));
+
+        $this->load->model('Teachers');
+        $this->data['guru']     = Teachers::with('user')->find($this->data['teacher_id']);
+        $this->check_allowance(!isset($this->data['guru']), ['Data guru tidak ditemukan', 'danger']);
+
+        if ($this->POST('submit'))
+        {
+            $user = Users::find($this->data['guru']->user_id);
+            $user->name         = $this->POST('name');
+            $user->gender       = $this->POST('gender');
+            $user->birthplace   = $this->POST('birthplace');
+            $user->birthdate    = $this->POST('birthdate');
+            $user->address      = $this->POST('address');
+            $user->save();
+
+            $this->data['guru']->nip            = $this->POST('nip');
+            $this->data['guru']->last_education = $this->POST('last_education');
+            $this->data['guru']->save();
+
+            $this->flashmsg('Data guru berhasil di-edit');
+            redirect('admin/edit-guru/' . $this->data['guru']->teacher_id);
+        }
+
+        $this->data['title']    = 'Edit Guru';
+        $this->data['content']  = 'edit_guru';
+        $this->template($this->data, $this->module);
+    }
+
     public function data_siswa()
     {
         $this->data['title']    = 'Dashboard';
@@ -74,8 +120,49 @@ class Admin extends MY_Controller
         $this->load->model('Departments');
         $this->data['jurusan']  = Departments::get();
         $this->data['mapel']    = Lessons::has('department')->get();
-        $this->data['title']    = 'Dashboard';
+        $this->data['title']    = 'Data Mata Pelajaran';
         $this->data['content']  = 'mapel';
+        $this->template($this->data, $this->module);
+    }
+
+    public function detail_mata_pelajaran()
+    {
+        $this->data['lesson_id'] = $this->uri->segment(3);
+        $this->check_allowance(!isset($this->data['lesson_id']));
+        
+        $this->load->model('Lessons');
+        $this->data['mapel']    = Lessons::has('department')->find($this->data['lesson_id']);
+        $this->check_allowance(!isset($this->data['mapel']), ['Data mata pelajaran tidak ditemukan', 'danger']);
+
+        $this->data['title']    = 'Detail Mata Pelajaran';
+        $this->data['content']  = 'detail_mapel';
+        $this->template($this->data, $this->module);
+    }
+
+    public function edit_mata_pelajaran()
+    {
+        $this->data['lesson_id'] = $this->uri->segment(3);
+        $this->check_allowance(!isset($this->data['lesson_id']));
+        
+        $this->load->model('Lessons');
+        $this->data['mapel']    = Lessons::has('department')->find($this->data['lesson_id']);
+        $this->check_allowance(!isset($this->data['mapel']), ['Data mata pelajaran tidak ditemukan', 'danger']);
+        
+        if ($this->POST('submit'))
+        {
+            $this->data['mapel']->department_id = $this->POST('department_id');
+            $this->data['mapel']->title         = $this->POST('title');
+            $this->data['mapel']->description   = $this->POST('description');
+            $this->data['mapel']->semester      = $this->POST('semester');
+            $this->data['mapel']->save();
+
+            $this->flashmsg('Data mata pelajaran berhasil di-edit');
+            redirect('admin/edit-mata-pelajaran/' . $this->data['mapel']->lesson_id);
+        }
+
+        $this->data['jurusan']  = Departments::get();
+        $this->data['title']    = 'Edit Mata Pelajaran';
+        $this->data['content']  = 'edit_mapel';
         $this->template($this->data, $this->module);
     }
 
@@ -110,8 +197,22 @@ class Admin extends MY_Controller
             redirect('admin/data-kelas');
         }
         $this->data['kelas']    = Classes::get();
-        $this->data['title']    = 'Dashboard';
+        $this->data['title']    = 'Data Kelas';
         $this->data['content']  = 'kelas';
+        $this->template($this->data, $this->module);
+    }
+
+    public function detail_kelas()
+    {
+        $this->data['class_id'] = $this->uri->segment(3);
+        $this->check_allowance(!isset($this->data['class_id']));
+
+        $this->load->model('Classes');
+        $this->data['kelas']    = Classes::with('homerooms')->find($this->data['class_id']);
+        $this->check_allowance(!isset($this->data['kelas']), ['Data kelas tidak ditemukan', 'danger']);
+
+        $this->data['title']    = 'Detail Kelas';
+        $this->data['content']  = 'detail_kelas';
         $this->template($this->data, $this->module);
     }
 

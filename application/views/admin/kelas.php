@@ -75,7 +75,7 @@
                                         </button>
                                         <ul class="dropdown-menu pull-left" role="menu">
                                             <li>
-                                                <a href="javascript:;">
+                                                <a href="<?= base_url('admin/detail-kelas/' . $row->class_id) ?>">
                                                     <i class="fa fa-eye"></i> Details </a>
                                             </li>
                                             <li>
@@ -101,27 +101,27 @@
 </div>
 
 
-                                    <div class="modal fade" id="edit" tabindex="-1" role="basic" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                                                    <h4 class="modal-title">Edit Kelas</h4>
-                                                </div>
-                                                <div class="modal-body"> 
-                                                    <div class="form-group">
-                                                        <label class="col-md-6 control-label">Nama</label>
-                                                        <div class="col-md-6">
-                                                            <input type="text" name="name" class="form-control">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Close</button>
-                                                    <button type="button" class="btn green">Simpan</button>
-                                                </div>
-                                            </div>
-                                            <!-- /.modal-content -->
-                                        </div>
-                                        <!-- /.modal-dialog -->
-                                    </div>
+<div class="modal fade" id="edit" tabindex="-1" role="basic" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">Edit Kelas</h4>
+            </div>
+            <div class="modal-body"> 
+                <div class="form-group">
+                    <label class="col-md-6 control-label">Nama</label>
+                    <div class="col-md-6">
+                        <input type="text" name="name" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn dark btn-outline" data-dismiss="modal">Close</button>
+                <button type="button" class="btn green">Simpan</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>

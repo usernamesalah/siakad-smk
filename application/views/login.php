@@ -56,7 +56,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <!-- BEGIN LOGO -->
     <div class="logo">
         <a href="index.html">
-            <h3>Sistem Sewa Kost</h3>
+            <h3>Sistem Informasi Akademik</h3>
         </a>
     </div>
     <!-- END LOGO -->

@@ -133,23 +133,16 @@
                                         </button>
                                         <ul class="dropdown-menu pull-left" role="menu">
                                             <li>
-                                                <a href="javascript:;">
-                                                    <i class="icon-docs"></i> New Post </a>
+                                                <a href="<?= base_url('admin/detail-mata-pelajaran/' . $row->lesson_id) ?>">
+                                                    <i class="fa fa-eye"></i> Detail </a>
+                                            </li>
+                                            <li>
+                                                <a href="<?= base_url('admin/edit-mata-pelajaran/' . $row->lesson_id) ?>">
+                                                    <i class="fa fa-edit"></i> Edit </a>
                                             </li>
                                             <li>
                                                 <a href="javascript:;">
-                                                    <i class="icon-tag"></i> New Comment </a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:;">
-                                                    <i class="icon-user"></i> New User </a>
-                                            </li>
-                                            <li class="divider"> </li>
-                                            <li>
-                                                <a href="javascript:;">
-                                                    <i class="icon-flag"></i> Comments
-                                                    <span class="badge badge-success">4</span>
-                                                </a>
+                                                    <i class="fa fa-trash"></i> Hapus </a>
                                             </li>
                                         </ul>
                                     </div>
