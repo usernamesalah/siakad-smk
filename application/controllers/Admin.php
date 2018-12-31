@@ -472,4 +472,12 @@ class Admin extends MY_Controller
         $this->data['content']  = 'nilai';
         $this->template($this->data, $this->module);
     }
+
+    public function visi_misi()
+    {
+        $this->data['title']    = 'Dashboard';
+        $this->data['content']  = 'visimisi';
+        $this->template($this->data, $this->module);
+    }
+
 }
