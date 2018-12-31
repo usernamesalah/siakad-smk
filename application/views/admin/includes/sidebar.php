@@ -51,7 +51,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="<?= base_url('admin/data-nilai') ?>">
+                    <a href="<?= base_url('admin/data-penilaian') ?>">
                         <i class="icon-list"></i>
                         <span class="title">Penilaian</span>
                     </a>

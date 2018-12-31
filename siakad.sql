@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 27 Des 2018 pada 19.21
+-- Generation Time: 31 Des 2018 pada 06.02
 -- Versi Server: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -93,8 +93,17 @@ CREATE TABLE `homerooms` (
   `teacher_id` int(11) NOT NULL,
   `class_id` int(11) NOT NULL,
   `year_id` int(11) NOT NULL,
-  `semester` enum('Odd','Even') NOT NULL
+  `semester` enum('Odd','Even') NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `homerooms`
+--
+
+INSERT INTO `homerooms` (`homeroom_id`, `teacher_id`, `class_id`, `year_id`, `semester`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, 1, 'Even', '2018-12-31 04:39:06', '2018-12-31 04:39:06');
 
 -- --------------------------------------------------------
 
@@ -117,7 +126,7 @@ CREATE TABLE `lessons` (
 --
 
 INSERT INTO `lessons` (`lesson_id`, `department_id`, `title`, `description`, `semester`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Biologi', 'Pelajaran Biologi SMA', 'Odd', '2018-12-27 09:52:59', '2018-12-27 09:52:59');
+(1, 1, 'Biologi', 'Pelajaran Biologi SMA', 'Odd', '2018-12-27 09:52:59', '2018-12-30 13:15:52');
 
 -- --------------------------------------------------------
 
@@ -137,7 +146,8 @@ CREATE TABLE `roles` (
 
 INSERT INTO `roles` (`role_id`, `role`, `description`) VALUES
 (1, 'Student', ''),
-(2, 'Teacher', '');
+(2, 'Teacher', ''),
+(3, 'Admin', '');
 
 -- --------------------------------------------------------
 
@@ -283,7 +293,7 @@ CREATE TABLE `teachers` (
 --
 
 INSERT INTO `teachers` (`teacher_id`, `user_id`, `nip`, `last_education`, `created_at`, `updated_at`) VALUES
-(1, 4, '12345', 'S1', '2018-12-27 09:16:10', '2018-12-27 09:16:10');
+(1, 4, '12345', 'S1', '2018-12-27 09:16:10', '2018-12-30 12:53:29');
 
 -- --------------------------------------------------------
 
@@ -311,7 +321,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`user_id`, `username`, `password`, `role_id`, `name`, `gender`, `birthplace`, `birthdate`, `address`, `created_at`, `updated_at`) VALUES
 (1, 'azhary', '985fabf8f96dc1c4c306341031569937', 1, 'Azhary Arliansyah', 'Male', 'Palembang', '1996-08-05', '', '2018-12-27 09:12:54', '2018-12-27 09:13:13'),
-(4, 'azhry', '985fabf8f96dc1c4c306341031569937', 2, 'Azhary', 'Male', 'Palembang', '1996-08-05', 'Alamatkuu', '2018-12-27 09:16:10', '2018-12-27 09:16:10');
+(4, 'azhry', '985fabf8f96dc1c4c306341031569937', 2, 'Azhary Arliansyah', 'Male', 'Palembang', '1996-08-05', 'Ini alamat', '2018-12-27 09:16:10', '2018-12-30 12:53:29'),
+(5, 'az', '985fabf8f96dc1c4c306341031569937', 3, 'Azhary Arliansyah', 'Male', 'Palembang', '2018-08-05', '', '2018-12-31 03:39:32', '2018-12-31 03:39:32');
 
 --
 -- Indexes for dumped tables
@@ -439,7 +450,7 @@ ALTER TABLE `departments`
 -- AUTO_INCREMENT for table `homerooms`
 --
 ALTER TABLE `homerooms`
-  MODIFY `homeroom_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `homeroom_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `lessons`
@@ -451,7 +462,7 @@ ALTER TABLE `lessons`
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `role_id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `role_id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `schedules`
@@ -493,7 +504,7 @@ ALTER TABLE `teachers`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)

@@ -12,7 +12,7 @@
             <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
             <ul class="page-sidebar-menu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
                 <li>
-                    <a href="<?= base_url('admin') ?>">
+                    <a href="<?= base_url('guru') ?>">
                         <i class="icon-home"></i>
                         <span class="title">Dashboard</span>
                     </a>
@@ -21,14 +21,7 @@
                     <h3 class="uppercase">Data Master</h3>
                 </li>
                 <li>
-                    <a href="<?= base_url('admin/data-jadwal') ?>">
-                        <i class="icon-list"></i>
-                        <span class="title">Daftar Jadwal Mengajar</span>
-                    </a>
-                </li>
-                
-                <li>
-                    <a href="<?= base_url('admin/data-visi') ?>">
+                    <a href="<?= base_url('guru/data-visi') ?>">
                         <i class="icon-list"></i>
                         <span class="title">Visi Misi Sekolah</span>
                     </a>
@@ -38,13 +31,13 @@
                     <h3 class="uppercase">Laporan Data</h3>
                 </li>
                 <li>
-                    <a href="<?= base_url('admin/data-penilaian') ?>">
+                    <a href="<?= base_url('guru/tahun-ajaran') ?>">
                         <i class="icon-list"></i>
-                        <span class="title">Penilaian Siswa</span>
+                        <span class="title">Tahun Ajaran</span>
                     </a>
                 </li>
                 <li>
-                    <a href="<?= base_url('admin/data-absensi') ?>">
+                    <a href="<?= base_url('guru/data-absensi') ?>">
                         <i class="icon-list"></i>
                         <span class="title">Absensi Siswa</span>
                     </a>

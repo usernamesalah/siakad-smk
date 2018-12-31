@@ -8,9 +8,15 @@ class Classes extends Eloquent
 	protected $table		= 'classes';
 	protected $primaryKey	= 'class_id';
 
-	public function homerooms()
+	public function homeroom()
 	{
 		require_once(__DIR__ . '/Homerooms.php');
 		return $this->hasOne('homerooms', 'class_id', 'class_id');
+	}
+
+	public function homerooms()
+	{
+		require_once(__DIR__ . '/Homerooms.php');
+		return $this->hasMany('homerooms', 'class_id', 'class_id');
 	}
 }

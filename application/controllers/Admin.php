@@ -208,8 +208,25 @@ class Admin extends MY_Controller
         $this->check_allowance(!isset($this->data['class_id']));
 
         $this->load->model('Classes');
-        $this->data['kelas']    = Classes::with('homerooms')->find($this->data['class_id']);
+        $this->data['kelas'] = Classes::with('homerooms', 'homerooms.year')->find($this->data['class_id']);
         $this->check_allowance(!isset($this->data['kelas']), ['Data kelas tidak ditemukan', 'danger']);
+
+        if ($this->POST('submit'))
+        {
+            $homeroom = new Homerooms();
+            $homeroom->teacher_id   = $this->POST('teacher_id');
+            $homeroom->class_id     = $this->data['class_id'];
+            $homeroom->year_id      = $this->POST('year_id');
+            $homeroom->semester     = $this->POST('semester');
+            $homeroom->save();
+
+            $this->flashmsg('Data wali kelas berhasil ditambahkan');
+            redirect('admin/detail-kelas/' . $this->data['class_id']);
+        }
+
+        $this->load->model('Teachers');
+        $this->data['guru'] = Teachers::with('user')->get();
+        $this->data['tahun_ajaran'] = School_years::get();
 
         $this->data['title']    = 'Detail Kelas';
         $this->data['content']  = 'detail_kelas';
@@ -250,7 +267,7 @@ class Admin extends MY_Controller
         $this->template($this->data, $this->module);
     }
 
-    public function data_nilai()
+    public function data_penilaian()
     {
         $this->load->model('Score_types');
         if ($this->POST('submit'))
@@ -262,11 +279,11 @@ class Admin extends MY_Controller
             $score_type->save();   
 
             $this->flashmsg('Data penilaian berhasil ditambahkan');
-            redirect('admin/data-nilai');
+            redirect('admin/data-penilaian');
         }
         $this->data['penilaian']    = Score_types::get();
-        $this->data['title']        = 'Dashboard';
-        $this->data['content']      = 'nilai';
+        $this->data['title']        = 'Data Penilaian';
+        $this->data['content']      = 'penilaian';
         $this->template($this->data, $this->module);
     }
 
