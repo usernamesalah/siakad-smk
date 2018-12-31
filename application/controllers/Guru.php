@@ -79,6 +79,13 @@ class Guru extends MY_Controller
 		$this->template($this->data, $this->module);
 	}
 
+	public function visi_misi()
+	{
+		$this->data['title']	= 'Dashboard';
+		$this->data['content']	= 'visimisi';
+		$this->template($this->data, $this->module);
+	}
+
 	public function siswa_kelas_mapel()
 	{
 		$lesson_id 	= $this->GET('lesson_id');

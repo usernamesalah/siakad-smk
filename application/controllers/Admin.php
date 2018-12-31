@@ -102,6 +102,20 @@ class Admin extends MY_Controller
         $this->template($this->data, $this->module);
     }
 
+    public function tambah_siswa()
+    {
+        $this->data['title']    = 'Dashboard';
+        $this->data['content']  = 'tambah_siswa';
+        $this->template($this->data, $this->module);
+    }
+
+    public function edit_siswa()
+    {
+        $this->data['title']    = 'Dashboard';
+        $this->data['content']  = 'edit_siswa';
+        $this->template($this->data, $this->module);
+    }
+
     public function data_mata_pelajaran()
     {
         $this->load->model('Lessons');
