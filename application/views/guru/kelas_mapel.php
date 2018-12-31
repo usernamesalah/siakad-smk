@@ -49,7 +49,7 @@
 									<?= $row->user->name ?>
 								</td>
 								<td width="200" style="text-align: center;">
-									<a href="<?= base_url('guru/input-nilai?student_id=' . $row->student_id . '&lesson_id=1') ?>" class="btn blue">Beri Nilai</a>
+									<a href="<?= base_url('guru/input-nilai?student_id=' . $row->student_id . '&lesson_id=1&year_id=' . $year_id) ?>" class="btn blue">Beri Nilai</a>
 								</td>
 							</tr>
 							<?php endforeach; ?>

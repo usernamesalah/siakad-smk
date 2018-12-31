@@ -1,0 +1,13 @@
+[20:54, 25/12/2018] Rezi: Admin :
+Admin dapat mengelola data siswa, data guru,  data kelas, data mata pelajaran, data jadwal pelajaran, data absen, dan data laporan nilai siswa.
+
+Siswa :
+Siswa dapat melihat informasi data nilai, jadwal pelajaran, biodata diri, dan data kelas.
+
+Guru :
+Guru dapat mengelola data absen siswa, nilai siswa dan. Guru dapat melihat informasi tugas mengajar, jadwal pelajaran, dan visi dan misi sekolah SMK Negeri 1 Palembang.
+
+Kepala Sekolah : 
+Kepala Sekolah dapat melihat laporan data siswa, data guru, data absensi, informasi data tugas mengajar dan raport.
+[20:54, 25/12/2018] Rezi: admin tambahi tahun ajaran dan semester
+[20:55, 25/12/2018] Rezi: visi misi pindahke di kepsek

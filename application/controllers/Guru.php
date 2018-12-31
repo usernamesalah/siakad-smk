@@ -84,6 +84,7 @@ class Guru extends MY_Controller
 		$lesson_id 	= $this->GET('lesson_id');
 		$year_id 	= $this->GET('year_id');
 		$semester 	= $this->GET('semester');
+		$this->data['year_id']	= $year_id;
 
 		$this->load->model('Students');
 		$this->data['siswa']	= Students::with('user', 'scores')->whereHas('scores', function($query) use ($lesson_id, $year_id, $semester) {
@@ -100,8 +101,10 @@ class Guru extends MY_Controller
 	{
 		$student_id = $this->GET('student_id');
 		$lesson_id 	= $this->GET('lesson_id');
+		$year_id 	= $this->GET('year_id');
 		$this->data['student_id'] 	= $student_id;
 		$this->data['lesson_id']	= $lesson_id;
+		$this->data['year_id']		= $year_id;
 
 		if ($this->POST('submit'))
 		{
@@ -112,11 +115,13 @@ class Guru extends MY_Controller
 			$score->type_id 		= $this->POST('type_id');
 			$score->score 			= $this->POST('score');
 			$score->additional_info	= $this->POST('additional_info');
+			$score->year_id			= $this->data['year_id'];
 			$score->save();
 			$this->flashmsg('Nilai berhasil ditambahkan');
 			redirect('guru/input-nilai?student_id=' . $student_id . '&lesson_id=' . $lesson_id);
 		}
 		
+		$this->load->model('Score_types');
 		$this->load->model('Students');
 		$this->data['siswa'] = Students::with(['user', 'scores' => function($query) use ($lesson_id) {
 			$query->where('scores.lesson_id', $lesson_id);

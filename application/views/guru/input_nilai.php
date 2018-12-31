@@ -63,7 +63,7 @@
 						</thead>
 						<tbody>
 							<tr>
-								<?= form_open('guru/input-nilai?student_id=' . $student_id . '&lesson_id=' . $lesson_id) ?>
+								<?= form_open('guru/input-nilai?student_id=' . $student_id . '&lesson_id=' . $lesson_id . '&year_id=' . $year_id) ?>
 									<td>
 										<input type="number" required name="score" class="form-control">
 									</td>
