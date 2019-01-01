@@ -24,8 +24,83 @@ class Guru extends MY_Controller
 
 	public function data_absensi()
 	{
-		$this->data['title']	= 'Dashboard';
-		$this->data['content']	= 'absen';
+		$this->data['semester']		= $this->GET('semester');
+		$this->data['schedule_id']	= $this->GET('schedule_id');
+
+
+		$this->load->model('Schedules');
+		$this->data['jadwal']	= Schedules::with('year', 'lesson', 'class')->find($this->data['schedule_id']);
+
+		if ($this->data['semester'] == 'Odd')
+        {
+        	$this->data['start_month']	= '07';
+        	$this->data['end_month']	= '12';
+        	$this->data['year']			= $this->data['jadwal']->year->start_year;
+        }
+        else
+        {
+        	$this->data['start_month']	= '01';
+        	$this->data['end_month']	= '06';
+        	$this->data['year']			= $this->data['jadwal']->year->end_year;
+        }
+
+		$this->data['beginning']    = new DateTime($this->data['year'] . '-' . $this->data['start_month'] . '-01');
+        $this->data['ending']       = new DateTime($this->data['year'] . '-' . $this->data['end_month'] . '-31');
+        $this->data['ending']->setTime(0, 0, 1);
+
+        $this->data['interval']     = DateInterval::createFromDateString('1 day');
+        $this->data['dateperiod']	= iterator_to_array(new DatePeriod($this->data['beginning'], $this->data['interval'], $this->data['ending']));
+        $period = [];
+        foreach ($this->data['dateperiod'] as $row)
+        {
+        	$period []= $row;
+        	if ($row->format('Y-m-d') == date('Y-m-d'))
+        	{
+        		break;
+        	}
+        }
+        $this->data['period']       = array_reverse($period);
+        $this->data['locale']   = [
+            'Saturday'  => 'Sabtu',
+            'Friday'    => 'Jumat',
+            'Thursday'  => 'Kamis',
+            'Wednesday' => 'Rabu',
+            'Tuesday'   => 'Selasa',
+            'Monday'    => 'Senin'
+        ];
+
+		$this->data['title']	= 'Data Absensi Mata Pelajaran ' . $this->data['jadwal']->lesson->title . ' Kelas ' . $this->data['jadwal']->class->class_name . ' Semester ' . ($this->data['semester'] == 'Odd' ? 'Ganjil' : 'Genap') . ' Tahun Ajaran ' . $this->data['jadwal']->year->school_year;
+		$this->data['content']	= 'absensi_siswa';
+		$this->template($this->data, $this->module);
+	}
+
+	public function absensi()
+	{
+		$this->data['semester']		= $this->GET('semester');
+		$this->data['schedule_id']	= $this->GET('schedule_id');
+		$this->data['date']			= $this->GET('date');
+		$this->data['locale']   = [
+            'Saturday'  => 'Sabtu',
+            'Friday'    => 'Jumat',
+            'Thursday'  => 'Kamis',
+            'Wednesday' => 'Rabu',
+            'Tuesday'   => 'Selasa',
+            'Monday'    => 'Senin'
+        ];
+		$this->data['day']			= $this->data['locale'][$this->GET('day')];
+		$this->data['day_en']		= $this->GET('day');
+
+		$this->load->model('Schedules');
+		$this->data['jadwal']	= Schedules::with('class', 'year', 'lesson')->find($this->data['schedule_id']);
+
+		$this->data['kelas']	= Classes::with(['members' => function($query) {
+			$query->where('year_id', $this->data['jadwal']->year->year_id);
+		}, 'members.student', 'members.student.attendance' => function($query) {
+			$query->where('date', $this->data['date']);
+		}])->find($this->data['jadwal']->class->class_id);
+
+		$this->data['title']	= 'Absensi';
+		$this->data['content']	= 'absensi';
 		$this->template($this->data, $this->module);
 	}
 
@@ -91,7 +166,8 @@ class Guru extends MY_Controller
 		$lesson_id 	= $this->GET('lesson_id');
 		$year_id 	= $this->GET('year_id');
 		$semester 	= $this->GET('semester');
-		$this->data['year_id']	= $year_id;
+		$this->data['year_id']		= $year_id;
+		$this->data['lesson_id']	= $lesson_id;
 
 		$this->load->model('Students');
 		$this->data['siswa']	= Students::with('user', 'scores')->whereHas('scores', function($query) use ($lesson_id, $year_id, $semester) {

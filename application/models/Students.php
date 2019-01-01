@@ -22,7 +22,13 @@ class Students extends Eloquent
 
 	public function attendances()
 	{
-		require_once(__DIR__ . '/Attendances.php');
-		return $this->hasMany('attendances', 'student_id', 'student_id');
+		require_once(__DIR__ . '/Student_attendances.php');
+		return $this->hasMany('student_attendances', 'student_id', 'student_id');
+	}
+
+	public function attendance()
+	{
+		require_once(__DIR__ . '/Student_attendances.php');
+		return $this->hasOne('student_attendances', 'student_id', 'student_id');
 	}
 }
