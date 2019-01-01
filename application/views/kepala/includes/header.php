@@ -18,7 +18,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- BEGIN HEAD -->
 <head>
 <meta charset="utf-8"/>
-<title><?= $title ?> | Sistem Sewa Kost</title>
+<title><?= $title ?> | Sistem Informasi Akademik</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="" name="description"/>
@@ -50,6 +50,12 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- END THEME STYLES -->
 <!-- <link rel="shortcut icon" href="favicon.ico"/> -->
 <script src="<?= base_url('assets/metronic') ?>/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+
+<link href="<?= base_url('assets/metronic') ?>/assets/global/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css" />
+<link href="<?= base_url('assets/metronic') ?>/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" rel="stylesheet" type="text/css" />
+<script src="<?= base_url('assets/metronic') ?>/assets/global/scripts/datatable.js" type="text/javascript"></script>
+<script src="<?= base_url('assets/metronic') ?>/assets/global/plugins/datatables/datatables.min.js" type="text/javascript"></script>
+<script src="<?= base_url('assets/metronic') ?>/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js" type="text/javascript"></script>
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->

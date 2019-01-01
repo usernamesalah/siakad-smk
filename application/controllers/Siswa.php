@@ -8,6 +8,13 @@ class Siswa extends MY_Controller
 		$this->module = 'siswa';
 	}
 
+    public function index()
+    {
+        $this->data['title']    = 'Dashboard';
+        $this->data['content']  = 'dashboard';
+        $this->template($this->data, $this->module);
+    }
+
 	public function nilai()
     {
         $this->data['title']    = 'Dashboard';

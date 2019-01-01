@@ -12,15 +12,47 @@
             <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
             <ul class="page-sidebar-menu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
                 <li>
-                    <a href="<?= base_url('home') ?>">
+                    <a href="<?= base_url('kepala') ?>">
                         <i class="icon-home"></i>
                         <span class="title">Dashboard</span>
                     </a>
                 </li>
+                <li class="heading">
+                    <h3 class="uppercase">Data Master</h3>
+                </li>
                 <li>
-                    <a href="<?= base_url('home/daftar-kost') ?>">
+                    <a href="<?= base_url('kepala/guru') ?>">
+                        <i class="icon-user"></i>
+                        <span class="title">Guru</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?= base_url('kepala/siswa') ?>">
+                        <i class="icon-user"></i>
+                        <span class="title">Siswa</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?= base_url('kepala/visimisi') ?>">
                         <i class="icon-list"></i>
-                        <span class="title">Daftar Kost</span>
+                        <span class="title">Jurusan</span>
+                    </a>
+                </li>
+
+
+                <li class="heading">
+                    <h3 class="uppercase">Laporan Data</h3>
+                </li>
+                <li>
+                    <a href="<?= base_url('kepala/laporan-nilai') ?>">
+                        <i class="icon-list"></i>
+                        <span class="title">Nilai Siswa</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?= base_url('kepala/absensi-guru') ?>">
+                        <i class="icon-users"></i>
+                        <span class="title">Absensi Guru</span>
                     </a>
                 </li>
             </ul>

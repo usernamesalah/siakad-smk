@@ -30,18 +30,14 @@
                             </tr>
                         </thead>
                         <tbody>
-                        	<?php foreach ($siswa as $row): ?>
+                        	<!-- <?php foreach ($siswa as $row): ?> -->
                             <tr class="odd gradeX">
-                                <td><?= $row->siswa->nisn ?></td>
-                                <td><?= $row->name ?></td>
+                                <td>09999</td>
+                                <td>Azhary</td>
                                 <td>
-                                	<?php if ($row->gender == 'Male'): ?>
-                                		<span class="label label-sm label-danger"><?= $row->gender ?></span>
-                                	<?php else: ?>
-                                		<span class="label label-sm label-blue"><?= $row->gender ?></span>
-                                	<?php endif; ?>
+                                	Laki Laki
                                 </td>
-                                <td class="center"><?= $row->birthplace . ', ' . $row->birthdate ?></td>
+                                <td class="center">Palembang , 0101010</td>
                                 <td>XII Elektro 2</td>
                                 <td>
                                     <div class="btn-group">
@@ -57,7 +53,7 @@
                                     </div>
                                 </td>
                             </tr>
-                        	<?php endforeach; ?>
+                        	<!-- <?php endforeach; ?> -->
                         </tbody>
                     </table>
 				</div>

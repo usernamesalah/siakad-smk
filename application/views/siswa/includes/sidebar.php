@@ -12,7 +12,7 @@
             <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
             <ul class="page-sidebar-menu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
                 <li>
-                    <a href="<?= base_url('guru') ?>">
+                    <a href="<?= base_url('siswa') ?>">
                         <i class="icon-home"></i>
                         <span class="title">Dashboard</span>
                     </a>
@@ -21,37 +21,38 @@
                     <h3 class="uppercase">Data Master</h3>
                 </li>
                 <li>
-                    <a href="<?= base_url('guru/mapel_diajarkan') ?>">
-                        <i class="icon-list"></i>
-                        <span class="title">Mata Pelajaran</span>
+                    <a href="<?= base_url('siswa/data-diri') ?>">
+                        <i class="icon-user"></i>
+                        <span class="title">Profile</span>
                     </a>
                 </li>
                 <li>
-                    <a href="<?= base_url('guru/data-jadwal') ?>">
+                    <a href="<?= base_url('siswa/data-mata-pelajaran') ?>">
                         <i class="icon-list"></i>
-                        <span class="title">Jadwal Pelajaran</span>
+                        <span class="title">Jdwal Mata Pelajaran</span>
                     </a>
                 </li>
                 <li>
-                    <a href="<?= base_url('guru/visi-misi') ?>">
+                    <a href="<?= base_url('siswa/kelas') ?>">
+                        <i class="icon-list"></i>
+                        <span class="title">Kelas</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?= base_url('siswa/visi_misi') ?>">
                         <i class="icon-list"></i>
                         <span class="title">Visi Misi Sekolah</span>
                     </a>
                 </li>
 
+
                 <li class="heading">
                     <h3 class="uppercase">Laporan Data</h3>
                 </li>
                 <li>
-                    <a href="<?= base_url('guru/tahun-ajaran') ?>">
+                    <a href="<?= base_url('siswa/nilai') ?>">
                         <i class="icon-list"></i>
-                        <span class="title">Tahun Ajaran</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="<?= base_url('guru/data-absensi') ?>">
-                        <i class="icon-list"></i>
-                        <span class="title">Absensi Siswa</span>
+                        <span class="title">Nilai Siswa</span>
                     </a>
                 </li>
             </ul>

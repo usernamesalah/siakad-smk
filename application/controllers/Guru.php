@@ -15,12 +15,12 @@ class Guru extends MY_Controller
 		$this->template($this->data, $this->module);
 	}
 
-	public function data_kelas()
-	{
-		$this->data['title']	= 'Dashboard';
-		$this->data['content']	= 'kelas';
-		$this->template($this->data, $this->module);
-	}
+	// public function data_kelas()
+	// {
+	// 	$this->data['title']	= 'Dashboard';
+	// 	$this->data['content']	= 'kelas';
+	// 	$this->template($this->data, $this->module);
+	// }
 
 	public function data_absensi()
 	{

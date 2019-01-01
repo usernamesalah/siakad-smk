@@ -9,6 +9,13 @@ class Kepala extends MY_Controller
 		$this->module = 'kepala';
 	}
 
+	public function index()
+    {
+        $this->data['title']    = 'Dashboard';
+        $this->data['content']  = 'dashboard';
+        $this->template($this->data, $this->module);
+    }
+
 	public function guru()
     {
         $this->data['title']    = 'Dashboard';
@@ -38,6 +45,20 @@ class Kepala extends MY_Controller
     }
 
     public function visimisi()
+    {
+        $this->data['title']    = 'Dashboard';
+        $this->data['content']  = 'input_visimisi';
+        $this->template($this->data, $this->module);
+    }
+
+    public function laporan_nilai()
+    {
+        $this->data['title']    = 'Dashboard';
+        $this->data['content']  = 'input_visimisi';
+        $this->template($this->data, $this->module);
+    }
+
+    public function absensi_guru()
     {
         $this->data['title']    = 'Dashboard';
         $this->data['content']  = 'input_visimisi';

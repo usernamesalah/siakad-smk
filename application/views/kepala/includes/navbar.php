@@ -21,16 +21,12 @@
             <!-- BEGIN TOP NAVIGATION MENU -->
             <div class="top-menu">
                 <ul class="nav navbar-nav pull-right">
-                    <?php  
-                        $id_pengguna = $this->session->userdata('id_pengguna');
-                        if (isset($id_pengguna)):
-                    ?>
                     <!-- BEGIN USER LOGIN DROPDOWN -->
                     <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
                     <li class="dropdown dropdown-user dropdown-dark">
                         <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                         <span class="username username-hide-on-mobile">
-                        <?= $this->session->userdata('username') ?> </span>
+                        Admin </span>
                         <!-- DOC: Do not remove below empty space(&nbsp;) as its purposely used -->
                         <img alt="" class="img-circle" src="<?= base_url('assets/metronic') ?>/assets/admin/layout4/img/avatar9.jpg"/>
                         </a>
@@ -48,14 +44,6 @@
                         </ul>
                     </li>
                     <!-- END USER LOGIN DROPDOWN -->
-                    <?php else: ?>
-                    <li class="dropdown dropdown-user dropdown-dark">
-                        <a href="<?= base_url('login') ?>" class="dropdown-toggle">
-                            <span class="username username-hide-on-mobile">
-                            <i class="fa fa-sign-in"></i> Login</span>
-                        </a>
-                    </li>
-                    <?php endif; ?>
                 </ul>
             </div>
             <!-- END TOP NAVIGATION MENU -->

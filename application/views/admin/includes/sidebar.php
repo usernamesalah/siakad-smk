@@ -69,6 +69,13 @@
                     </a>
                 </li>
 
+                <li>
+                    <a href="<?= base_url('admin/visi-misi') ?>">
+                        <i class="icon-list"></i>
+                        <span class="title">Visi Misi Sekolah</span>
+                    </a>
+                </li>
+
 
                 <li class="heading">
                     <h3 class="uppercase">Laporan Data</h3>
