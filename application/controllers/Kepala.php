@@ -64,9 +64,17 @@ class Kepala extends MY_Controller
     public function absensi_guru()
     {
         $this->data['title']    = 'Dashboard';
-        $this->data['content']  = 'input_visimisi';
+        $this->data['content']  = 'absensi';
         $this->template($this->data, $this->module);
     }
+
+    public function detail_absensi()
+    {
+        $this->data['title']    = 'Dashboard';
+        $this->data['content']  = 'detail_absensi';
+        $this->template($this->data, $this->module);
+    }
+
 
     
 }
