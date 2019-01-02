@@ -18,6 +18,9 @@ class Kepala extends MY_Controller
 
 	public function guru()
     {
+        $this->load->model('Users');
+
+        $this->data['guru']     = Users::has('teacher')->get();
         $this->data['title']    = 'Dashboard';
         $this->data['content']  = 'guru';
         $this->template($this->data, $this->module);
@@ -54,7 +57,7 @@ class Kepala extends MY_Controller
     public function laporan_nilai()
     {
         $this->data['title']    = 'Dashboard';
-        $this->data['content']  = 'input_visimisi';
+        $this->data['content']  = 'nilai';
         $this->template($this->data, $this->module);
     }
 

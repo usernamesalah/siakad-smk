@@ -27,9 +27,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="<?= base_url('siswa/data-mata-pelajaran') ?>">
+                    <a href="<?= base_url('siswa/jadwal') ?>">
                         <i class="icon-list"></i>
-                        <span class="title">Jdwal Mata Pelajaran</span>
+                        <span class="title">Jadwal Mata Pelajaran</span>
                     </a>
                 </li>
                 <li>

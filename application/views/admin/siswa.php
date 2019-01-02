@@ -62,18 +62,18 @@
                             </tr>
                         </thead>
                         <tbody>
-                        	<?php foreach ($siswa as $row): ?>
+                        	<!-- <?php foreach ($siswa as $row): ?> -->
                             <tr class="odd gradeX">
-                                <td><?= $row->siswa->nisn ?></td>
-                                <td><?= $row->name ?></td>
+                                <td>0988721</td>
+                                <td>Azhary Arliansyah</td>
                                 <td>
-                                	<?php if ($row->gender == 'Male'): ?>
-                                		<span class="label label-sm label-danger"><?= $row->gender ?></span>
-                                	<?php else: ?>
-                                		<span class="label label-sm label-blue"><?= $row->gender ?></span>
-                                	<?php endif; ?>
+                                	<!-- <?php if ($row->gender == 'Male'): ?> -->
+                                		<span class="label label-sm label-danger">Laki Laki</span>
+                                	<!-- <?php else: ?> -->
+                                		<!-- <span class="label label-sm label-blue"><?= $row->gender ?></span> -->
+                                	<!-- <?php endif; ?> -->
                                 </td>
-                                <td class="center"><?= $row->birthplace . ', ' . $row->birthdate ?></td>
+                                <td class="center">Linggau , 12 January 2019</td>
                                 <td>XII Elektro 2</td>
                                 <td>
                                     <div class="btn-group">
@@ -82,11 +82,11 @@
                                         </button>
                                         <ul class="dropdown-menu pull-left" role="menu">
                                             <li>
-                                                <a href="<?= base_url('admin/detail-siswa/' . $row->student->student_id) ?>">
+                                                <a href="<?= base_url('admin/detail-siswa/'  ) ?>">
                                                     <i class="fa fa-eye"></i> Detail </a>
                                             </li>
                                             <li>
-                                                <a href="<?= base_url('admin/edit-siswa/' . $row->student->student_id) ?>">
+                                                <a href="<?= base_url('admin/edit-siswa/' ) ?>">
                                                     <i class="fa fa-edit"></i> Edit </a>
                                             </li>
                                             <li>
@@ -97,7 +97,7 @@
                                     </div>
                                 </td>
                             </tr>
-                        	<?php endforeach; ?>
+                        	<!-- <?php endforeach; ?> -->
                         </tbody>
                     </table>
 				</div>

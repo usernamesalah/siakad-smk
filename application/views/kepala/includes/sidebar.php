@@ -35,7 +35,7 @@
                 <li>
                     <a href="<?= base_url('kepala/visimisi') ?>">
                         <i class="icon-list"></i>
-                        <span class="title">Jurusan</span>
+                        <span class="title">Visi Misi</span>
                     </a>
                 </li>
 

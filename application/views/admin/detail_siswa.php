@@ -14,7 +14,7 @@
 			<div class="portlet box green">
 				<div class="portlet-title">
 					<div class="caption">
-						<i class="fa fa-gift"></i>Detail SIswa
+						<i class="fa fa-gift"></i>Detail Siswa
 					</div>
 				</div>
 				<div class="portlet-body form">
@@ -25,7 +25,7 @@
 								<div class="form-group">
 									<label class="col-md-4 control-label">Foto</label>
 									<div class="col-md-6">
-										<input type="file" name="foto" class="form-control"  readonly>
+										<img class="img img-responsive img-thumbnail" src="">
 									</div>
 								</div>
 								<div class="form-group">

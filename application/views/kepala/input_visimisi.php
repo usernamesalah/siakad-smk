@@ -34,3 +34,10 @@
     </div>
     <!-- END PAGE CONTENT INNER -->
 </div>
+
+<script type="text/javascript">
+    $( document ).ready(function() {
+        tinymce.init({ selector:'textarea', theme: 'modern'});
+    });
+        
+</script>
