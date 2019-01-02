@@ -27,7 +27,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="<?= base_url('guru/data-jadwal') ?>">
+                    <a href="<?= base_url('guru/tahun_ajaran') ?>">
                         <i class="icon-list"></i>
                         <span class="title">Jadwal Pelajaran</span>
                     </a>
@@ -43,15 +43,9 @@
                     <h3 class="uppercase">Laporan Data</h3>
                 </li>
                 <li>
-                    <a href="<?= base_url('guru/tahun-ajaran') ?>">
+                    <a href="<?= base_url('guru/absensi') ?>">
                         <i class="icon-list"></i>
-                        <span class="title">Tahun Ajaran</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="<?= base_url('guru/data-absensi') ?>">
-                        <i class="icon-list"></i>
-                        <span class="title">Absensi Siswa</span>
+                        <span class="title">Absensi</span>
                     </a>
                 </li>
             </ul>

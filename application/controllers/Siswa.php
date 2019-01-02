@@ -41,14 +41,14 @@ class Siswa extends MY_Controller
     public function jadwal()
     {
         $this->data['title']    = 'Dashboard';
-        $this->data['content']  = 'nilai';
+        $this->data['content']  = 'jadwal';
         $this->template($this->data, $this->module);
     }
 
     public function kelas()
     {
         $this->data['title']    = 'Dashboard';
-        $this->data['content']  = 'nilai';
+        $this->data['content']  = 'kelas';
         $this->template($this->data, $this->module);
     }
 

@@ -19,34 +19,6 @@
 					</div>
 				</div>
 				<div class="portlet-body">
-					<div class="table-toolbar">
-                        <div class="row">
-                            <div class="col-md-6">
-                                
-                            </div>
-                            <div class="col-md-6">
-                                <div class="btn-group pull-right">
-                                    <button class="btn green  btn-outline dropdown-toggle" data-toggle="dropdown">Tools
-                                        <i class="fa fa-angle-down"></i>
-                                    </button>
-                                    <ul class="dropdown-menu pull-right">
-                                        <li>
-                                            <a href="javascript:;">
-                                                <i class="fa fa-print"></i> Print </a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:;">
-                                                <i class="fa fa-file-pdf-o"></i> Save as PDF </a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:;">
-                                                <i class="fa fa-file-excel-o"></i> Export to Excel </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <?= $this->session->flashdata('msg') ?>
                     <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
                         <thead>
@@ -95,22 +67,11 @@
                                         <ul class="dropdown-menu pull-left" role="menu">
                                             <li>
                                                 <a href="javascript:;">
-                                                    <i class="icon-docs"></i> New Post </a>
+                                                    <i class="fa fa-edit"></i> Edit </a>
                                             </li>
                                             <li>
                                                 <a href="javascript:;">
-                                                    <i class="icon-tag"></i> New Comment </a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:;">
-                                                    <i class="icon-user"></i> New User </a>
-                                            </li>
-                                            <li class="divider"> </li>
-                                            <li>
-                                                <a href="javascript:;">
-                                                    <i class="icon-flag"></i> Comments
-                                                    <span class="badge badge-success">4</span>
-                                                </a>
+                                                    <i class="fa fa-trash"></i> Hapus </a>
                                             </li>
                                         </ul>
                                     </div>
