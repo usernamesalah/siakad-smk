@@ -28,7 +28,7 @@
                             </div>
                         </div>
                     </div>
-                    <?= form_open('guru/absensi?date=' . $date . '&day=' . $day_en) ?>
+                    <?= form_open('guru/absensi?date=' . $date . '&day=' . $day_en . '&semester=' . $semester . '&schedule_id=' . $schedule_id) ?>
                     <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
                         <thead>
                             <tr>
@@ -48,15 +48,15 @@
                                     <td>
                                         <div class="md-radio-inline">
                                             <div class="md-radio">
-                                                <input type="radio" id="radio1-<?= $row->nip ?>" name="attendance-<?= $row->nip ?>" <?= isset($row->student->attendance) && $row->student->attendance->status == 'Attend' ? 'checked' : '' ?> value="Attend" class="md-check">
-                                                <label for="radio1-<?= $row->nip ?>">
+                                                <input type="radio" id="radio1-<?= $row->student->nis ?>" name="attendance-<?= $row->student->nis ?>" <?= isset($row->student->attendance) && $row->student->attendance->status == 'Attend' ? 'checked' : '' ?> value="Attend" class="md-check">
+                                                <label for="radio1-<?= $row->student->nis ?>">
                                                     <span class="inc"></span>
                                                     <span class="check"></span>
                                                     <span class="box"></span> Hadir</label>
                                             </div>
                                             <div class="md-radio">
-                                                <input type="radio" id="radio2-<?= $row->nip ?>" name="attendance-<?= $row->nip ?>" <?= isset($row->student->attendance) && $row->student->attendance->status == 'Absent' ? 'checked' : '' ?> value="Absent" class="md-check" >
-                                                <label for="radio2-<?= $row->nip ?>">
+                                                <input type="radio" id="radio2-<?= $row->student->nis ?>" name="attendance-<?= $row->student->nis ?>" <?= isset($row->student->attendance) && $row->student->attendance->status == 'Absent' ? 'checked' : '' ?> value="Absent" class="md-check" >
+                                                <label for="radio2-<?= $row->student->nis ?>">
                                                     <span></span>
                                                     <span class="check"></span>
                                                     <span class="box"></span> Absen</label>
@@ -64,7 +64,7 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <textarea class="form-control" name="info-<?= $row->nip ?>"><?= isset($row->student->attendance) ? $row->student->attendance->additional_info : '-' ?></textarea>
+                                        <textarea class="form-control" name="info-<?= $row->student->nis ?>"><?= isset($row->student->attendance) ? $row->student->attendance->additional_info : '-' ?></textarea>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

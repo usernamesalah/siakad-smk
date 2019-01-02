@@ -5,6 +5,22 @@ class Siswa extends MY_Controller
 	public function __construct()
 	{
 		parent::__construct();
+        $this->data['user_id']  = $this->session->userdata('user_id');
+        if (!isset($this->data['user_id']))
+        {
+            $this->session->sess_destroy();
+            $this->flashmsg('Anda harus login untuk mengakses halaman tersebut', 'danger');
+            redirect('login');
+        }
+
+        $this->data['role_id'] = $this->session->userdata('role_id');
+        if (!isset($this->data['role_id']) or $this->data['role_id'] != 1)
+        {
+            $this->session->sess_destroy();
+            $this->flashmsg('Anda harus login sebagai siswa untuk mengakses halaman tersebut', 'danger');
+            redirect('login');
+        }
+
 		$this->module = 'siswa';
 	}
 

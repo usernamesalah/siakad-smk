@@ -8,6 +8,7 @@
 		<!-- END PAGE TITLE -->
 	</div>
 	<!-- END PAGE HEAD -->
+    <?= $this->session->flashdata('msg') ?>
 	<!-- BEGIN PAGE CONTENT INNER -->
 	<div class="row margin-top-10">
 		<div class="col-md-12">
@@ -57,24 +58,22 @@
                                 <th> Nama </th>
                                 <th> Jenis Kelamin </th>
                                 <th> Tempat, Tanggal Lahir </th>
-                                <th> Kelas </th>
                                 <th> Actions </th>
                             </tr>
                         </thead>
                         <tbody>
-                        	<!-- <?php foreach ($siswa as $row): ?> -->
+                        	<?php foreach ($users as $row): ?>
                             <tr class="odd gradeX">
-                                <td>0988721</td>
-                                <td>Azhary Arliansyah</td>
+                                <td><?= $row->student->nisn ?></td>
+                                <td><?= $row->name ?></td>
                                 <td>
-                                	<!-- <?php if ($row->gender == 'Male'): ?> -->
-                                		<span class="label label-sm label-danger">Laki Laki</span>
-                                	<!-- <?php else: ?> -->
-                                		<!-- <span class="label label-sm label-blue"><?= $row->gender ?></span> -->
-                                	<!-- <?php endif; ?> -->
+                                	<?php if ($row->gender == 'Male'): ?>
+                                		<span class="label label-sm bg-red">Laki Laki</span>
+                                	<?php else: ?>
+                                		<span class="label label-sm bg-blue">Perempuan</span>
+                                	<?php endif; ?>
                                 </td>
-                                <td class="center">Linggau , 12 January 2019</td>
-                                <td>XII Elektro 2</td>
+                                <td class="center"><?= $row->birthplace . ', ' . $row->birthdate ?></td>
                                 <td>
                                     <div class="btn-group">
                                         <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> Actions
@@ -82,22 +81,22 @@
                                         </button>
                                         <ul class="dropdown-menu pull-left" role="menu">
                                             <li>
-                                                <a href="<?= base_url('admin/detail-siswa/'  ) ?>">
+                                                <a href="<?= base_url('admin/detail-siswa/' . $row->student->student_id) ?>">
                                                     <i class="fa fa-eye"></i> Detail </a>
                                             </li>
                                             <li>
-                                                <a href="<?= base_url('admin/edit-siswa/' ) ?>">
+                                                <a href="<?= base_url('admin/edit-siswa/' . $row->student->student_id) ?>">
                                                     <i class="fa fa-edit"></i> Edit </a>
                                             </li>
                                             <li>
-                                                <a href="javascript:;">
+                                                <a href="<?= base_url('admin/data-siswa/' . $row->user_id) ?>">
                                                     <i class="fa fa-trash"></i> Hapus </a>
                                             </li>
                                         </ul>
                                     </div>
                                 </td>
                             </tr>
-                        	<!-- <?php endforeach; ?> -->
+                        	<?php endforeach; ?>
                         </tbody>
                     </table>
 				</div>

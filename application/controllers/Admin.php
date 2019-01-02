@@ -5,6 +5,22 @@ class Admin extends MY_Controller
 	public function __construct()
 	{
 		parent::__construct();
+        $this->data['user_id']  = $this->session->userdata('user_id');
+        if (!isset($this->data['user_id']))
+        {
+            $this->session->sess_destroy();
+            $this->flashmsg('Anda harus login untuk mengakses halaman tersebut', 'danger');
+            redirect('login');
+        }
+
+        $this->data['role_id'] = $this->session->userdata('role_id');
+        if (!isset($this->data['role_id']) or $this->data['role_id'] != 3)
+        {
+            $this->session->sess_destroy();
+            $this->flashmsg('Anda harus login sebagai admin untuk mengakses halaman tersebut', 'danger');
+            redirect('login');
+        }
+
 		$this->module = 'admin';
 	}
 
@@ -18,6 +34,16 @@ class Admin extends MY_Controller
     public function data_guru()
     {
         $this->load->model('Users');
+        $this->load->model('Teachers');
+
+        $this->data['teacher_id']   = $this->uri->segment(3);
+        if (isset($this->data['teacher_id']))
+        {
+            $teacher = Teachers::with('user')->find($this->data['teacher_id']);
+            $teacher->delete();
+            $this->flashmsg('Data guru berhasil dihapuskan');
+            redirect('admin/data-guru');
+        }
 
         if ($this->POST('submit'))
         {
@@ -32,7 +58,6 @@ class Admin extends MY_Controller
             $user->address      = $this->POST('address');
             $user->save();
 
-            $this->load->model('Teachers');
             $teacher = new Teachers([
                 'nip'               => $this->POST('nip'), 
                 'last_education'    => $this->POST('last_education')
@@ -169,21 +194,83 @@ class Admin extends MY_Controller
 
     public function data_siswa()
     {
-        $this->data['title']    = 'Dashboard';
+        $this->load->model('Users');
+        $this->data['user_id']  = $this->uri->segment(3);
+        if (isset($this->data['user_id']))
+        {
+            $user = Users::find($this->data['user_id']);
+            $user->delete();
+            $this->flashmsg('Data siswa berhasil dihapus');
+            redirect('admin/data-siswa');
+        }
+
+        $this->data['users']    = Users::has('student')->get();
+        $this->data['title']    = 'Data Siswa';
         $this->data['content']  = 'siswa';
         $this->template($this->data, $this->module);
     }
 
     public function tambah_siswa()
     {
-        $this->data['title']    = 'Dashboard';
+        if ($this->POST('submit'))
+        {
+            $this->load->model('Users');
+            $user = new Users();
+            $user->username     = $this->POST('username');
+            $user->password     = md5($this->POST('password'));
+            $user->name         = $this->POST('name');
+            $user->gender       = $this->POST('gender');
+            $user->birthplace   = $this->POST('birthplace');
+            $user->birthdate    = $this->POST('birthdate');
+            $user->address      = $this->POST('address');
+            $user->role_id      = 1;
+            $user->save();
+
+            $this->load->model('Students');
+            $student = new Students();
+            $student->nis                       = $this->POST('nis');
+            $student->nisn                      = $this->POST('nisn');
+            $student->father_name               = $this->POST('father_name');
+            $student->father_job                = $this->POST('father_job');
+            $student->father_address            = $this->POST('father_address');
+            $student->mother_name               = $this->POST('mother_name');
+            $student->mother_job                = $this->POST('mother_job');
+            $student->mother_address            = $this->POST('mother_address');
+            $student->representative_name       = $this->POST('representative_name');
+            $student->representative_job        = $this->POST('representative_job');
+            $student->representative_address    = $this->POST('representative_address');
+            $student->accepted_date             = $this->POST('accepted_date');
+            $student->school_origin             = $this->POST('school_origin');
+            $student->sttb                      = $this->POST('sttb');
+            $student->sttb_date                 = $this->POST('sttb_date');
+            $student->leave_date                = $this->POST('leave_date');
+            $student->leave_reason              = $this->POST('leave_reason');
+            $student->leave_sttb                = $this->POST('leave_sttb');
+            $student->leave_sttb_date           = $this->POST('leave_sttb_date');
+            $student->skhun                     = $this->POST('skhun');
+            $student->skhun_date                = $this->POST('skhun_date');
+
+            $user->student()->save($student);
+            $this->upload($student->student_id, 'assets/files/students', 'photo');
+            $this->flashmsg('Data siswa berhasil ditambahkan');
+            redirect('admin/data-siswa');
+        }
+
+        $this->data['title']    = 'Tambah Data Siswa';
         $this->data['content']  = 'tambah_siswa';
+        $this->template($this->data, $this->module);
+    }
+
+    public function detail_siswa()
+    {
+        $this->data['title']    = 'Detail Data Siswa';
+        $this->data['content']  = 'detail_siswa';
         $this->template($this->data, $this->module);
     }
 
     public function edit_siswa()
     {
-        $this->data['title']    = 'Dashboard';
+        $this->data['title']    = 'Edit Data Siswa';
         $this->data['content']  = 'edit_siswa';
         $this->template($this->data, $this->module);
     }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 31 Des 2018 pada 18.36
+-- Generation Time: 02 Jan 2019 pada 14.31
 -- Versi Server: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -80,8 +80,8 @@ CREATE TABLE `class_members` (
 --
 
 INSERT INTO `class_members` (`member_id`, `class_id`, `year_id`, `student_id`, `created_at`, `updated_at`) VALUES
-(1, 3, 1, 1, '2018-12-31 17:08:03', '2018-12-31 17:08:03'),
-(3, 1, 2, 1, '2018-12-31 17:30:53', '2018-12-31 17:30:53');
+(1, 3, 2, 1, '2018-12-31 17:08:03', '2019-01-01 14:17:23'),
+(3, 1, 1, 1, '2018-12-31 17:30:53', '2019-01-01 14:14:04');
 
 -- --------------------------------------------------------
 
@@ -199,8 +199,7 @@ CREATE TABLE `schedules` (
 --
 
 INSERT INTO `schedules` (`schedule_id`, `class_id`, `lesson_id`, `teacher_id`, `year_id`, `semester`, `day`, `started_at`, `ended_at`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 1, 1, 'Even', 'Sunday', '01:00:00', '03:00:00', '2018-12-27 12:15:46', '2018-12-27 12:15:46'),
-(2, 3, 2, 2, 1, 'Even', 'Sunday', '09:00:00', '10:00:00', '2018-12-31 06:25:13', '2018-12-31 06:25:13');
+(1, 1, 1, 1, 1, 'Even', 'Tuesday', '01:00:00', '03:00:00', '2018-12-27 12:15:46', '2019-01-01 13:04:10');
 
 -- --------------------------------------------------------
 
@@ -211,6 +210,8 @@ INSERT INTO `schedules` (`schedule_id`, `class_id`, `lesson_id`, `teacher_id`, `
 CREATE TABLE `school_years` (
   `year_id` int(11) NOT NULL,
   `school_year` varchar(20) NOT NULL,
+  `start_year` varchar(4) NOT NULL,
+  `end_year` varchar(4) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -219,9 +220,9 @@ CREATE TABLE `school_years` (
 -- Dumping data untuk tabel `school_years`
 --
 
-INSERT INTO `school_years` (`year_id`, `school_year`, `created_at`, `updated_at`) VALUES
-(1, '2018/2019', '2018-12-27 10:03:32', '2018-12-27 10:03:32'),
-(2, '2019/2020', '2018-12-31 06:26:03', '2018-12-31 06:26:03');
+INSERT INTO `school_years` (`year_id`, `school_year`, `start_year`, `end_year`, `created_at`, `updated_at`) VALUES
+(1, '2018/2019', '2018', '2019', '2018-12-27 10:03:32', '2019-01-01 12:07:01'),
+(2, '2019/2020', '2019', '2020', '2018-12-31 06:26:03', '2019-01-01 12:07:12');
 
 -- --------------------------------------------------------
 
@@ -291,15 +292,28 @@ CREATE TABLE `students` (
   `mother_address` text NOT NULL,
   `representative_name` varchar(100) NOT NULL,
   `representative_job` varchar(100) NOT NULL,
-  `representative_address` text NOT NULL
+  `representative_address` text NOT NULL,
+  `accepted_date` date NOT NULL,
+  `school_origin` text NOT NULL,
+  `sttb` text NOT NULL,
+  `sttb_date` date NOT NULL,
+  `leave_date` date NOT NULL,
+  `leave_reason` text NOT NULL,
+  `leave_sttb` text NOT NULL,
+  `leave_sttb_date` date NOT NULL,
+  `skhun` text NOT NULL,
+  `skhun_date` date NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `students`
 --
 
-INSERT INTO `students` (`student_id`, `user_id`, `nis`, `nisn`, `father_name`, `father_job`, `father_address`, `mother_name`, `mother_job`, `mother_address`, `representative_name`, `representative_job`, `representative_address`) VALUES
-(1, 1, '09021181419007', '09021181419007', 'father\'s name', 'father\'s job', 'father\'s address', 'mother\'s name', 'mother\'s job', 'mother\'s address', '', '', '');
+INSERT INTO `students` (`student_id`, `user_id`, `nis`, `nisn`, `father_name`, `father_job`, `father_address`, `mother_name`, `mother_job`, `mother_address`, `representative_name`, `representative_job`, `representative_address`, `accepted_date`, `school_origin`, `sttb`, `sttb_date`, `leave_date`, `leave_reason`, `leave_sttb`, `leave_sttb_date`, `skhun`, `skhun_date`, `created_at`, `updated_at`) VALUES
+(1, 1, '09021181419007', '09021181419007', 'father\'s name', 'father\'s job', 'father\'s address', 'mother\'s name', 'mother\'s job', 'mother\'s address', '', '', '', '0000-00-00', '', '', '0000-00-00', '0000-00-00', '', '', '0000-00-00', '', '0000-00-00', '2019-01-02 13:16:01', '2019-01-02 13:16:01'),
+(2, 10, 'ewrwe', 'ewrwe', 'ewrew', 'rfe', 'ertre', 'retre', 'reter', 'reter', 'rewrw', 'retre', 'Komplek Bougenville KM. 7 Palembang', '1212-12-12', 'ewrwerwe', 'Azhary Arliansyah', '1212-12-12', '1210-12-12', 'werewr', 'ewfwer', '1212-12-12', 'were', '1212-12-12', '2019-01-02 13:16:16', '2019-01-02 13:16:16');
 
 -- --------------------------------------------------------
 
@@ -312,10 +326,19 @@ CREATE TABLE `student_attendances` (
   `student_id` int(11) NOT NULL,
   `schedule_id` int(11) NOT NULL,
   `status` enum('Attend','Absent') NOT NULL,
+  `additional_info` text NOT NULL,
   `date` date NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `student_attendances`
+--
+
+INSERT INTO `student_attendances` (`attendance_id`, `student_id`, `schedule_id`, `status`, `additional_info`, `date`, `created_at`, `updated_at`) VALUES
+(2, 1, 1, 'Absent', 'Data Absensi Rabu, 02/01/2019 Kelas X1 IPA I', '2019-01-02', '2019-01-02 12:29:00', '2019-01-02 12:29:08'),
+(3, 1, 1, 'Attend', '-', '2019-01-01', '2019-01-02 12:29:32', '2019-01-02 12:29:43');
 
 -- --------------------------------------------------------
 
@@ -337,8 +360,7 @@ CREATE TABLE `teachers` (
 --
 
 INSERT INTO `teachers` (`teacher_id`, `user_id`, `nip`, `last_education`, `created_at`, `updated_at`) VALUES
-(1, 4, '12345', 'S1', '2018-12-27 09:16:10', '2018-12-30 12:53:29'),
-(2, 6, '121212', 'SMA', '2018-12-31 06:16:20', '2018-12-31 06:16:20');
+(1, 4, '12345', 'S1', '2018-12-27 09:16:10', '2018-12-30 12:53:29');
 
 -- --------------------------------------------------------
 
@@ -362,9 +384,7 @@ CREATE TABLE `teacher_attendances` (
 
 INSERT INTO `teacher_attendances` (`attendance_id`, `teacher_id`, `status`, `additional_info`, `date`, `created_at`, `updated_at`) VALUES
 (1, 1, 'Attend', 'Testing', '2018-12-31', '2018-12-31 13:14:21', '2018-12-31 16:26:29'),
-(4, 2, 'Absent', '-', '2018-12-31', '2018-12-31 16:27:36', '2018-12-31 16:27:36'),
-(5, 1, 'Attend', '-', '2018-12-27', '2018-12-31 16:28:30', '2018-12-31 16:28:42'),
-(6, 2, 'Attend', '-h', '2018-12-27', '2018-12-31 16:28:30', '2018-12-31 16:28:42');
+(5, 1, 'Attend', '-', '2018-12-27', '2018-12-31 16:28:30', '2018-12-31 16:28:42');
 
 -- --------------------------------------------------------
 
@@ -392,9 +412,10 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`user_id`, `username`, `password`, `role_id`, `name`, `gender`, `birthplace`, `birthdate`, `address`, `created_at`, `updated_at`) VALUES
 (1, 'azhary', '985fabf8f96dc1c4c306341031569937', 1, 'Azhary Arliansyah', 'Male', 'Palembang', '1996-08-05', '', '2018-12-27 09:12:54', '2018-12-27 09:13:13'),
-(4, 'azhry', '985fabf8f96dc1c4c306341031569937', 2, 'Azhary Arliansyah', 'Male', 'Palembang', '1996-08-05', 'Ini alamat', '2018-12-27 09:16:10', '2018-12-30 12:53:29'),
+(4, 'azhry', '985fabf8f96dc1c4c306341031569937', 2, 'Azhary Arliansyah', 'Male', 'Palembangg', '1996-08-05', 'Ini alamat', '2018-12-27 09:16:10', '2019-01-02 12:30:50'),
 (5, 'az', '985fabf8f96dc1c4c306341031569937', 3, 'Azhary Arliansyah', 'Male', 'Palembang', '2018-08-05', '', '2018-12-31 03:39:32', '2018-12-31 03:39:32'),
-(6, 'rudi', '1755e8df56655122206c7c1d16b1c7e3', 2, 'Test', 'Male', 'Palembang', '1998-05-05', 'Jl. Sukamto', '2018-12-31 06:16:20', '2018-12-31 06:16:20');
+(6, 'rudi', '1755e8df56655122206c7c1d16b1c7e3', 2, 'Test', 'Male', 'Palembang', '1998-05-05', 'Jl. Sukamto', '2018-12-31 06:16:20', '2018-12-31 06:16:20'),
+(10, 'ewrwe', '45753b048517787f6f1c4506ae643acc', 1, 'rwerwe', 'Female', 'Palembang', '1212-12-12', 'Komplek Bougenville KM. 7 Palembang', '2019-01-02 13:16:15', '2019-01-02 13:16:15');
 
 --
 -- Indexes for dumped tables
@@ -594,13 +615,13 @@ ALTER TABLE `score_types`
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `student_attendances`
 --
 ALTER TABLE `student_attendances`
-  MODIFY `attendance_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `attendance_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `teachers`
@@ -618,7 +639,7 @@ ALTER TABLE `teacher_attendances`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)

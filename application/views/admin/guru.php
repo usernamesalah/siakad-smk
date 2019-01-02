@@ -8,6 +8,7 @@
 		<!-- END PAGE TITLE -->
 	</div>
 	<!-- END PAGE HEAD -->
+	<?= $this->session->flashdata('msg') ?>
 	<!-- BEGIN PAGE CONTENT INNER -->
 	<div class="row margin-top-10">
 		<div class="col-md-12">
@@ -18,10 +19,8 @@
 					</div>
 				</div>
 				<div class="portlet-body form">
-					<?= $this->session->flashdata('msg') ?>
 					<?= form_open_multipart('admin/data-guru', ['class' => 'form-horizontal']) ?>
 					<div class="form-body">
-						<?= $this->session->flashdata('msg') ?>
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
@@ -171,7 +170,7 @@
                                                     <i class="fa fa-edit"></i> Edit </a>
                                             </li>
                                             <li>
-                                                <a href="javascript:;">
+                                                <a href="<?= base_url('admin/data-guru/' . $row->teacher->teacher_id) ?>">
                                                     <i class="fa fa-trash"></i> Hapus </a>
                                             </li>
                                         </ul>

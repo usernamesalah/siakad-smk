@@ -69,7 +69,6 @@ License: You must have a valid license purchased only from themeforest(the above
             <span class="form-title">Selamat datang.</span>
             <span class="form-subtitle">Silahkan login.</span>
         </div>
-        <?= $this->session->flashdata('msg') ?>
         <div class="alert alert-danger display-hide">
             <button class="close" data-close="alert"></button>
             <span>

@@ -5,6 +5,22 @@ class Guru extends MY_Controller
 	public function __construct()
 	{
 		parent::__construct();
+		$this->data['user_id']  = $this->session->userdata('user_id');
+        if (!isset($this->data['user_id']))
+        {
+            $this->session->sess_destroy();
+            $this->flashmsg('Anda harus login untuk mengakses halaman tersebut', 'danger');
+            redirect('login');
+        }
+
+        $this->data['role_id'] = $this->session->userdata('role_id');
+        if (!isset($this->data['role_id']) or $this->data['role_id'] != 2)
+        {
+            $this->session->sess_destroy();
+            $this->flashmsg('Anda harus login sebagai siswa untuk mengakses halaman tersebut', 'danger');
+            redirect('login');
+        }
+
 		$this->module = 'guru';
 	}
 
@@ -93,11 +109,41 @@ class Guru extends MY_Controller
 		$this->load->model('Schedules');
 		$this->data['jadwal']	= Schedules::with('class', 'year', 'lesson')->find($this->data['schedule_id']);
 
+		$this->load->model('Student_attendances');
 		$this->data['kelas']	= Classes::with(['members' => function($query) {
 			$query->where('year_id', $this->data['jadwal']->year->year_id);
 		}, 'members.student', 'members.student.attendance' => function($query) {
 			$query->where('date', $this->data['date']);
 		}])->find($this->data['jadwal']->class->class_id);
+
+		if ($this->POST('submit'))
+        {
+            foreach ($this->data['kelas']->members as $siswa)
+            {
+                $status = $this->POST('attendance-' . $siswa->student->nis);
+                if (!isset($status))
+                {
+                    continue;
+                }
+
+                $attendance = Student_attendances::where('student_id', $siswa->student->student_id)
+                                ->where('date', $this->data['date'])
+                                ->where('schedule_id', $this->data['schedule_id'])
+                                ->first();
+                if (!isset($attendance))
+                {
+                    $attendance = new Student_attendances();
+                }
+                $attendance->student_id         = $siswa->student->student_id;
+                $attendance->schedule_id		= $this->data['schedule_id'];
+                $attendance->status             = $status;
+                $attendance->date               = $this->data['date'];
+                $attendance->additional_info    = $this->POST('info-' . $siswa->student->nis);
+                $attendance->save();
+            }
+            $this->flashmsg('Data absensi berhasil disimpan');
+            redirect('guru/absensi?date=' . $this->data['date'] . '&day=' . $this->data['day_en'] . '&semester=' . $this->data['semester'] . '&schedule_id=' . $this->data['schedule_id']);
+        }
 
 		$this->data['title']	= 'Absensi';
 		$this->data['content']	= 'absensi';

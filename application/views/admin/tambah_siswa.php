@@ -28,7 +28,7 @@
 								<div class="form-group">
 									<label class="col-md-4 control-label">Foto</label>
 									<div class="col-md-6">
-										<input type="file" name="foto" class="form-control">
+										<input type="file" name="photo" class="form-control">
 									</div>
 								</div>
 								<div class="form-group">
@@ -77,7 +77,21 @@
 									</div>
 								</div><hr>
 
-								<h6>Nama Orang Tua :</h6>
+								<h6>Data Akun</h6>
+								<div class="form-group">
+									<label class="col-md-4 control-label">Username</label>
+									<div class="col-md-6">
+										<input type="text" name="username" class="form-control">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-md-4 control-label">Password</label>
+									<div class="col-md-6">
+										<input type="password" name="password" class="form-control">
+									</div>
+								</div><hr>
+
+								<h6>Data Orang Tua :</h6>
 								<div class="form-group">
 									<label class="col-md-4 control-label">Nama Ayah</label>
 									<div class="col-md-6">
@@ -85,42 +99,54 @@
 									</div>
 								</div>
 								<div class="form-group">
+									<label class="col-md-4 control-label">Pekerjaan Ayah</label>
+									<div class="col-md-6">
+										<input type="text" name="father_job" class="form-control">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-md-4 control-label">Alamat Ayah</label>
+									<div class="col-md-6">
+										<textarea name="father_address" rows="4" class="form-control"></textarea>
+									</div>
+								</div>
+								<div class="form-group">
 									<label class="col-md-4 control-label">Nama Ibu</label>
 									<div class="col-md-6">
-										<input type="text" name="Mother_name" class="form-control">
+										<input type="text" name="mother_name" class="form-control">
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="col-md-4 control-label">Pekerjaan</label>
+									<label class="col-md-4 control-label">Pekerjaan Ibu</label>
 									<div class="col-md-6">
-										<input type="text" name="username" class="form-control">
+										<input type="text" name="mother_job" class="form-control">
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="col-md-4 control-label">Alamat</label>
+									<label class="col-md-4 control-label">Alamat Ibu</label>
 									<div class="col-md-6">
-										<textarea name="address" rows="4" class="form-control"></textarea>
+										<textarea name="mother_address" rows="4" class="form-control"></textarea>
 									</div>
 								</div>
 							</div>
 							<div class="col-md-6">
-								<h6>Nama Wali :</h6>
+								<h6>Data Wali :</h6>
 								<div class="form-group">
 									<label class="col-md-4 control-label">Nama Wali</label>
 									<div class="col-md-6">
-										<input type="text" name="father_name" class="form-control">
+										<input type="text" name="representative_name" class="form-control">
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="col-md-4 control-label">Pekerjaan</label>
+									<label class="col-md-4 control-label">Pekerjaan Wali</label>
 									<div class="col-md-6">
-										<input type="text" name="username" class="form-control">
+										<input type="text" name="representative_job" class="form-control">
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="col-md-4 control-label">Alamat</label>
+									<label class="col-md-4 control-label">Alamat Wali</label>
 									<div class="col-md-6">
-										<textarea name="address" rows="4" class="form-control"></textarea>
+										<textarea name="representative_address" rows="4" class="form-control"></textarea>
 									</div>
 								</div><hr>
 
@@ -128,71 +154,67 @@
 								<div class="form-group">
 									<label class="col-md-4 control-label">Tanggal Diterima</label>
 									<div class="col-md-6">
-										<input type="date" name="father_name" class="form-control">
+										<input type="date" name="accepted_date" class="form-control">
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-md-4 control-label">Asal Sekolah</label>
 									<div class="col-md-6">
-										<input type="text" name="Mother_name" class="form-control">
+										<input type="text" name="school_origin" class="form-control">
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-md-4 control-label">Nomor STTB SMP</label>
 									<div class="col-md-6">
-										<input type="text" name="username" class="form-control">
+										<input type="text" name="sttb" class="form-control">
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-md-4 control-label">Tanggal STTB SMP</label>
 									<div class="col-md-6">
-										<input type="date" name="username" class="form-control">
+										<input type="date" name="sttb_date" class="form-control">
 									</div>
 								</div>
 								<h6>Meninggalkan Sekolah</h6>
 								<div class="form-group">
 									<label class="col-md-4 control-label">Tanggal</label>
 									<div class="col-md-6">
-										<input type="date" name="father_name" class="form-control">
+										<input type="date" name="leave_date" class="form-control">
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-md-4 control-label">Alasan</label>
 									<div class="col-md-6">
-										<input type="text" name="Mother_name" class="form-control">
+										<input type="text" name="leave_reason" class="form-control">
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-md-4 control-label">Nomor STTB SMP</label>
 									<div class="col-md-6">
-										<input type="text" name="username" class="form-control">
+										<input type="text" name="leave_sttb" class="form-control">
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-md-4 control-label">Tanggal STTB SMP</label>
 									<div class="col-md-6">
-										<input type="date" name="username" class="form-control">
+										<input type="date" name="leave_sttb_date" class="form-control">
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-md-4 control-label">Nomor SKHUN</label>
 									<div class="col-md-6">
-										<input type="text" name="username" class="form-control">
+										<input type="text" name="skhun" class="form-control">
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-md-4 control-label">Tanggal SKHUN</label>
 									<div class="col-md-6">
-										<input type="date" name="username" class="form-control">
+										<input type="date" name="skhun_date" class="form-control">
 									</div>
-								</div>
-								<div id="type-container"></div>
 								</div>
 						</div>
 						<center>
-							<button type="submit" name="submit" value="Submit" class="btn btn-circle blue">Submit</button>
-							<button type="submit" name="submit" value="Submit" class="btn btn-circle red">Cancel</button>
-							
+							<input type="submit" name="submit" value="Submit" class="btn btn-circle blue">
 						</center>
 					</div>
 					<?= form_close() ?>
