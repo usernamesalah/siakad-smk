@@ -19,9 +19,8 @@
 				</div>
 				<div class="portlet-body form">
 					<?= $this->session->flashdata('msg') ?>
-					<?= form_open_multipart('admin/edit-siswa', ['class' => 'form-horizontal']) ?>
+					<?= form_open_multipart('admin/edit-siswa/' . $student_id, ['class' => 'form-horizontal']) ?>
 					<div class="form-body">
-						<?= $this->session->flashdata('msg') ?>
 						<div class="row">
 							<div class="col-md-6">
 								<h6>Data Diri Siswa</h6>

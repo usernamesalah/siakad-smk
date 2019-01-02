@@ -270,6 +270,18 @@ class Admin extends MY_Controller
 
     public function edit_siswa()
     {
+        $this->data['student_id']   = $this->uri->segment(3);
+        $this->check_allowance(!isset($this->data['student_id']));
+
+        $this->load->model('Students');
+        $this->data['siswa']    = Students::with('user')->find($this->data['user_id']);
+        $this->check_allowance(!$this->data['siswa'], ['Data siswa tidak ditemukan', 'danger']);
+
+        if ($this->POST('submit'))
+        {
+            
+        }
+
         $this->data['title']    = 'Edit Data Siswa';
         $this->data['content']  = 'edit_siswa';
         $this->template($this->data, $this->module);

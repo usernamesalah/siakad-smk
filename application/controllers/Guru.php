@@ -256,6 +256,8 @@ class Guru extends MY_Controller
 			$query->where('scores.lesson_id', $lesson_id);
 		}, 'scores.type'])->find($student_id);
 
+		$this->check_allowance(!isset($this->data['siswa']), ['Data siswa tidak ditemukan', 'danger']);
+
 		$this->load->model('Lessons');
 		$this->data['mapel'] = Lessons::find($lesson_id);
 		
