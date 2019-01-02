@@ -83,7 +83,6 @@
 								<td>Azhary</td>
 								<td>10</td>
 								<td>9</td>
-								<td>90</td>
 								<td>
 									<a href="<?= base_url('kepala/detail_absensi/1') ?>" class="btn btn-circle btn-primary"> Detail Absensi</a>
 								</td>
@@ -91,7 +90,7 @@
 						</tbody>
 						<tfoot>
 							<tr>
-								<td colspan="6"></td>
+								<td colspan="5"></td>
 								<td colspan="2">
 									<button class="btn btn-circle btn-success btn-sm">Cetak</button>
 								</td>
