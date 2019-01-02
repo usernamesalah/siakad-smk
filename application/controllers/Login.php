@@ -14,6 +14,7 @@ class Login extends MY_Controller
                 case 1: redirect('siswa');
                 case 2: redirect('guru');
                 case 3: redirect('admin');
+                case 4: redirect('kepala');
             }
         }
 	}

@@ -19,4 +19,10 @@ class Users extends Eloquent
 		require_once(__DIR__ . '/Teachers.php');
 		return $this->hasOne('teachers', $this->primaryKey, $this->primaryKey);
 	}
+
+	public function headmaster()
+	{
+		require_once(__DIR__ . '/Headmasters.php');
+		return $this->hasOne('teachers', $this->primaryKey, $this->primaryKey);
+	}
 }

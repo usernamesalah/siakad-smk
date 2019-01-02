@@ -5,6 +5,21 @@ class Kepala extends MY_Controller
 	public function __construct()
 	{
 		parent::__construct();
+        $this->data['user_id']  = $this->session->userdata('user_id');
+        if (!isset($this->data['user_id']))
+        {
+            $this->session->sess_destroy();
+            $this->flashmsg('Anda harus login untuk mengakses halaman tersebut', 'danger');
+            redirect('login');
+        }
+
+        $this->data['role_id'] = $this->session->userdata('role_id');
+        if (!isset($this->data['role_id']) or $this->data['role_id'] != 4)
+        {
+            $this->session->sess_destroy();
+            $this->flashmsg('Anda harus login sebagai kepala sekolah untuk mengakses halaman tersebut', 'danger');
+            redirect('login');
+        }
 
 		$this->module = 'kepala';
 	}
@@ -49,7 +64,20 @@ class Kepala extends MY_Controller
 
     public function visimisi()
     {
-        $this->data['title']    = 'Dashboard';
+        $this->load->model('Headmasters');
+        $this->data['headmaster'] = Headmasters::where('user_id', $this->data['user_id'])
+                                    ->get()
+                                    ->first();
+        if ($this->POST('submit'))
+        {
+            $this->data['headmaster']->vision     = $this->POST('vision');
+            $this->data['headmaster']->mission    = $this->POST('mission');
+            $this->data['headmaster']->save();
+
+            $this->flashmsg('Visi misi berhasil disimpan');
+            redirect('kepala/visimisi');
+        }
+        $this->data['title']    = 'Visi Misi';
         $this->data['content']  = 'input_visimisi';
         $this->template($this->data, $this->module);
     }

@@ -73,8 +73,12 @@ class Siswa extends MY_Controller
 
     public function visi_misi()
     {
-        $this->data['title']    = 'Dashboard';
-        $this->data['content']  = 'visimisi';
+        $this->load->model('Headmasters');
+        $this->data['headmaster']   = Headmasters::orderBy('start_period', 'DESC')
+                                        ->get()
+                                        ->first();
+        $this->data['title']        = 'Visi Misi';
+        $this->data['content']      = 'visimisi';
         $this->template($this->data, $this->module);
     }
 

@@ -8,6 +8,7 @@
         <!-- END PAGE TITLE -->
     </div>
     <!-- END PAGE HEAD -->
+    <?= $this->session->flashdata('msg') ?>
     <!-- BEGIN PAGE CONTENT INNER -->
     <div class="row margin-top-10">
         <div class="col-md-12">
@@ -19,15 +20,17 @@
                     </div>
                 </div>
                 <div class="portlet-body">
+                    <?= form_open('kepala/visimisi') ?>
                     <div class="form-group">
                         <label>Visi Sekolah</label>
-                        <textarea name="visi" class="form-control" rows="6"></textarea>
+                        <textarea name="vision" id="vision" class="form-control" rows="6"><?= $headmaster->vision ?></textarea>
                     </div>
                     <div class="form-group">
                         <label>Misi Sekolah</label>
-                        <textarea name="Misi" class="form-control" rows="6"></textarea>
+                        <textarea name="mission" id="mission" class="form-control" rows="6"><?= $headmaster->mission ?></textarea>
                     </div>
-                    <button type="submit" class="btn btn-success btn-cyrcle">Simpan</button>
+                    <input type="submit" name="submit" value="Simpan" class="btn btn-success btn-cyrcle">
+                    <?= form_close() ?>
                 </div>
             </div>
         </div>
@@ -37,7 +40,7 @@
 
 <script type="text/javascript">
     $( document ).ready(function() {
-        tinymce.init({ selector:'textarea', theme: 'modern'});
+        tinymce.init({ selector:'textarea', theme: 'modern', plugins: 'advlist' });
     });
         
 </script>

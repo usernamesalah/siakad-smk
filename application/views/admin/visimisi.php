@@ -18,12 +18,7 @@
 					</div>
 				</div>
 				<div class="portlet-body ">
-					<ul>
-					    <li>a</li>
-					    <li>b</li>
-					    <li>c</li>
-					    <li>d</li>
-					</ul>
+					<?= $headmaster->vision ?>
 				</div>
 			</div>
 
@@ -34,12 +29,7 @@
 					</div>
 				</div>
 				<div class="portlet-body">
-					<ul>
-					    <li>a</li>
-					    <li>b</li>
-					    <li>c</li>
-					    <li>d</li>
-					</ul>
+					<?= $headmaster->mission ?>
 				</div>
 			</div>
 		</div>

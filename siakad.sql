@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 02 Jan 2019 pada 14.31
+-- Generation Time: 02 Jan 2019 pada 19.35
 -- Versi Server: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -109,6 +109,30 @@ INSERT INTO `departments` (`department_id`, `department_name`, `description`, `c
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `headmasters`
+--
+
+CREATE TABLE `headmasters` (
+  `headmaster_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `start_period` date NOT NULL,
+  `end_period` date NOT NULL,
+  `vision` text NOT NULL,
+  `mission` text NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `headmasters`
+--
+
+INSERT INTO `headmasters` (`headmaster_id`, `user_id`, `start_period`, `end_period`, `vision`, `mission`, `created_at`, `updated_at`) VALUES
+(1, 11, '2019-01-08', '2024-01-09', '<p>Ini visiku</p>', '<ol>\r\n<li>Misi hehe</li>\r\n<li>Misi hihiwqeqw</li>\r\n</ol>', '2019-01-02 18:16:10', '2019-01-02 18:31:37');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `homerooms`
 --
 
@@ -172,7 +196,8 @@ CREATE TABLE `roles` (
 INSERT INTO `roles` (`role_id`, `role`, `description`) VALUES
 (1, 'Student', ''),
 (2, 'Teacher', ''),
-(3, 'Admin', '');
+(3, 'Admin', ''),
+(4, 'Headmaster', '');
 
 -- --------------------------------------------------------
 
@@ -313,7 +338,7 @@ CREATE TABLE `students` (
 
 INSERT INTO `students` (`student_id`, `user_id`, `nis`, `nisn`, `father_name`, `father_job`, `father_address`, `mother_name`, `mother_job`, `mother_address`, `representative_name`, `representative_job`, `representative_address`, `accepted_date`, `school_origin`, `sttb`, `sttb_date`, `leave_date`, `leave_reason`, `leave_sttb`, `leave_sttb_date`, `skhun`, `skhun_date`, `created_at`, `updated_at`) VALUES
 (1, 1, '09021181419007', '09021181419007', 'father\'s name', 'father\'s job', 'father\'s address', 'mother\'s name', 'mother\'s job', 'mother\'s address', '', '', '', '0000-00-00', '', '', '0000-00-00', '0000-00-00', '', '', '0000-00-00', '', '0000-00-00', '2019-01-02 13:16:01', '2019-01-02 13:16:01'),
-(2, 10, 'ewrwe', 'ewrwe', 'ewrew', 'rfe', 'ertre', 'retre', 'reter', 'reter', 'rewrw', 'retre', 'Komplek Bougenville KM. 7 Palembang', '1212-12-12', 'ewrwerwe', 'Azhary Arliansyah', '1212-12-12', '1210-12-12', 'werewr', 'ewfwer', '1212-12-12', 'were', '1212-12-12', '2019-01-02 13:16:16', '2019-01-02 13:16:16');
+(2, 10, '09021181419007', '123123123', 'Syamsudin', 'PNS', 'Lubuklinggau', 'Dahlia Yustina', 'IRT', 'Lubuklinggau', '-', '-', '-', '1212-12-12', 'SMA Negeri 1 Lubuklinggau', 'Azhary Arliansyah', '1212-12-12', '1210-12-12', 'werewr', 'ewfwer', '1212-12-12', 'were', '1212-12-12', '2019-01-02 13:16:16', '2019-01-02 17:48:34');
 
 -- --------------------------------------------------------
 
@@ -415,7 +440,8 @@ INSERT INTO `users` (`user_id`, `username`, `password`, `role_id`, `name`, `gend
 (4, 'azhry', '985fabf8f96dc1c4c306341031569937', 2, 'Azhary Arliansyah', 'Male', 'Palembangg', '1996-08-05', 'Ini alamat', '2018-12-27 09:16:10', '2019-01-02 12:30:50'),
 (5, 'az', '985fabf8f96dc1c4c306341031569937', 3, 'Azhary Arliansyah', 'Male', 'Palembang', '2018-08-05', '', '2018-12-31 03:39:32', '2018-12-31 03:39:32'),
 (6, 'rudi', '1755e8df56655122206c7c1d16b1c7e3', 2, 'Test', 'Male', 'Palembang', '1998-05-05', 'Jl. Sukamto', '2018-12-31 06:16:20', '2018-12-31 06:16:20'),
-(10, 'ewrwe', '45753b048517787f6f1c4506ae643acc', 1, 'rwerwe', 'Female', 'Palembang', '1212-12-12', 'Komplek Bougenville KM. 7 Palembang', '2019-01-02 13:16:15', '2019-01-02 13:16:15');
+(10, 'azh', '985fabf8f96dc1c4c306341031569937', 1, 'Azhary', 'Female', 'Palembang', '1996-05-08', 'Komplek Bougenville KM. 7 Palembang', '2019-01-02 13:16:15', '2019-01-02 18:04:36'),
+(11, 'kepsek', '985fabf8f96dc1c4c306341031569937', 4, 'Kepala Sekolah', 'Female', 'Secret', '2019-01-06', 'Alamat ini', '2019-01-02 18:14:35', '2019-01-02 18:14:35');
 
 --
 -- Indexes for dumped tables
@@ -449,6 +475,13 @@ ALTER TABLE `class_members`
 --
 ALTER TABLE `departments`
   ADD PRIMARY KEY (`department_id`);
+
+--
+-- Indexes for table `headmasters`
+--
+ALTER TABLE `headmasters`
+  ADD PRIMARY KEY (`headmaster_id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `homerooms`
@@ -570,6 +603,12 @@ ALTER TABLE `departments`
   MODIFY `department_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `headmasters`
+--
+ALTER TABLE `headmasters`
+  MODIFY `headmaster_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `homerooms`
 --
 ALTER TABLE `homerooms`
@@ -585,13 +624,13 @@ ALTER TABLE `lessons`
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `role_id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `role_id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `schedules`
 --
 ALTER TABLE `schedules`
-  MODIFY `schedule_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `schedule_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `school_years`
@@ -615,7 +654,7 @@ ALTER TABLE `score_types`
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `student_attendances`
@@ -627,13 +666,13 @@ ALTER TABLE `student_attendances`
 -- AUTO_INCREMENT for table `teachers`
 --
 ALTER TABLE `teachers`
-  MODIFY `teacher_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `teacher_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `teacher_attendances`
 --
 ALTER TABLE `teacher_attendances`
-  MODIFY `attendance_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `attendance_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -659,6 +698,12 @@ ALTER TABLE `class_members`
   ADD CONSTRAINT `class_members_ibfk_1` FOREIGN KEY (`class_id`) REFERENCES `classes` (`class_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `class_members_ibfk_2` FOREIGN KEY (`year_id`) REFERENCES `school_years` (`year_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `class_members_ibfk_3` FOREIGN KEY (`student_id`) REFERENCES `students` (`student_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `headmasters`
+--
+ALTER TABLE `headmasters`
+  ADD CONSTRAINT `headmasters_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `homerooms`
