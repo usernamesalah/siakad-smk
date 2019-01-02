@@ -26,7 +26,7 @@
 								<div class="form-group">
 									<label class="col-md-6 control-label">NIP</label>
 									<div class="col-md-6">
-										<input type="text" name="nip" value="<?= $guru->nip ?>" class="form-control">
+										<input type="text" name="nip" value="<?= $guru->nip ?>" class="form-control" readonly>
 									</div>
 								</div>
 								<div class="form-group">

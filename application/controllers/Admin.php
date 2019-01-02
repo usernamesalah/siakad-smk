@@ -31,6 +31,48 @@ class Admin extends MY_Controller
 		$this->template($this->data, $this->module);
 	}
 
+    public function kepala_sekolah()
+    {
+        $this->load->model('Users');
+        $this->load->model('Headmasters');
+
+        $this->data['headmaster_id']   = $this->uri->segment(3);
+        if (isset($this->data['headmaster_id']))
+        {
+            $teacher = Headmasters::with('user')->find($this->data['headmaster_id']);
+            $teacher->delete();
+            $this->flashmsg('Data guru berhasil dihapuskan');
+            redirect('admin/kepala_sekolah');
+        }
+
+        if ($this->POST('submit'))
+        {
+            $user = new Users();
+            $user->username     = $this->POST('username');
+            $user->password     = md5($this->POST('password'));
+            $user->role_id      = 4;
+            $user->name         = $this->POST('name');
+            $user->gender       = $this->POST('gender');
+            $user->birthplace   = $this->POST('birthplace');
+            $user->birthdate    = $this->POST('birthdate');
+            $user->address      = $this->POST('address');
+            $user->save();
+
+            $headmaster = new Headmasters([
+                'start_period'               => $this->POST('start_period'), 
+                'end_period'    => $this->POST('end_period')
+            ]);
+            $user->headmaster()->save($headmaster);
+            
+            $this->flashmsg('Data guru berhasil ditambahkan');
+            redirect('admin/kepala_sekolah');
+        }
+        $this->data['kepsek']     = Users::has('headmaster')->get();
+        $this->data['title']    = 'Dashboard';
+        $this->data['content']  = 'kepala_sekolah';
+        $this->template($this->data, $this->module);
+    }
+
     public function data_guru()
     {
         $this->load->model('Users');
