@@ -11,3 +11,9 @@ Kepala Sekolah :
 Kepala Sekolah dapat melihat laporan data siswa, data guru, data absensi, informasi data tugas mengajar dan raport.
 [20:54, 25/12/2018] Rezi: admin tambahi tahun ajaran dan semester
 [20:55, 25/12/2018] Rezi: visi misi pindahke di kepsek
+
+yang belum:
+- cek lagi edit delete detail di admin
+- siswa: informasi nilai, jadwal, data kelas
+- guru: mengelola nilai siswa, jadwal mengajar, visi misi
+- kepsek

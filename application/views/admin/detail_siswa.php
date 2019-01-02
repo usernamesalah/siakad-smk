@@ -25,48 +25,47 @@
                                     <tr>
                                         <td>Foto</td>
                                         <td>
-                                            <img class="img img-responsive img-thumbnail" src="http://placehold.it/100" style="width: 100px;">
+                                            <img class="img img-thumbnail" src="<?= base_url('assets/files/students/' . $siswa->student_id . '.jpg') ?>" style="max-height: 150px;">
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>NIS</td>
                                         <td>
-                                            <input type="text" name="nis" class="form-control" readonly>
+                                            <input type="text" name="nis" value="<?= $siswa->nis ?>" class="form-control" readonly>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>NISN</td>
                                         <td>
-                                            <input type="text" name="nisn" class="form-control" readonly>
+                                            <input type="text" name="nisn" value="<?= $siswa->nisn ?>" class="form-control" readonly>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Nama</td>
                                         <td>
-                                            <input type="text" name="name" class="form-control" readonly>
+                                            <input type="text" name="name" value="<?= $siswa->user->name ?>" class="form-control" readonly>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Jenis Kelamin</td>
-                                        <td>Perempuan
-                                        </td>
+                                        <td><?= $siswa->user->gender == 'Male' ? 'Laki-laki' : 'Perempuan' ?></td>
                                     </tr>
                                     <tr>
                                         <td>Tempat Lahir</td>
                                         <td>
-                                            <input type="text" name="birthplace" class="form-control" readonly>
+                                            <input type="text" value="<?= $siswa->user->birthplace ?>" name="birthplace" class="form-control" readonly>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Tanggal Lahir</td>
                                         <td>
-                                            <input type="date" name="birthdate" class="form-control" readonly>
+                                            <input type="date" value="<?= $siswa->user->birthdate ?>" name="birthdate" class="form-control" readonly>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Alamat</td>
                                         <td>
-                                            <textarea name="address" rows="4" class="form-control" readonly></textarea>
+                                            <textarea name="address" rows="4" class="form-control" readonly><?= $siswa->user->address ?></textarea>
                                         </td>
                                     </tr>
                                     <tr>
@@ -75,28 +74,39 @@
                                     <tr>
                                         <td>Nama Ayah</td>
                                         <td>
-                                            <input type="text" name="father_name" class="form-control" readonly>
+                                            <input type="text" name="father_name" value="<?= $siswa->father_name ?>" class="form-control" readonly>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Pekerjaan Ayah</td>
+                                        <td>
+                                            <input type="text" name="father_job" value="<?= $siswa->father_job ?>" class="form-control" readonly>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Alamat Ayah</td>
+                                        <td>
+                                            <textarea readonly class="form-control" name="father_address"><?= $siswa->father_address ?></textarea>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Nama Ibu</td>
                                         <td>
-                                            <input type="text" name="Mother_name" class="form-control" readonly>
+                                            <input type="text" name="mother_name" value="<?= $siswa->mother_name ?>" class="form-control" readonly>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>Pekerjaan</td>
+                                        <td>Pekerjaan Ibu</td>
                                         <td>
-                                            <input type="text" name="username" class="form-control" readonly>
+                                            <input type="text" name="mother_job" value="<?= $siswa->mother_job ?>" class="form-control" readonly>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>Alamat</td>
+                                        <td>Alamat Ibu</td>
                                         <td>
-                                            <textarea name="address" rows="4" class="form-control" readonly></textarea>
+                                            <textarea readonly class="form-control" name="mother_address"><?= $siswa->mother_address ?></textarea>
                                         </td>
                                     </tr>
-                                        <!-- END FORM-->
 								</tbody>
 							</table>
                         </div>
@@ -106,19 +116,19 @@
                         			 <tr>
                                         <td>Nama Wali</td>
                                         <td>
-                                            <input type="text" name="father_name" class="form-control" readonly>
+                                            <input type="text" name="representative_name" value="<?= $siswa->representative_name ?>" class="form-control" readonly>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>Pekerjaan</td>
+                                        <td>Pekerjaan Wali</td>
                                         <td>
-                                            <input type="text" name="username" class="form-control" readonly>
+                                            <input type="text" name="representative_job" value="<?= $siswa->representative_job ?>" class="form-control" readonly>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>Alamat</td>
+                                        <td>Alamat Wali</td>
                                         <td>
-                                            <textarea name="address" rows="4" class="form-control" readonly></textarea>
+                                            <textarea name="representative_address" rows="4" class="form-control" readonly><?= $siswa->representative_address ?></textarea>
                                         </td>
 
                                     </tr>
@@ -129,25 +139,25 @@
                                     <tr>
                                         <td>Tanggal Diterima</td>
                                         <td>
-                                            <input type="date" name="father_name" class="form-control" readonly>
+                                            <input type="date" name="accepted_date" value="<?= $siswa->accepted_date ?>" class="form-control" readonly>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Asal Sekolah</td>
                                         <td>
-                                            <input type="text" name="Mother_name" class="form-control" readonly>
+                                            <input type="text" name="school_origin" value="<?= $siswa->school_origin ?>" class="form-control" readonly>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Nomor STTB SMP</td>
                                         <td>
-                                            <input type="text" name="username" class="form-control" readonly>
+                                            <input type="text" name="sttb" value="<?= $siswa->sttb ?>" class="form-control" readonly>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Tanggal STTB SMP</td>
                                         <td>
-                                            <input type="date" name="username" class="form-control" readonly>
+                                            <input type="date" name="sttb_date" value="<?= $siswa->sttb_date ?>" class="form-control" readonly>
                                         </td>
                                     </tr>
                                     <tr>
@@ -156,37 +166,37 @@
                                     <tr>
                                         <td>Tanggal</td>
                                         <td>
-                                            <input type="date" name="father_name" class="form-control" readonly>
+                                            <input type="date" name="leave_date" value="<?= $siswa->leave_date ?>" class="form-control" readonly>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Alasan</td>
                                         <td>
-                                            <input type="text" name="Mother_name" class="form-control" readonly>
+                                            <input type="text" name="leave_reason" value="<?= $siswa->leave_reason ?>" class="form-control" readonly>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Nomor STTB SMP</td>
                                         <td>
-                                            <input type="text" name="username" class="form-control" readonly>
+                                            <input type="text" name="leave_sttb" value="<?= $siswa->leave_sttb ?>" class="form-control" readonly>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Tanggal STTB SMP</td>
                                         <td>
-                                            <input type="date" name="username" class="form-control" readonly>
+                                            <input type="date" name="leave_sttb_date" value="<?= $siswa->leave_sttb_date ?>" class="form-control" readonly>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Nomor SKHUN</td>
                                         <td>
-                                            <input type="text" name="username" class="form-control" readonly>
+                                            <input type="text" name="skhun" value="<?= $siswa->skhun ?>" class="form-control" readonly>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Tanggal SKHUN</td>
                                         <td>
-                                            <input type="date" name="username" class="form-control" readonly>
+                                            <input type="date" name="skhun_date" value="<?= $siswa->skhun_date ?>" class="form-control" readonly>
                                         </td>
                                     </tr>
                         		</tbody>

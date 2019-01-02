@@ -54,7 +54,12 @@ class Siswa extends MY_Controller
 
     public function data_diri()
     {
-        $this->data['title']    = 'Dashboard';
+        $this->load->model('Users');
+        $this->data['user']     = Users::with('student')->find($this->data['user_id']);
+        $this->data['siswa']    = $this->data['user']->student;
+        $this->check_allowance(!$this->data['siswa'], ['Data siswa tidak ditemukan', 'danger']);
+
+        $this->data['title']    = 'Data Diri';
         $this->data['content']  = 'detail_siswa';
         $this->template($this->data, $this->module);
     }

@@ -263,6 +263,13 @@ class Admin extends MY_Controller
 
     public function detail_siswa()
     {
+        $this->data['student_id']   = $this->uri->segment(3);
+        $this->check_allowance(!isset($this->data['student_id']));
+
+        $this->load->model('Students');
+        $this->data['siswa']    = Students::with('user')->find($this->data['student_id']);
+        $this->check_allowance(!$this->data['siswa'], ['Data siswa tidak ditemukan', 'danger']);
+        
         $this->data['title']    = 'Detail Data Siswa';
         $this->data['content']  = 'detail_siswa';
         $this->template($this->data, $this->module);
@@ -274,12 +281,46 @@ class Admin extends MY_Controller
         $this->check_allowance(!isset($this->data['student_id']));
 
         $this->load->model('Students');
-        $this->data['siswa']    = Students::with('user')->find($this->data['user_id']);
+        $this->data['siswa']    = Students::with('user')->find($this->data['student_id']);
         $this->check_allowance(!$this->data['siswa'], ['Data siswa tidak ditemukan', 'danger']);
 
         if ($this->POST('submit'))
         {
-            
+            $user = Users::find($this->data['siswa']->user->user_id);
+            $user->name         = $this->POST('name');
+            $user->gender       = $this->POST('gender');
+            $user->birthplace   = $this->POST('birthplace');
+            $user->birthdate    = $this->POST('birthdate');
+            $user->address      = $this->POST('address');
+            $user->save();
+
+            $student = Students::find($this->data['student_id']);
+            $student->nis                       = $this->POST('nis');
+            $student->nisn                      = $this->POST('nisn');
+            $student->father_name               = $this->POST('father_name');
+            $student->father_job                = $this->POST('father_job');
+            $student->father_address            = $this->POST('father_address');
+            $student->mother_name               = $this->POST('mother_name');
+            $student->mother_job                = $this->POST('mother_job');
+            $student->mother_address            = $this->POST('mother_address');
+            $student->representative_name       = $this->POST('representative_name');
+            $student->representative_job        = $this->POST('representative_job');
+            $student->representative_address    = $this->POST('representative_address');
+            $student->accepted_date             = $this->POST('accepted_date');
+            $student->school_origin             = $this->POST('school_origin');
+            $student->sttb                      = $this->POST('sttb');
+            $student->sttb_date                 = $this->POST('sttb_date');
+            $student->leave_date                = $this->POST('leave_date');
+            $student->leave_reason              = $this->POST('leave_reason');
+            $student->leave_sttb                = $this->POST('leave_sttb');
+            $student->leave_sttb_date           = $this->POST('leave_sttb_date');
+            $student->skhun                     = $this->POST('skhun');
+            $student->skhun_date                = $this->POST('skhun_date');
+
+            $user->student()->save($student);
+            $this->upload($student->student_id, 'assets/files/students', 'photo');
+            $this->flashmsg('Data siswa berhasil di-edit');
+            redirect('admin/edit-siswa/' . $this->data['student_id']);
         }
 
         $this->data['title']    = 'Edit Data Siswa';
