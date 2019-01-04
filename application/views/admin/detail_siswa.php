@@ -14,7 +14,7 @@
             <div class="portlet box green">
                 <div class="portlet-title">
                     <div class="caption">
-                        <i class="fa fa-gift"></i>Azhary Arliansyah
+                        <i class="fa fa-gift"></i> <?= $siswa->user->name ?>
                     </div>
                 </div>
                 <div class="portlet-body">

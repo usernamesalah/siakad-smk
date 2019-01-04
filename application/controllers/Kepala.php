@@ -34,7 +34,6 @@ class Kepala extends MY_Controller
 	public function guru()
     {
         $this->load->model('Users');
-
         $this->data['guru']     = Users::has('teacher')->get();
         $this->data['title']    = 'Dashboard';
         $this->data['content']  = 'guru';
@@ -43,13 +42,22 @@ class Kepala extends MY_Controller
 
     public function detail_guru()
     {
-        $this->data['title']    = 'Dashboard';
+        $this->data['teacher_id'] = $this->uri->segment(3);
+        $this->check_allowance(!isset($this->data['teacher_id']));
+
+        $this->load->model('Teachers');
+        $this->data['guru']     = Teachers::with('user')->find($this->data['teacher_id']);
+        $this->check_allowance(!isset($this->data['guru']), ['Data guru tidak ditemukan', 'danger']);
+
+        $this->data['title']    = 'Detail Guru';
         $this->data['content']  = 'detail_guru';
         $this->template($this->data, $this->module);
     }
 
     public function siswa()
     {
+        $this->load->model('Users');
+        $this->data['users']    = Users::has('student')->get();
         $this->data['title']    = 'Dashboard';
         $this->data['content']  = 'siswa';
         $this->template($this->data, $this->module);
@@ -57,7 +65,14 @@ class Kepala extends MY_Controller
 
     public function detail_siswa()
     {
-        $this->data['title']    = 'Dashboard';
+        $this->data['student_id']   = $this->uri->segment(3);
+        $this->check_allowance(!isset($this->data['student_id']));
+
+        $this->load->model('Students');
+        $this->data['siswa']    = Students::with('user')->find($this->data['student_id']);
+        $this->check_allowance(!$this->data['siswa'], ['Data siswa tidak ditemukan', 'danger']);
+        
+        $this->data['title']    = 'Detail Data Siswa';
         $this->data['content']  = 'detail_siswa';
         $this->template($this->data, $this->module);
     }
