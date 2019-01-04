@@ -26,7 +26,7 @@
                     <li class="dropdown dropdown-user dropdown-dark">
                         <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                         <span class="username username-hide-on-mobile">
-                        Admin </span>
+                        <?= $this->session->userdata('username'); ?> </span>
                         <!-- DOC: Do not remove below empty space(&nbsp;) as its purposely used -->
                         <img alt="" class="img-circle" src="<?= base_url('assets/metronic') ?>/assets/admin/layout4/img/avatar9.jpg"/>
                         </a>

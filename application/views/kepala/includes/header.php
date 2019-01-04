@@ -51,11 +51,12 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- <link rel="shortcut icon" href="favicon.ico"/> -->
 <script src="<?= base_url('assets/metronic') ?>/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
 
-<link href="<?= base_url('assets/metronic') ?>/assets/global/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css" />
 <link href="<?= base_url('assets/metronic') ?>/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" rel="stylesheet" type="text/css" />
-<script src="<?= base_url('assets/metronic') ?>/assets/global/scripts/datatable.js" type="text/javascript"></script>
-<script src="<?= base_url('assets/metronic') ?>/assets/global/plugins/datatables/datatables.min.js" type="text/javascript"></script>
-<script src="<?= base_url('assets/metronic') ?>/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js" type="text/javascript"></script>
+
+        <script src="<?= base_url('assets/metronic/') ?>/assets/global/scripts/datatable.js" type="text/javascript"></script>
+        <script src="<?= base_url('assets/metronic/') ?>/assets/global/plugins/datatables/datatables.min.js" type="text/javascript"></script>
+        <script src="<?= base_url('assets/metronic/') ?>/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js" type="text/javascript"></script>
+        <script src="<?= base_url('assets/metronic/') ?>/assets/global/scripts/table-datatables-buttons.js" type="text/javascript"></script>
 
     <!-- <script src="<?=base_url('assets/vendors/tinymce/jquery.tinymce.min.js')?>"></script> -->
     <script src="<?=base_url('assets/vendors/tinymce/tinymce.min.js')?>"></script>
