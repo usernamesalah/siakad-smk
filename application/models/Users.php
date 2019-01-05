@@ -23,6 +23,6 @@ class Users extends Eloquent
 	public function headmaster()
 	{
 		require_once(__DIR__ . '/Headmasters.php');
-		return $this->hasOne('teachers', $this->primaryKey, $this->primaryKey);
+		return $this->hasOne('headmasters', $this->primaryKey, $this->primaryKey);
 	}
 }

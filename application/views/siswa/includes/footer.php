@@ -50,6 +50,7 @@
 <!-- <script src="<?= base_url('assets/metronic') ?>/assets/admin/pages/scripts/index3.js" type="text/javascript"></script> -->
 <script src="<?= base_url('assets/metronic') ?>/assets/admin/pages/scripts/tasks.js" type="text/javascript"></script>
 <!-- END PAGE LEVEL SCRIPTS -->
+
 <script>
 jQuery(document).ready(function() {    
    Metronic.init(); // init metronic core componets

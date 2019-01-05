@@ -43,8 +43,8 @@
                                                     <div class="btn-group">
                                                         <a href="<?= base_url('guru/siswa_kelas_mapel') ?>" class="btn btn-xs green"><i class="fa fa-eye"></i> Lihat Siswa
                                                         </a>
-                                                        <a href="<?= base_url('guru/input-nilai') ?>" class="btn btn-xs blue" ><i class="fa fa-edit"></i> Input Nilai
-                                                        </a>
+                                                        <!-- <a href="<?= base_url('guru/input-nilai') ?>" class="btn btn-xs blue" ><i class="fa fa-edit"></i> Input Nilai
+                                                        </a> -->
                                                         <a href="<?= base_url('guru/data-absensi') ?>" class="btn btn-xs purple"><i class="fa fa-eye"></i> Absensi siswa
                                                         </a>
                                                     </div>

@@ -157,12 +157,12 @@ class Guru extends MY_Controller
 		$this->template($this->data, $this->module);
 	}
 
-	public function data_penilaian()
-	{
-		$this->data['title']	= 'Dashboard';
-		$this->data['content']	= 'nilai';
-		$this->template($this->data, $this->module);
-	}
+	// public function data_penilaian()
+	// {
+	// 	$this->data['title']	= 'Dashboard';
+	// 	$this->data['content']	= 'nilai';
+	// 	$this->template($this->data, $this->module);
+	// }
 
 	public function tahun_ajaran()
 	{

@@ -21,6 +21,12 @@
                     <h3 class="uppercase">Data Master</h3>
                 </li>
                 <li>
+                    <a href="<?= base_url('admin/kepala-sekolah') ?>">
+                        <i class="icon-user"></i>
+                        <span class="title">Kepala Sekolah</span>
+                    </a>
+                </li>
+                <li>
                     <a href="<?= base_url('admin/data-guru') ?>">
                         <i class="icon-user"></i>
                         <span class="title">Guru</span>
