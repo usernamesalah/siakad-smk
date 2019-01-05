@@ -16,4 +16,5 @@ yang belum:
 - cek lagi edit delete detail di admin
 - siswa: informasi nilai, jadwal, data kelas
 - guru: mengelola nilai siswa, jadwal mengajar, visi misi
-- kepsek
+- kepsek: laporan data siswa, guru, absensi, tugas mengajar, dan raport
+- fitur cetak mencetak

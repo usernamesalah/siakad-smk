@@ -82,4 +82,13 @@ class Siswa extends MY_Controller
         $this->template($this->data, $this->module);
     }
 
+    public function tahun_ajaran()
+    {
+        $this->load->model('School_years');
+        $this->data['years']    = School_years::orderBy('year_id', 'DESC')->get();
+        $this->data['title']    = 'Tahun Ajaran';
+        $this->data['content']  = 'tahun_ajaran';
+        $this->template($this->data, $this->module);
+    }
+
 }
