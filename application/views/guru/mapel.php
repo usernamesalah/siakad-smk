@@ -3,7 +3,7 @@
 	<div class="page-head">
 		<!-- BEGIN PAGE TITLE -->
 		<div class="page-title">
-			<h1>Data Mata Pelajaran</h1>
+			<h1>Jadwal Mengajar</h1>
 		</div>
 		<!-- END PAGE TITLE -->
 	</div>
@@ -15,7 +15,7 @@
 			<div class="portlet box green">
 				<div class="portlet-title">
 					<div class="caption">
-						<i class="fa fa-gift"></i>Data Mata Pelajaran
+						<i class="fa fa-gift"></i>Jadwal Mengajar Tahun <?= $tahun_ajaran->school_year . ' Semester ' . ($semester == 'Odd' ? 'Ganjil' : 'Genap') ?>
 					</div>
 				</div>
 				<div class="portlet-body">
@@ -25,31 +25,26 @@
                                                 <th> # </th>
                                                 <th> Mata Pelajaran </th>
                                                 <th> Kelas </th>
-                                                <th> Semester </th>
-                                                <th> Tahun Ajaran </th>
+                                                <th> Jadwal </th>
                                                 <th> Actions </th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            <?php foreach ($jadwal as $i => $row): ?>
                                             <tr class="odd gradeX">
-                                                <td> 1 </td>
-                                                <td> Matematika </td>
-                                                <td> XI IPA 2 </td>
-                                                <td> Ganjil </td>
-                                                <td>
-                                                    Tahun Ajaran 2018/2019
-                                                </td>
+                                                <td><?= $i + 1 ?></td>
+                                                <td><?= $row->lesson->title ?></td>
+                                                <td><?= $row->class->class_name ?></td>
+                                                <td><?= $locale[$row->day] . ', ' . $row->started_at . ' s.d. ' . $row->ended_at ?></td>
                                                 <td>
                                                     <div class="btn-group">
-                                                        <a href="<?= base_url('guru/siswa_kelas_mapel') ?>" class="btn btn-xs green"><i class="fa fa-eye"></i> Lihat Siswa
+                                                        <a class="btn btn-xs green " href="<?= base_url('guru/siswa-kelas-mapel?year_id=' . $row->year_id . '&semester=' . $row->semester . '&lesson_id=' . $row->lesson_id . '&class_id=' . $row->class->class_id . '&schedule_id=' . $row->schedule_id) ?>"> Daftar Siswa
                                                         </a>
-                                                        <!-- <a href="<?= base_url('guru/input-nilai') ?>" class="btn btn-xs blue" ><i class="fa fa-edit"></i> Input Nilai
-                                                        </a> -->
-                                                        <a href="<?= base_url('guru/data-absensi') ?>" class="btn btn-xs purple"><i class="fa fa-eye"></i> Absensi siswa
-                                                        </a>
+                                                        <a class="btn btn-xs red" href="<?= base_url('guru/data-absensi?year_id=' . $row->year_id . '&semester=' . $row->semester . '&lesson_id=' . $row->lesson_id . '&class_id=' . $row->class->class_id . '&schedule_id=' . $row->schedule_id) ?>">Absensi</a>
                                                     </div>
                                                 </td>
                                             </tr>
+                                            <?php endforeach; ?>
                                         </tbody>
                                     </table>
 				</div>

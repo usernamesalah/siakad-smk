@@ -15,7 +15,7 @@
 			<div class="portlet box grey-cascade">
 				<div class="portlet-title">
 					<div class="caption">
-						Nilai Mata Pelajaran Matematika Kelas XI IPA 2
+						Daftar Siswa Mata Pelajaran <?= $jadwal->lesson->title ?> Kelas <?= $jadwal->class->class_name ?>
 					</div>
 				</div>
 				<div class="portlet-body">
@@ -37,30 +37,23 @@
 							</tr>
 						</thead>
 						<tbody>
-							<?php $i = 0; foreach ($siswa as $row): ?>
+							<?php $i = 0; foreach ($jadwal->class->members as $row): ?>
 							<tr class="odd gradeX">
 								<td style="text-align: center;">
 									<?= ++$i ?>
 								</td>
 								<td style="text-align: center;">
-									<?= $row->nis ?>
+									<?= $row->student->nis ?>
 								</td>
 								<td style="text-align: center;">
-									<?= $row->user->name ?>
+									<?= $row->student->user->name ?>
 								</td>
 								<td width="200" style="text-align: center;">
-									<a href="<?= base_url('guru/input-nilai?student_id=' . $row->student_id . '&lesson_id=' . $lesson_id . '&year_id=' . $year_id) ?>" class="btn blue">Beri Nilai</a>
+									<a href="<?= base_url('guru/input-nilai?student_id=' . $row->student->student_id . '&lesson_id=' . $lesson_id . '&year_id=' . $year_id) ?>" class="btn blue">Beri Nilai</a>
 								</td>
 							</tr>
 							<?php endforeach; ?>
 						</tbody>
-						<tfoot>
-							<tr>
-								<td colspan="6" style="text-align: right;">
-									<button type="submit" class="btn btn-success">Simpan Semua</button>
-								</td>
-							</tr>
-						</tfoot>
 					</table>
 				</div>
 			</div>

@@ -99,8 +99,61 @@ class Kepala extends MY_Controller
 
     public function laporan_nilai()
     {
-        $this->data['title']    = 'Dashboard';
-        $this->data['content']  = 'nilai';
+        $this->load->model('Users');
+        $this->load->model('School_years');
+        $this->load->model('Classes');
+        $this->data['siswa']        = Users::has('student')->get();
+        $this->data['tahun_ajaran'] = School_years::get();
+        $this->data['kelas']        = Classes::get();
+
+        if ($this->POST('submit'))
+        {
+            $student_id = $this->POST('student_id');
+            $year_id    = $this->POST('year_id');
+            $semester   = $this->POST('semester');
+            $class_id   = $this->POST('class_id');
+
+            $this->load->model('Scores');
+            $scores = Scores::with('lesson')
+                        ->where('student_id', $student_id)
+                        ->where('year_id', $year_id)
+                        ->where('semester', $semester)
+                        ->selectRaw('DISTINCT lesson_id')
+                        ->get();
+            $results = [];
+            foreach ($scores as $score)
+            {
+                $results []= [
+                    'mapel'     => $score->lesson,
+                    'harian'    => Scores::where('lesson_id', $score->lesson_id)
+                                    ->where('type_id', 1)
+                                    ->where('student_id', $student_id)
+                                    ->where('year_id', $year_id)
+                                    ->where('semester', $semester)
+                                    ->selectRaw('SUM(score) AS score')
+                                    ->first(),
+                    'uts'       => Scores::where('lesson_id', $score->lesson_id)
+                                    ->where('type_id', 2)
+                                    ->where('student_id', $student_id)
+                                    ->where('year_id', $year_id)
+                                    ->where('semester', $semester)
+                                    ->selectRaw('SUM(score) AS score')
+                                    ->first(),
+                    'uas'       => Scores::where('lesson_id', $score->lesson_id)
+                                    ->where('type_id', 3)
+                                    ->where('student_id', $student_id)
+                                    ->where('year_id', $year_id)
+                                    ->where('semester', $semester)
+                                    ->selectRaw('SUM(score) AS score')
+                                    ->first()
+                ];
+            }
+            echo json_encode($results);
+            exit;
+        }
+
+        $this->data['title']        = 'Laporan Nilai';
+        $this->data['content']      = 'nilai';
         $this->template($this->data, $this->module);
     }
 

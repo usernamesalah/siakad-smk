@@ -23,13 +23,13 @@
                 <li>
                     <a href="<?= base_url('guru/mapel_diajarkan') ?>">
                         <i class="icon-list"></i>
-                        <span class="title">Mata Pelajaran</span>
+                        <span class="title">Jadwal Mengajar</span>
                     </a>
                 </li>
                 <li>
                     <a href="<?= base_url('guru/tahun_ajaran') ?>">
                         <i class="icon-list"></i>
-                        <span class="title">Jadwal Pelajaran</span>
+                        <span class="title">Tahun Ajaran</span>
                     </a>
                 </li>
                 <li>
@@ -39,15 +39,15 @@
                     </a>
                 </li>
 
-                <li class="heading">
+                <!-- <li class="heading">
                     <h3 class="uppercase">Laporan Data</h3>
-                </li>
-                <li>
+                </li> -->
+                <!-- <li>
                     <a href="<?= base_url('guru/absensi') ?>">
                         <i class="icon-list"></i>
                         <span class="title">Absensi</span>
                     </a>
-                </li>
+                </li> -->
             </ul>
             <!-- END SIDEBAR MENU -->
         </div>

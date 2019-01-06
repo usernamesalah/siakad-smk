@@ -22,7 +22,7 @@
 				<div class="portlet-body">
 					<div class="row">
 						<div class="col-md-4" style="text-align: center;">
-							<img src="http://placehold.it/150">
+							<img src="<?= base_url('assets/files/students/' . $student_id . '.jpg') ?>" onerror="this.src = 'http://placehold.it/150'">
 						</div>
 						<div class="col-md-8">
 							<table class="table table-striped table-hover table-bordered">

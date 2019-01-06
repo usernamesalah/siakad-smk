@@ -31,13 +31,6 @@ class Guru extends MY_Controller
 		$this->template($this->data, $this->module);
 	}
 
-	// public function data_kelas()
-	// {
-	// 	$this->data['title']	= 'Dashboard';
-	// 	$this->data['content']	= 'kelas';
-	// 	$this->template($this->data, $this->module);
-	// }
-
 	public function data_absensi()
 	{
 		$this->data['semester']		= $this->GET('semester');
@@ -157,13 +150,6 @@ class Guru extends MY_Controller
 		$this->template($this->data, $this->module);
 	}
 
-	// public function data_penilaian()
-	// {
-	// 	$this->data['title']	= 'Dashboard';
-	// 	$this->data['content']	= 'nilai';
-	// 	$this->template($this->data, $this->module);
-	// }
-
 	public function tahun_ajaran()
 	{
 		$this->load->model('School_years');
@@ -192,10 +178,41 @@ class Guru extends MY_Controller
 
 	public function mapel_diajarkan()
 	{
-		// schedule group by lesson, class, year
-		// klik detail -> muncul daftar siswa beserta input nilainya
-		// 
-		$this->data['title']	= 'Dashboard';
+		$this->data['date']		= explode('-', date('Y-m-d'));
+		$this->data['month']	= (int)$this->data['date'][1];
+		$this->data['year']		= (int)$this->data['date'][0];
+		
+		$this->load->model('School_years');
+		if ($this->data['month'] >= 1 && $this->data['month'] <= 6)
+		{
+			$this->data['semester'] = 'Even';
+			$this->data['tahun_ajaran']	= School_years::where('end_year', $this->data['year'])->first();
+		}
+		else
+		{
+			$this->data['semester'] = 'Odd';
+			$this->data['tahun_ajaran']	= School_years::where('start_year', $this->data['year'])->first();
+		}
+
+		$this->load->model('Users');
+		$this->data['user']		= Users::with('teacher')->find($this->data['user_id']);
+
+		$this->load->model('Schedules');
+		$this->data['jadwal']	= Schedules::with('class', 'lesson')
+									->where('year_id', $this->data['tahun_ajaran']->year_id)
+									->where('semester', $this->data['semester'])
+									->where('teacher_id', $this->data['user']->teacher->teacher_id)
+									->get();
+
+		$this->data['locale']   = [
+            'Saturday'  => 'Sabtu',
+            'Friday'    => 'Jumat',
+            'Thursday'  => 'Kamis',
+            'Wednesday' => 'Rabu',
+            'Tuesday'   => 'Selasa',
+            'Monday'    => 'Senin'
+        ];
+		$this->data['title']	= 'Jadwal Mengajar';
 		$this->data['content']	= 'mapel';
 		$this->template($this->data, $this->module);
 	}
@@ -213,19 +230,18 @@ class Guru extends MY_Controller
 
 	public function siswa_kelas_mapel()
 	{
-		$lesson_id 	= $this->GET('lesson_id');
-		$year_id 	= $this->GET('year_id');
-		$semester 	= $this->GET('semester');
-		$this->data['year_id']		= $year_id;
-		$this->data['lesson_id']	= $lesson_id;
+		$this->data['year_id']		= $this->GET('year_id');
+		$this->data['lesson_id']	= $this->GET('lesson_id');
+		$this->data['semester']		= $this->GET('semester');
+		$this->data['schedule_id']	= $this->GET('schedule_id');
+		$this->data['class_id']		= $this->GET('class_id');
 
-		$this->load->model('Students');
-		$this->data['siswa']	= Students::with('user', 'scores')->whereHas('scores', function($query) use ($lesson_id, $year_id, $semester) {
-			$query->where('scores.lesson_id', $lesson_id);
-			$query->where('scores.year_id', $year_id);
-			$query->where('scores.semester', $semester);
-		})->get();
-		$this->data['title']	= 'Dashboard';
+		$this->load->model('Schedules');
+		$this->data['jadwal']	= Schedules::with(['class.members' => function($query) {
+			$query->where('year_id', $this->data['year_id']);
+			$query->where('class_id', $this->data['class_id']);
+		}, 'class.members.student', 'lesson', 'year'])->find($this->data['schedule_id']);
+		$this->data['title']	= 'Daftar Siswa';
 		$this->data['content']	= 'kelas_mapel';
 		$this->template($this->data, $this->module);
 	}
