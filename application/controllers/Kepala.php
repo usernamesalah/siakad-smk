@@ -229,6 +229,16 @@ class Kepala extends MY_Controller
         $this->template($this->data, $this->module);
     }
 
+    public function laporan_nilai()
+    {
+        //controller nilai siswa
+        $this->load->view('kepala/laporan_nilai');
+    }
 
+    public function laporan_absen()
+    {
+        //controller absen guru
+        $this->load->view('kepala/laporan_absensi');
+    }
     
 }

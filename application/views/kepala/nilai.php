@@ -131,7 +131,7 @@
 							'<tr>' +
 								'<td colspan="5"></td>' +
 								'<td colspan="2">' +
-									'<button class="btn btn-circle btn-success btn-sm">Cetak</button>' +
+									'<a href="<?= base_url('admin/laporan_nilai?student_id=')?>'+ $('#student_id').val() +'" class="btn btn-circle btn-success btn-sm">Cetak</a>' +
 								'</td>' +
 							'</tr>' +
 						'</tfoot>';

@@ -23,6 +23,7 @@
 					<div class="table-toolbar">
                         <div class="row">
                             <div class="col-md-6">
+                                <a href="<?= base_url('kepala/laporan_absensi') ?>" class="btn btn-circle green">Cetak Absensi</a>
                             </div>
                             <div class="col-md-6">
                             </div>
