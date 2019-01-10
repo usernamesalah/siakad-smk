@@ -42,5 +42,4 @@
     $( document ).ready(function() {
         tinymce.init({ selector:'textarea', theme: 'modern', plugins: 'advlist' });
     });
-        
 </script>

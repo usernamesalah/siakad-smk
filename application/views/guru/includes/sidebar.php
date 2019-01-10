@@ -39,15 +39,15 @@
                     </a>
                 </li>
 
-                <!-- <li class="heading">
+                <li class="heading">
                     <h3 class="uppercase">Laporan Data</h3>
-                </li> -->
-                <!-- <li>
+                </li> 
+                <li>
                     <a href="<?= base_url('guru/absensi') ?>">
                         <i class="icon-list"></i>
                         <span class="title">Absensi</span>
                     </a>
-                </li> -->
+                </li>
             </ul>
             <!-- END SIDEBAR MENU -->
         </div>

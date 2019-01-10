@@ -20,7 +20,7 @@
 				</div>
 				<div class="portlet-body">
                     <?= $this->session->flashdata('msg') ?>
-                    <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
+                    <table class="table table-striped table-bordered table-hover table-checkable order-column" id="">
                         <thead>
                             <tr>
                                 <th> # </th>
@@ -31,7 +31,7 @@
                             </tr>
 
                             <tr>
-                                <?= form_open('admin/data-nilai') ?>
+                                <?= form_open('admin/data-penilaian') ?>
                                 <th> # </th>
                                 <th> 
                                     <input type="text" name="type_name" class="form-control">

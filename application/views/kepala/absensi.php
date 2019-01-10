@@ -8,95 +8,70 @@
 		<!-- END PAGE TITLE -->
 	</div>
 	<!-- END PAGE HEAD -->
+    <?= $this->session->flashdata('msg') ?>
 	<!-- BEGIN PAGE CONTENT INNER -->
 	<div class="row margin-top-10">
 		<div class="col-md-12">
+
 			<div class="portlet box green">
 				<div class="portlet-title">
 					<div class="caption">
-						<i class="fa fa-gift"></i>Data Absensi
+						<i class="fa fa-gift"></i>Data Absensi <?= $day . ', ' . date('d/m/Y', strtotime($date)) ?>
 					</div>
-				</div>
-				<div class="portlet-body form">
-					<?= $this->session->flashdata('msg') ?>
-					<?= form_open_multipart('kepala/absensi', ['class' => 'form-horizontal']) ?>
-					<div class="form-body">
-						<?= $this->session->flashdata('msg') ?>
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<label class="col-md-6 control-label">Tahun Ajaran</label>
-									<div class="col-md-6">
-										<select name="tahun_ajaran" class="form-control">
-											<option value="">2018/2019</option>
-										</select>
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="col-md-6 control-label">Semester</label>
-									<div class="col-md-6">
-										<select name="tahun_ajaran" class="form-control">
-											<option value="">Ganjil</option>
-											<option value="">Genap</option>
-										</select>
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="col-md-6 control-label">Kelas</label>
-									<div class="col-md-6">
-										<select name="tahun_ajaran" class="form-control">
-											<option value="">XII ELektro 2</option>
-										</select>
-									</div>
-								</div>
-								<center>
-									<button type="submit" name="submit" value="Submit" class="btn btn-circle blue">Submit</button>
-									<button type="submit" name="submit" value="Submit" class="btn btn-circle red">Cancel</button>
-								</center>
-							</div>
-						</div>
-					</div>
-					<?= form_close() ?>
-					<!-- END FORM-->
-				</div>
-			</div>
-			<div class="portlet box default">
-				<div class="popover-title">
-					<h4>Data Absensi Kelas XII ELEKTRO 2 Semester Ganjil Tahun Ajaran 2018/2019</h4>
 				</div>
 				<div class="portlet-body">
-					<table class="table table-bordered table-responsive">
-						<thead>
-							<tr>
-								<th>#</th>
-								<th>Mata Pelajaran</th>
-								<th>Guru</th>
-								<th>Jumlah Hadir</th>
-								<th>Jumlah Absen</th>
-								<th>Aksi</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>1</td>
-								<td>PENJASKES</td>
-								<td>Azhary</td>
-								<td>10</td>
-								<td>9</td>
-								<td>
-									<a href="<?= base_url('kepala/detail_absensi/1') ?>" class="btn btn-circle btn-primary"> Detail Absensi</a>
-								</td>
-							</tr>
-						</tbody>
-						<tfoot>
-							<tr>
-								<td colspan="5"></td>
-								<td colspan="2">
-									<button class="btn btn-circle btn-success btn-sm">Cetak</button>
-								</td>
-							</tr>
-						</tfoot>
-					</table>
+					<div class="table-toolbar">
+                        <div class="row">
+                            <div class="col-md-6">
+                            </div>
+                            <div class="col-md-6">
+                            </div>
+                        </div>
+                    </div>
+                    <?= form_open('admin/absensi?date=' . $date . '&day=' . $day_en) ?>
+                    <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>NIP</th>
+                                <th>Nama</th>
+                                <th>Absensi</th>
+                                <th>Keterangan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php $i = 0; foreach ($guru as $row): ?>
+                                <tr>
+                                    <td><?= ++$i ?></td>
+                                    <td><?= $row->nip ?></td>
+                                    <td><?= $row->user->name ?></td>
+                                    <td>
+                                        <div class="md-radio-inline">
+                                            <div class="md-radio">
+                                                <input type="radio" id="radio1-<?= $row->nip ?>" name="attendance-<?= $row->nip ?>" <?= isset($row->attendance) && $row->attendance->status == 'Attend' ? 'checked' : '' ?> value="Attend" class="md-check" disabled>
+                                                <label for="radio1-<?= $row->nip ?>">
+                                                    <span class="inc"></span>
+                                                    <span class="check"></span>
+                                                    <span class="box"></span> Hadir</label>
+                                            </div>
+                                            <div class="md-radio">
+                                                <input type="radio" id="radio2-<?= $row->nip ?>" name="attendance-<?= $row->nip ?>" <?= isset($row->attendance) && $row->attendance->status == 'Absent' ? 'checked' : '' ?> value="Absent" class="md-check" disabled>
+                                                <label for="radio2-<?= $row->nip ?>">
+                                                    <span></span>
+                                                    <span class="check"></span>
+                                                    <span class="box"></span> Absen</label>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <textarea class="form-control" name="info-<?= $row->nip ?>" readonly><?= isset($row->attendance) ? $row->attendance->additional_info : '-' ?></textarea>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                    <!-- <input type="submit" name="submit" value="Simpan Absensi" class="btn blue btn-lg"> -->
+                    <?= form_close() ?>
 				</div>
 			</div>
 		</div>

@@ -18,3 +18,18 @@ yang belum:
 - guru: mengelola nilai siswa, jadwal mengajar, visi misi
 - kepsek: laporan data siswa, guru, absensi, tugas mengajar, dan raport
 - fitur cetak mencetak
+
+
+- cetak guru absensi
+- cetak siswa absensi
+- sequence diagram
+- class diagram
+- activity
+
+Flowchart Guru-> fix bug
+
+	admin->siswa
+
+	malam ini selesaike
+
+	

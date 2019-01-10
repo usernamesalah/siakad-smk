@@ -56,7 +56,7 @@ License: You must have a valid license purchased only from themeforest(the above
         <script src="<?= base_url('assets/metronic/') ?>/assets/global/scripts/datatable.js" type="text/javascript"></script>
         <script src="<?= base_url('assets/metronic/') ?>/assets/global/plugins/datatables/datatables.min.js" type="text/javascript"></script>
         <script src="<?= base_url('assets/metronic/') ?>/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js" type="text/javascript"></script>
-        <script src="<?= base_url('assets/metronic/') ?>/assets/global/scripts/table-datatables-buttons.js" type="text/javascript"></script>
+        <script src="<?= base_url('assets/metronic/') ?>/assets/global/scripts/table-datatables-responsive.min.js" type="text/javascript"></script>
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
