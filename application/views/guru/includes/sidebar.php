@@ -39,7 +39,7 @@
                     </a>
                 </li>
 
-                <li class="heading">
+                <!-- <li class="heading">
                     <h3 class="uppercase">Laporan Data</h3>
                 </li> 
                 <li>
@@ -47,7 +47,7 @@
                         <i class="icon-list"></i>
                         <span class="title">Absensi</span>
                     </a>
-                </li>
+                </li> -->
             </ul>
             <!-- END SIDEBAR MENU -->
         </div>

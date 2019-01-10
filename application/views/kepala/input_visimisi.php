@@ -23,11 +23,11 @@
                     <?= form_open('kepala/visimisi') ?>
                     <div class="form-group">
                         <label>Visi Sekolah</label>
-                        <textarea name="vision" id="vision" class="form-control" rows="6"><?= $headmaster->vision ?></textarea>
+                        <textarea name="vision" id="vision" class="form-control" rows="6"></textarea>
                     </div>
                     <div class="form-group">
                         <label>Misi Sekolah</label>
-                        <textarea name="mission" id="mission" class="form-control" rows="6"><?= $headmaster->mission ?></textarea>
+                        <textarea name="mission" id="mission" class="form-control" rows="6"></textarea>
                     </div>
                     <input type="submit" name="submit" value="Simpan" class="btn btn-success btn-cyrcle">
                     <?= form_close() ?>
@@ -41,5 +41,6 @@
 <script type="text/javascript">
     $( document ).ready(function() {
         tinymce.init({ selector:'textarea', theme: 'modern', plugins: 'advlist' });
+        $("#vision").html('<?= $headmaster->vision ?>');
     });
 </script>
