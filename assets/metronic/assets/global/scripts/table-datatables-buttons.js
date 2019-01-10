@@ -26,14 +26,14 @@ var TableDatatablesButtons = function () {
             //},
 
 
-            buttons: [
-                // { extend: 'print', className: 'btn dark btn-outline' },
-                // { extend: 'copy', className: 'btn red btn-outline' },
-                { extend: 'pdf', className: 'btn green btn-outline' },
-                { extend: 'excel', className: 'btn yellow btn-outline ' },
-                // { extend: 'csv', className: 'btn purple btn-outline ' },
-                // { extend: 'colvis', className: 'btn dark btn-outline', text: 'Columns'}
-            ],
+            // buttons: [
+            //     // { extend: 'print', className: 'btn dark btn-outline' },
+            //     // { extend: 'copy', className: 'btn red btn-outline' },
+            //     { extend: 'pdf', className: 'btn green btn-outline' },
+            //     { extend: 'excel', className: 'btn yellow btn-outline ' },
+            //     // { extend: 'csv', className: 'btn purple btn-outline ' },
+            //     // { extend: 'colvis', className: 'btn dark btn-outline', text: 'Columns'}
+            // ],
 
             // setup responsive extension: http://datatables.net/extensions/responsive/
             responsive: true,
